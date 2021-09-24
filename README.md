@@ -9,8 +9,8 @@ This sources is a Zilog Z80 Assembler in Alasm format. You should import and com
 ## Folder contents
 
 - **tools**: file compare tools, RLE packing (Run-length encoding) for huge code blocks, various converters, tr-dos and tape save/load routines. Especially [`Data Glue Utility`](https://zxart.ee/rus/soft/tool/io-handling/diskovye-utility/data-glue-utility/qid:366462/) which allows you to decrease end-of-sector spaces on the disk and move data after loading. Also [`nfo viewer`](https://zxart.ee/rus/soft/demoscene/nfo-viewer/), a text info viewer with two-bitplan colours (25fps coloure mixing like 'Gigascreen'). `nfo viewer` was done, but wasn't released.
-- **unfinished**: unfinished cracktro with two-bitplan colours (again my fav 25fps colour mixing). Also `sunshine cracktro` which was almost done, but never released.
-- **loaders, patches, screen output routines, etc**: You can find some tricks and 'game pokes' here.
+- **unfinished**: unfinished cracktros: first one with two-bitplan colours (again my fav 25fps colour mixing), another is *`sunshine cracktro`* which was almost done, but never released.
+- **loaders, patches, screen output routines, etc**: some exclusive *'game pokes'* in init patches, methods how to initialize tr-dos variables when the low memory is used (check save/load patches), etc.
 
 ## URLs
 
