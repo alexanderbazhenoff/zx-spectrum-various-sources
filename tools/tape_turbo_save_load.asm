@@ -5,8 +5,7 @@
 
 ; ----------------------------------------------------
 ; TURBO TAPE SAVE/LOAD ROUTINES
-; A copy of ROM routines with another look and delays
-; Actually you can change them via constants
+; You can set your custom look and speed via constants.
 
 
         ORG #6000
