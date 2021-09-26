@@ -1,3 +1,14 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at ttps://github.com/aws/mit-0
+
+
+; ----------------------------------------------------
+; TURBO TAPE SAVE/LOAD ROUTINES
+; A copy of ROM routines with another look and delays
+; Actually you can change them via constants
+
+
         ORG #6000
 
 LOMODE  EQU 0     ;разновидность бордюрных выебонов
@@ -16,6 +27,8 @@ COLETC  EQU #3B0E ;цвета при сохр. данных      [#3B0E]
 
 LFLP    EQU #2    ;пауза при сканинге пилот-тона [#415]
 
+
+; ------------ Programm kernel -------------------------
         JR LOA
         LD HL,SCR
         LD DE,#4000
@@ -40,6 +53,8 @@ LOA
         LD A,#FF
         SCF 
         CALL load
+        
+        ; ---- dexor
         LD HL,#4000
         LD BC,#1B00
 DEXORL  LD A,(HL)
@@ -53,6 +68,8 @@ DEXORL  LD A,(HL)
         RET 
 
         ;JP NC,error
+
+; -------- SAVE/LOAD routines
 
         ;---- save pilot
 SAVE    LD      HL,LPILOT
