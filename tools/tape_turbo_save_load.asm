@@ -1,6 +1,6 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at ttps://github.com/aws/mit-0
+; this file, You can obtain one at https://github.com/aws/mit-0
 
 
 ; ----------------------------------------------------
