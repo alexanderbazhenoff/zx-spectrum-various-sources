@@ -6,6 +6,8 @@
 ; ----------------------------------------------------
 ; TURBO TAPE SAVE/LOAD ROUTINES
 ; You can set your custom look and speed via constants.
+; (You can also check original non-turbo and ROM-like values
+; in the comments).
 
 
         ORG #6000
