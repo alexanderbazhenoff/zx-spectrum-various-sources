@@ -34,5 +34,5 @@ Otherwise convert yourself to modern assemblers like sjasm.
 
 ## URLs
 
-[zxart.ee](https://zxart.ee/rus/soft/tool/io-handling/diskovye-utility/data-glue-utility/data-glue-utility/)
-[virtual trdos](https://vtrd.in/release.php?r=b473e64b082b05132b10445d1bc2ab8d)
+- [zxart.ee](https://zxart.ee/rus/soft/tool/io-handling/diskovye-utility/data-glue-utility/data-glue-utility/)
+- [virtual trdos](https://vtrd.in/release.php?r=b473e64b082b05132b10445d1bc2ab8d)
