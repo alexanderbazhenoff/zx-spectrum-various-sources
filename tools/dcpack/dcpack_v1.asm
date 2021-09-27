@@ -1,3 +1,12 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+
+; DCPack 1.0 by alx^biranwave.
+; A tool to compress differences.
+
+
         DISPLAY "DCPack v1.0 by Alx^Brainwave"
         DISPLAY "Special for compressing differences"
 
@@ -7,7 +16,7 @@ LENGHT  EQU #1B6F
 DESTIN_ EQU #4000
 
         ORG #6367
-        INCBIN "#d_dif"
+        INCBIN "#d_dif"    ; load diff
 
         ORG EXECUTE
         JP PACK

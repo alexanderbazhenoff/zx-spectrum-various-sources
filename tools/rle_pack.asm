@@ -1,3 +1,11 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+; -------------------------------------------------------------
+; Run-length encoding (RLE) compressior by alx^bw
+
+
 START   EQU #5E21
 LENGHT  EQU #A1DF
 COMPRTO EQU #5D21 ;куда все упихивать

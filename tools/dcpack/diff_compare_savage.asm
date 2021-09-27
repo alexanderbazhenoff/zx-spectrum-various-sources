@@ -1,3 +1,11 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+
+; Compare differences and save routines for DCpack v1.0 by alx^bw
+
+
         ORG #6000
 
 TRKSC1  EQU #3D08       ;FIRST TRACK/SECTOR OF 1

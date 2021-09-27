@@ -1,3 +1,12 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+
+; This is the info viewer for crack releases pack #3 by alx^bw.
+; Never relesed.
+
+
 FONTADR EQU #6000
 ATRBUF  EQU #7000
 TXTBUF  EQU #8700

@@ -1,4 +1,9 @@
-# TR-DOS Fast saver (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+
+; TR-DOS Fast saver (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
         ORG #8000
         DI 
         LD DE,#0100

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+
 ;п/п извлечения и загрузки файла из склеенного массива
 ;с помощью Data Glue 1.0 By alx/brainwave
 

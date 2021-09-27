@@ -1,3 +1,10 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at https://github.com/aws/mit-0
+
+; a small never released peace of source and the concept for the
+ctacktro by alx^bw. never relased.
+
         ORG #6000
 ATTRMODE        EQU 0
                 ;0 - BLUE/MAGENTA

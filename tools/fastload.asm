@@ -1,4 +1,6 @@
-# TR-DOS Fast loader (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
+; TR-DOS Fast loader (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
+; Originally came from Cobra Force 128 crack by MKHG
+
         ORG #81E2
         DI 
         LD DE,0
