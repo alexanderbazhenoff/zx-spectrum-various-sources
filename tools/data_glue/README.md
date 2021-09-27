@@ -32,4 +32,7 @@ load calulation.
 This sources in ALASM 5.x format. So you can download them to build in ZX-Spectrum emulator.
 Otherwise convert yourself to modern assemblers like sjasm.
 
-## URL
+## URLs
+
+[zxart.ee](https://zxart.ee/rus/soft/tool/io-handling/diskovye-utility/data-glue-utility/data-glue-utility/)
+[virtual trdos](https://vtrd.in/release.php?r=b473e64b082b05132b10445d1bc2ab8d)
