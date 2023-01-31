@@ -23,14 +23,14 @@ scene tradition.
 So until the middle 2005 more than 50 crack releases came. Some of them was with an intros, some of them just with sign,
 but fixed, packed, etc.
 
-## TLDR
+# TLDR
 
 These sources are for Zilog Z80 Assembler in Alasm format. You should import and compile this source in
 [Alasm](https://zxart.ee/rus/soft/tool/music/pro-tracker-alasm/qid:365628/) ZX-Spectrum assembler
 [(I have used v5.08)](https://speccy.info/ALASM) to compile. Or convert this source manually for 
 [SjASMPlus](http://speccy.info/SjASMPlus) which is cross-platform.
 
-## Folder contents in short
+# Folder contents in short
 
 - [**tools**](tools): file compare tools, 
 [`RLE packing`](https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/tools/rle_pack.asm)
@@ -55,11 +55,11 @@ mixing), another is [*`sunshine cracktro`*](unfinished/sunshine_cracktro) which 
 exclusive *'game pokes'* are placed in init patches), methods how to initialize tr-dos variables when #5b00...#6000
 memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc.
 
-## Detailed folder contents
+# Detailed folder contents
 
 Browse folders for README(s) or read traditional [`files.bbs`](files.bbs).
 
-## Related URLs
+# Related URLs
 
 - [brainwave cracktro v1 sources](https://github.com/alexanderbazhenoff/brainwave-cracktro-v1)
 - [brainwave cracktro v2 sources](https://github.com/alexanderbazhenoff/brainwave-cracktro-v2)
