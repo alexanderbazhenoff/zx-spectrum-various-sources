@@ -57,7 +57,7 @@ memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc.
 
 ## Detailed folder contents
 
-Browse folders for README(s) or read traditional [`files.bbs`](files.bbs).
+Browse folders for README(s) or read traditional [`files.bbs`](files.bbs) :)
 
 ## Related URLs
 
