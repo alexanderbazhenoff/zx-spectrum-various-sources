@@ -23,7 +23,7 @@ allows you to decrease end-of-sector spaces on the disk and move data after load
 ![Data Glue](https://zxart.ee/zxscreen/type:standard/id:392818/zoom:1/filename:image.png)
 
 Also [`nfo viewer`](https://zxart.ee/rus/soft/demoscene/nfo-viewer/), a text info viewer with two-bitplan colours (25fps
-colour mixing like *'Gigascreen'*, ZX-Spectrum software screen mode). `nfo viewer` was done, but wasn't ever released.
+colour mixing like `gigascreen`, a ZX-Spectrum software screen mode). `nfo viewer` was done, but wasn't ever released.
 
 ![Nfo Viewer](https://zxart.ee/image/type:prodImage/id:273669/filename:nfoview.png)
 
@@ -35,6 +35,10 @@ mixing), another is [*`sunshine cracktro`*](unfinished/sunshine_cracktro) which 
 - [**loaders, patches, screen output routines, etc**](loaders_patches_etc): mini-cracktros, trainer modes (some
 exclusive *'game pokes'* are placed in init patches), methods how to initialize tr-dos variables when #5b00...#6000
 memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc.
+
+## Detailed folder contents
+
+Browse folders for README(s).
 
 ## Related URLs
 
