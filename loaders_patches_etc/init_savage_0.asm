@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #5B17
 ZZUU    LD A,7
         OUT (#FE),A
@@ -40,13 +45,13 @@ AROUND  DJNZ LOOP1
         LD H,C
         DUP 5
         ADD HL,HL
-        EDUP 
+        EDUP
         LD B,H
         LD C,L
         POP HL
         POP DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 SCRFADE
         LD HL,#6200
         LD B,L
@@ -66,13 +71,13 @@ NODINK  LD A,D
 NODPAP  LD (HL),D
         INC L
         DJNZ FAD_LP
-        EI 
+        EI
         LD B,8
 FAD_LL  PUSH BC
-        HALT 
-        HALT 
-        HALT 
-        HALT 
+        HALT
+        HALT
+        HALT
+        HALT
         LD HL,#5800
         LD BC,#300
         LD D,#62
@@ -86,7 +91,7 @@ FAD_L1  LD E,(HL)
         JR NZ,FAD_L1
         POP BC
         DJNZ FAD_LL
-        RET 
+        RET
 
 
 
@@ -95,7 +100,7 @@ START   EQU #7FD9
 
         ;---rewriting kernal
         ORG #89FD
-        DI 
+        DI
         LD HL,#FD00
         LD B,L
         LD A,H
@@ -107,26 +112,26 @@ INIM2L  LD (HL),A
         LD (HL),A
         IM 2
         CALL #8264
-        EI 
+        EI
 WM_L    LD A,(#9734)
         OR A
         JR Z,WM_L
         LD HL,#FF08
         LD (#FF00),HL
         CALL SCRFADE
-        DI 
+        DI
         LD HL,#9736
         LD B,#C0
         CALL #6003
-        EI 
-        HALT 
+        EI
+        HALT
         EX DE,HL
         LD HL,#9736+#1800
         LD B,3
-        LDIR 
+        LDIR
 WKEY    XOR A
         IN A,(#FE)
-        CPL 
+        CPL
         AND #1F
         JR NZ,WKEY
         LD HL,KEY_RQ
@@ -149,21 +154,21 @@ WKEY    XOR A
         INCBIN "pic#0_"
 
         ORG START
-        DI 
+        DI
         LD SP,#94A8
         LD HL,INTDAT
         LD DE,#FEFE
         LD B,1
-        LDIR 
+        LDIR
         JP #89FD
-INTDAT  DI 
+INTDAT  DI
         CALL #8000
         LD A,1
         LD (#9734),A
-        EI 
-        RET 
+        EI
+        RET
 KEY_RQ  LD A,#7F
         IN A,(#FE)
-        RRA 
+        RRA
         JP NC,#5B17
         JP #8A49

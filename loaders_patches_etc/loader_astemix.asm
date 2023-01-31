@@ -1,6 +1,11 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #7000
         DISP 23883
-        DI 
+        DI
         LD SP,24999
         XOR A
         LD (23624),A
@@ -18,7 +23,7 @@ CH_L    PUSH BC
 
 
 CH_L1   LD A,(HL)
-        RRA 
+        RRA
         OR (HL)
         LD (DE),A
         INC HL
@@ -29,7 +34,7 @@ CH_L1   LD A,(HL)
         LD B,4
 
 CH_L2   LD A,(HL)
-        RLA 
+        RLA
         OR (HL)
         LD (DE),A
         INC HL
@@ -41,7 +46,7 @@ CH_L2   LD A,(HL)
         DEC D
         POP DE
         LD (23606),DE
-        EI 
+        EI
         XOR A
         CALL 5633
         LD DE,TEXT
@@ -61,19 +66,19 @@ MTK     LD HL,#5B00-#A0
         LD DE,#5B00-#9F
         LD BC,#20
         LD (HL),6+#40
-        LDIR 
+        LDIR
         LD C,#40
         LD (HL),7
-        LDIR 
+        LDIR
         LD C,#40
         LD (HL),#7+#40
-        LDIR 
+        LDIR
 
         LD HL,#3C00
         LD (23606),HL
 
         LD B,#51
-PAUSE   HALT 
+PAUSE   HALT
         DJNZ PAUSE
 
         LD HL,25000
@@ -91,8 +96,8 @@ LOAD    PUSH BC
         JR NZ,LOAD
 
         LD B,8
-FADE0   HALT 
-        HALT 
+FADE0   HALT
+        HALT
         LD HL,#5A00
 FADE    LD A,(HL)
         AND 7+8+16+32
@@ -133,7 +138,7 @@ ERR     LD HL,#2121
         LD (23613),A
         LD A,#C9
         LD (#5CC2),A
-        RET 
+        RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -144,7 +149,7 @@ DRIA    EX (SP),HL
         JR Z,NO_ERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     POP HL
         POP HL
         POP HL

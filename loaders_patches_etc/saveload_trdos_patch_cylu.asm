@@ -1,13 +1,18 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         DISPLAY "CYLU. SAVE/LOAD OPTION"
         ORG #74CC
 FONT    EQU #3C00
 LIN1ADR EQU #5014
 LIN2ADR EQU #5034
         JP LOAD
-SAVE    DI 
+SAVE    DI
         LD (STEK),SP
         LD SP,#7A00
-        EI 
+        EI
         CALL ENTER_FILENAME
         CALL SEL_DRIVE
         CALL SEARCHING_MES
@@ -43,7 +48,7 @@ SEA_SAL PUSH BC
         LD HL,FILE_DISCRIPT
         LD DE,#7A40
         LD BC,14
-        LDIR 
+        LDIR
         LD HL,(#7AE1)
         LD A,L
         LD (DE),A
@@ -89,7 +94,7 @@ END_OF_CAT_FOUND
         DEC DE
         LD HL,FILE_DISCRIPT
         LD BC,14
-        LDIR 
+        LDIR
         LD HL,#1111
 BODY_TRSC EQU $-2
         LD A,L
@@ -157,7 +162,7 @@ OVERW   LD E,(IX)
         SBC HL,BC
         LD DE,DISCRIPT_OWS
         LD BC,15
-        LDIR 
+        LDIR
         POP HL
         LD A,L
         LD (DE),A
@@ -171,7 +176,7 @@ OVERW   LD E,(IX)
         LD HL,DISCRIPT_OWS
         LD DE,#7A40
         LD BC,16
-        LDIR 
+        LDIR
         LD HL,#7A00
         LD DE,8
         LD BC,#106
@@ -188,10 +193,10 @@ SAVE_BODY
         LD DE,#7A00
         LD HL,#5B00
         LD BC,#0029
-        LDIR 
+        LDIR
         LD HL,#CB10
         LD C,#68
-        LDIR 
+        LDIR
         LD DE,(#5CF4)
         LD BC,#106
         LD HL,#7A00
@@ -202,10 +207,10 @@ SAVE_BODY
         JP TR_DOS
 
 
-LOAD    DI 
+LOAD    DI
         LD (STEK),SP
         LD SP,#7A00
-        EI 
+        EI
         CALL ENTER_FILENAME
         CALL SEL_DRIVE
         CALL SEARCHING_MES
@@ -233,24 +238,24 @@ LOAD    DI
         LD HL,#61A8
         CALL TR_DOS
         POP HL
-        DI 
+        DI
         LD DE,#5B00
         LD BC,#0029
-        LDIR 
+        LDIR
         LD DE,#CB10
         LD C,#68
-        LDIR 
+        LDIR
         LD HL,#61A8
         LD DE,#CB10+#68
         LD B,#D
-        LDIR 
+        LDIR
 
-EXIT    DI 
+EXIT    DI
         CALL CLEAR1LIN
         CALL CLEAR2LIN
         LD SP,#3131
 STEK    EQU $-2
-        RET 
+        RET
 
 ENTER_FILENAME
         CALL CL_LA
@@ -266,7 +271,7 @@ INP_POS EQU $-1
         LD IX,FILENAME
 INP_PO1 EQU $-2
 EFN_L   LD (IX),"_"
-        HALT 
+        HALT
         CALL PR_FNAM
         RES 5,(IY+1)
 WAITK   BIT 5,(IY+1)
@@ -326,8 +331,8 @@ ENTER   LD A,":"
         LD HL,FILENAME
         LD DE,FILE_DISCRIPT
         LD BC,8
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 SEARCH_FILE
         LD A,14
@@ -350,7 +355,7 @@ SF_COMP LD A,(DE)
         POP IX
         POP DE
         POP HL
-        RET 
+        RET
 
 SF_COM1 POP DE
         POP HL
@@ -360,7 +365,7 @@ SF_COM1 POP DE
         POP BC
         DEC C
         JR NZ,SF_L
-        RET 
+        RET
 
 
 
@@ -391,19 +396,19 @@ SOUN_L2 DJNZ SOUN_L2
         DEC C
         JR NZ,SOUN_L
         POP BC
-        RET 
+        RET
 
 SEARCHING_MES
         CALL PRNTMES1
         DB "SEARCHING...",#FF
-        RET 
+        RET
 
 PR_FNAM
         CALL PRNTMES2
 EF_MES  DB "A:"
 FILENAME
         DB "         ",#FF
-        RET 
+        RET
 
 NO_FILE
         CALL PRNTMES1
@@ -413,9 +418,9 @@ OP_ERROR
         CALL PRNTMES1
         DB "DISK ERROR! ",#FF
 CL_2LIN CALL CLEAR2LIN
-        EI 
+        EI
         LD B,40
-ER_PAUS HALT 
+ER_PAUS HALT
         LD A,2
         OUT (#FE),A
         DJNZ ER_PAUS
@@ -432,7 +437,7 @@ CLEAR2LIN
         LD DE,LIN2ADR
 CLEARLI CALL PRNTMES
         DB "            ",#FF
-        RET 
+        RET
 
 PRNTMES2
         LD DE,LIN2ADR
@@ -474,7 +479,7 @@ CL_LA   LD DE,LIN1ADR-1
         LD DE,LIN2ADR-1
         CALL PRNTMES
         DB #20,#FF
-        RET 
+        RET
 
 TR_DOS  PUSH HL
         PUSH DE
@@ -537,7 +542,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -551,10 +556,10 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
@@ -564,5 +569,5 @@ FILE_DISCRIPT
 DISCRIPT_OWS
         DS 16,0
 
-ENDOBJ  DISPLAY 
+ENDOBJ  DISPLAY
         DISPLAY "End object: ",ENDOBJ," (max=#7980)"

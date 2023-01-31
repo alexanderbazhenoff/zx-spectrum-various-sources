@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #E700
 
 BORDER  EQU 5      ;БОРДЮР ДЛЯ ЗАСТАВКИ
@@ -8,13 +13,13 @@ INTVEC  EQU #EEEE  ;УКАЗАТЕЛЬ ВЕКТОРА INT
 INTVEC1 EQU #EEEF  ;^+1
 TSTBYT  EQU #EF18  ;АДРЕСС БАЙТА ДЛЯ ПРО-
                    ;ВЕРКИ НА НАЛИЧИЕ 128KB
-        DI 
+        DI
         LD BC,#7FFD
         LD HL,TSTBYT
         LD HL,TEST
         LD DE,#4000
         LD BC,10
-        LDIR 
+        LDIR
 
         LD BC,#7FFD
         LD HL,TSTBYT
@@ -30,7 +35,7 @@ TSTBYT  EQU #EF18  ;АДРЕСС БАЙТА ДЛЯ ПРО-
         LD I,A
         DEC A
         LD (HL),A
-        LDIR 
+        LDIR
         IM 2
         LD A,#C9
         LD (INTVEC),A
@@ -39,11 +44,11 @@ TSTBYT  EQU #EF18  ;АДРЕСС БАЙТА ДЛЯ ПРО-
         LD H,C
         LD L,H
 
-        EI 
-        HALT 
+        EI
+        HALT
         LD A,#C3
         LD (INTVEC),A
-        EI 
+        EI
 L_LOOP  INC HL
         LD B,15
 L_PAUS  DJNZ L_PAUS
@@ -64,7 +69,7 @@ CLCL    POP DE
 
         LD A,#C9
         LD (INTVEC),A
-        EI 
+        EI
         CALL CLS
 
         LD HL,TABL
@@ -72,17 +77,17 @@ CLCL    POP DE
         LD DE,TABL+1
         LD (HL),#18+BORDER
         LD BC,320
-        LDIR 
-        EXX 
+        LDIR
+        EXX
         LD BC,#7FFD
-        EXX 
+        EXX
 
         LD BC,160
         POP HL
         LD DE,TABL+319
 
-BMLP    EI 
-        HALT 
+BMLP    EI
+        HALT
         LD (#2222),HL   ;16
         LD (#2222),HL
         LD (#2222),HL
@@ -130,7 +135,7 @@ JUMP    DEC DE          ;6
         LD A,D          ;4
         OR E            ;4
         JP NZ,BLP1      ;10
-        EXX 
+        EXX
         DEC BC
         LD A,B
         OR C
@@ -140,7 +145,7 @@ JUMP    DEC DE          ;6
         OUT (C),A
         JR EXIT
 
-MOD48   EI 
+MOD48   EI
         CALL CLS
 EXIT    XOR A         ;AND NOW ONLY FOR
         OUT (#FE),A   ;MIAMI COBRA
@@ -162,12 +167,12 @@ EXIT    XOR A         ;AND NOW ONLY FOR
         AND 1+2+4+8+16
         CP 1+2+8+16
         JR NZ,NOCHEA
-        EI 
-        HALT 
+        EI
+        HALT
         LD A,7
         OUT (C),A
         LD B,10
-CH_PAUS HALT 
+CH_PAUS HALT
         DJNZ CH_PAUS
 
         XOR A
@@ -180,7 +185,7 @@ CH_PAUS HALT
 
 NOCHEA  LD HL,#9D00
         PUSH HL
-        EI 
+        EI
         LD HL,#E700
         LD DE,#E701
         LD BC,#FB00-#E700
@@ -188,13 +193,13 @@ NOCHEA  LD HL,#9D00
         JP #33C3
 
 
-CLS     HALT 
+CLS     HALT
         LD HL,#5AFF
         LD DE,#5AFE
         LD (HL),0
         LD BC,#1AFF
-        LDDR 
-        RET 
+        LDDR
+        RET
 
 TEST    OUT (C),L
         LD (HL),L
@@ -202,4 +207,4 @@ TEST    OUT (C),L
         LD (HL),E
         OUT (C),L
         LD A,(HL)
-        RET 
+        RET

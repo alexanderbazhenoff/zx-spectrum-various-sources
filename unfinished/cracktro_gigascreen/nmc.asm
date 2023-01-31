@@ -1,9 +1,11 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 
 ; a small never released peace of source and the concept for the
-ctacktro by alx^bw. never relased.
+; ctacktro by alx^bw. never released.
 
         ORG #6000
 ATTRMODE        EQU 0
@@ -14,7 +16,7 @@ SCR_ATTR1       EQU #F700
 SCR_ATTR2       EQU #F400
 
 
-        DI 
+        DI
         LD HL,FONT+2
         LD DE,DECRUNCHED_FONT+#20
         LD BC,#4008
@@ -33,7 +35,7 @@ FONTIL2 LD A,(HL)
 
         LD DE,SCR_ATTR1+5
         LD HL,SCR_ATTR2+5
-        EXX 
+        EXX
         LD DE,#4205
         LD IX,TEXT-1
 PRNTLP  INC IX
@@ -49,22 +51,22 @@ PRNTLP  INC IX
         LD E,(IX)
         LD A,E
         AND #1F
-        EXX 
+        EXX
         OR E
         LD E,A
         LD L,A
-        EXX 
+        EXX
         JR PRNTLP
 NO_NEWPOS
         CP #10
         JR NZ,NO_CHNGATR
         LD (ATR_SW),A
         INC IX
-        EXX 
+        EXX
         LD C,(IX)
         INC IX
         LD B,(IX)
-        EXX 
+        EXX
         JR PRNTLP
 NO_CHNGATR
         CP #11
@@ -90,7 +92,7 @@ PRNT_L  LD A,(HL)
         DJNZ PRNT_L
         POP DE
         INC E
-        EXX 
+        EXX
         LD A,#10
 ATR_SW  EQU $-1
         OR A
@@ -100,25 +102,25 @@ ATR_SW  EQU $-1
         LD (DE),A
 NO_ATRP INC HL
         INC DE
-        EXX 
+        EXX
         JP PRNTLP
 ENDPRINT
         LD HL,#2758
-        EXX 
-        EI 
-FLOOP   HALT 
+        EXX
+        EI
+FLOOP   HALT
         LD HL,SCR_ATTR1
         LD DE,#5800
         LD BC,#300
-        LDIR 
-        HALT 
+        LDIR
+        HALT
         LD HL,SCR_ATTR2
         LD DE,#5800
         LD BC,#300
-        LDIR 
+        LDIR
         LD A,#7F
         IN A,(#FE)
-        RRA 
+        RRA
         RET NC
         JR FLOOP
 
@@ -133,7 +135,7 @@ DOWN_DE INC D
         LD A,D
         SUB 8
         LD D,A
-        RET 
+        RET
 
 ENTER   LD A,E
         AND #E0
@@ -141,7 +143,7 @@ ENTER   LD A,E
 ENTR2   LD B,6
 ENTRL   CALL DOWN_DE
         DJNZ ENTRL
-ENTER0  EXX 
+ENTER0  EXX
         PUSH BC
         LD BC,#20
         LD A,E
@@ -152,8 +154,8 @@ ENTER0  EXX
         EX DE,HL
         ADD HL,BC
         POP BC
-        EXX 
-        RET 
+        EXX
+        RET
 
 
 TEXT

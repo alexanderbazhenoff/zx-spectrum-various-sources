@@ -1,11 +1,16 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #FE00
-        EI 
+        EI
         LD B,8
 FAD_ML  PUSH BC
-        HALT 
-        HALT 
-        HALT 
-        HALT 
+        HALT
+        HALT
+        HALT
+        HALT
         LD HL,#5800
         LD BC,#300
 FAD_LP  LD D,(HL)
@@ -29,4 +34,4 @@ NODPAP  LD (HL),D
         JR NZ,FAD_LP
         POP BC
         DJNZ FAD_ML
-        RET 
+        RET

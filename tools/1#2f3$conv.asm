@@ -1,6 +1,11 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         DISPLAY "1/3 OF SCR CONVERTER (2 COLUMNS)"
         DISPLAY "CODED BY ALX/BW 2oo2"
-        DISPLAY 
+        DISPLAY
         DISPLAY "IN: FILE <1/3PIC.C> WITH LENGHT #800"
         DISPLAY "    (1/3 OF SCR WITHOUT ATTR)"
         DISPLAY "OUT: SAVE FILE <...> #C000,#800"
@@ -8,7 +13,7 @@
         LD HL,PIC
         LD DE,#4000
         LD BC,#800
-        LDIR 
+        LDIR
         LD HL,#4000
         LD DE,#C000
         LD BC,#4020
@@ -35,5 +40,5 @@ AROUND  DJNZ LOOP1
         POP BC
         DEC C
         JR NZ,LOOP
-        RET 
+        RET
 PIC     INCBIN "1/3PIC"

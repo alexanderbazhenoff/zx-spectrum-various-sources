@@ -1,17 +1,23 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+
         ORG #6000
-        DISPLAY 
+        DISPLAY
         DUP 23
         DISPLAY /L,"-"
-        EDUP 
+        EDUP
         DISPLAY "| lamergy #KIDS intro |"
-        DISPLAY 
+        DISPLAY
         DUP 23
         DISPLAY /L,"-"
-        EDUP 
+        EDUP
 
         MACRO HERO
         CALL OUT_SPR_NO_ATR
-        ENDM 
+        ENDM
 
 
 BORD     EQU 0
@@ -33,29 +39,29 @@ INT_INI LD (HL),A
         DJNZ INT_INI
         LD (HL),A
         CALL CLS2
-        HALT 
+        HALT
         CALL BANK18
 
         XOR A
         CALL OUTSCR
-        DI 
+        DI
         CALL OUT_SPR_HH
-        EI 
-        HALT 
+        EI
+        HALT
         LD A,#17
         CALL BANK
         LD H,#D8        ;!
         LD DE,#D801
         LD BC,#02FF
         LD (HL),#3F
-        LDIR 
+        LDIR
         CALL BANK10
 
         LD HL,SRC_TBL
         LD D,'SCR_TBL
-        EXX 
+        EXX
         LD HL,STAR_TBL
-        EXX 
+        EXX
         LD B,SCRJ_POS
 INS_SCR_TBL_L
         PUSH BC
@@ -72,12 +78,12 @@ INS_SCR_TBL_L
         PUSH HL
         LD A,(HL)
         SUB 191
-        NEG 
+        NEG
         ADD A,48
         LD C,8*21
         CALL #22B0
         PUSH HL
-        EXX 
+        EXX
         POP DE
         LD A,D
         ADD A,#80
@@ -86,7 +92,7 @@ INS_SCR_TBL_L
         INC L
         LD (HL),D
         INC L
-        EXX 
+        EXX
         POP HL
         INC HL
         POP BC
@@ -99,20 +105,20 @@ INS_SCR_TBL_L
         LD B,#16*3+3
         CALL FLASHES
         LD B,#20*3
-PAUS1   HALT 
+PAUS1   HALT
         DJNZ PAUS1
         XOR A
         LD (COUNTERS_SW),A
 
 PART1_LOOP
-        HALT 
+        HALT
         CALL FLP
         CALL OUT_SPR_HH
         CALL HOOY
         CALL SPC_SCAN
         JR C,PART1_LOOP
 
-        HALT 
+        HALT
         CALL CLS2
         CALL BANK18
         LD A,1
@@ -145,7 +151,7 @@ PART1_LOOP
         LD DE,#48CD
         HERO            ;DIZZY
 
-        HALT 
+        HALT
 
         LD A,#17
         CALL BANK
@@ -203,13 +209,13 @@ HOOY0SW EQU $-1
         CALL BLYATNAHOOY
 
 PART2_LOOP
-        EI 
-        HALT 
+        EI
+        HALT
 
         IF0 BORD-1
         LD A,4
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
 ;-------GET ADDR FOR STAR--------
         CALL BANK10_
@@ -360,7 +366,7 @@ NO_END_FUCK
 ZAKS_S  EQU $-1
         DUP 2
         DEC A
-        EDUP 
+        EDUP
         LD (ZAKS_S),A
 FUCK_INC
         LD A,(ZAKS_S)
@@ -434,7 +440,7 @@ NO_END_SMIL
         LD A,(DIZZY_S)
         DUP 4
         DEC A
-        EDUP 
+        EDUP
         LD (DIZZY_S),A
 SMIL_INC
         LD A,(DIZZY_S)
@@ -500,7 +506,7 @@ FLP2    CALL FLPCHR
 
         LD HL,SCR_BUF+#E7
         LD A,7
-FLP2_L  EXA 
+FLP2_L  EXA
         EX DE,HL
         LD SP,HL
         EX DE,HL
@@ -514,7 +520,7 @@ FLP2_L  EXA
         LD C,(HL)
         DEC HL
         PUSH BC
-        EDUP 
+        EDUP
         LD A,D
         DEC D
         AND 7
@@ -526,10 +532,10 @@ FLP2_L  EXA
         LD A,D
         ADD A,8
         LD D,A
-FLP2_0  EXA 
+FLP2_0  EXA
         DUP 8
         DEC HL
-        EDUP 
+        EDUP
         DEC A
         JP NZ,FLP2_L
         LD SP,#3131
@@ -543,8 +549,8 @@ MOV_FLP2_L
         PUSH HL
         PUSH DE
         DUP 24
-        LDI 
-        EDUP 
+        LDI
+        EDUP
         POP DE
         POP HL
         INC D
@@ -610,13 +616,13 @@ NO_MAG_FL
         IF0 BORD-1
         XOR A
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         CALL SPC_SCAN
         JP C,PART2_LOOP
 
-        HALT 
-        DI 
+        HALT
+        DI
         CALL BANK10
         LD A,#3F
         LD I,A
@@ -625,27 +631,27 @@ NO_MAG_FL
         LD DE,#5801
         LD BC,#02FF
         LD (HL),L
-        LDIR 
+        LDIR
 
         CALL BANK10
         CALL MUS_ADR+8
         LD HL,#2758
-        EXX 
-        RET 
+        EXX
+        RET
 
 CLR_SCR_BUF
         LD HL,SCR_BUF
         LD DE,SCR_BUF+1
         LD BC,#100
         LD (HL),C
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 FILATR  LD B,10
 FILATRL LD (HL),A
         INC L
         DJNZ FILATRL
-        RET 
+        RET
 
 AY_IN   PUSH BC
         LD A,C
@@ -653,7 +659,7 @@ AY_IN   PUSH BC
         OUT (C),A
         IN A,(C)
         POP BC
-        RET 
+        RET
 
 GLASS   LD A,#46
 GLASS0  LD BC,#0520
@@ -663,7 +669,7 @@ GLAS_L  PUSH BC
         ADD HL,BC
         POP BC
         DJNZ GLAS_L
-        RET 
+        RET
 
 GLAS_DEL
         LD HL,#2121
@@ -673,24 +679,24 @@ GLAS_DADR EQU $-2
         POP HL
         CALL BANKT2
         CALL GLASS
-        RET 
+        RET
 
 BLYATNAHOOY
-        EI 
+        EI
         LD A,(COUN1)
         OR A
         JR NZ,BLYATNAHOOY
-        RET 
+        RET
 
 FLASHES CALL FLASH
         LD B,#20*3
-FLASH   EI 
-FLASH0  HALT 
+FLASH   EI
+FLASH0  HALT
         DJNZ FLASH0
         LD A,#7
         OUT (#FE),A
         CALL BANK18
-        HALT 
+        HALT
         XOR A
         OUT (#FE),A
         JP BANK10
@@ -698,13 +704,13 @@ FLASH0  HALT
 SPC_SCAN
         LD BC,#7FFE
         IN A,(C)
-        RRA 
+        RRA
         RET C
 SPC_SC0 IN A,(C)
-        RRA 
+        RRA
         JR NC,SPC_SC0
         XOR A
-        RET 
+        RET
 
 FLP     CALL FLPCHR
         LD (OUTS_H2),SP
@@ -717,7 +723,7 @@ LAST_FLP_ADR EQU $-2
 LFA_L   LD SP,HL
         DUP 16
         PUSH DE
-        EDUP 
+        EDUP
         LD A,H
         DEC H
         AND 7
@@ -747,7 +753,7 @@ NO_CLN_FLP
 
         LD HL,SCR_BUF+#E7
         LD A,7
-FLP_L   EXA 
+FLP_L   EXA
         EX DE,HL
         LD SP,HL
         EX DE,HL
@@ -761,7 +767,7 @@ FLP_L   EXA
         LD C,(HL)
         DEC HL
         PUSH BC
-        EDUP 
+        EDUP
         LD A,D
         DEC D
         AND 7
@@ -773,7 +779,7 @@ FLP_L   EXA
         LD A,D
         ADD A,8
         LD D,A
-FLP_0   EXA 
+FLP_0   EXA
         DEC A
         JP NZ,FLP_L
         JP OUTS2_6
@@ -827,7 +833,7 @@ NO_END_TXT
         INC L
         LD A,(HL)
         LD (FLP_SCP),A
-        RET 
+        RET
 
 OUTSCR  LD DE,#4000
         LD IX,#5800
@@ -841,7 +847,7 @@ OUTS_BC EQU $-2
 OUTSPR4 PUSH BC
         PUSH DE
         LD B,0
-        LDIR 
+        LDIR
         POP DE
         LD C,#20
         EX DE,HL
@@ -849,7 +855,7 @@ OUTSPR4 PUSH BC
         EX DE,HL
         POP BC
         DJNZ OUTSPR4
-        RET 
+        RET
 
 OUT_GLAS2
         LD DE,#C7F4
@@ -880,7 +886,7 @@ OUTSPR3 DJNZ OUTSPR2
         INC DE
         DEC C
         JR NZ,OUTSPR1
-        RET 
+        RET
 
 OUTS_CN
         ADD A,A
@@ -898,7 +904,7 @@ OUTS_CN
         SLA B
         SLA B
         SLA B
-        RET 
+        RET
 
 OUT_SPR_H2
         LD DE,#5020
@@ -934,7 +940,7 @@ OUTS_H20
         DJNZ OUTS_H2L
 OUTS2_6 LD SP,#3131
 OUTS_H2 EQU $-2
-        RET 
+        RET
 
 OUT_SPR_HH
         CALL OUT_SPR_H2
@@ -953,7 +959,7 @@ OUTS_H6L
         OR H
         LD (DE),A
         INC DE
-        EDUP 
+        EDUP
         LD A,(DE)
         POP HL
         AND L
@@ -982,8 +988,8 @@ CLS2    LD A,#17
         LD DE,#C001
         LD BC,#1AFF
         LD (HL),L
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 LAST_BANK DB 0
 BANK17_ LD A,(LAST_BANK)
@@ -1006,7 +1012,7 @@ BANK_   PUSH BC
         LD BC,#7FFD
         OUT (C),A
         POP BC
-        RET 
+        RET
 
 HOOY    LD A,#3E
 HOOY_SW EQU $-1
@@ -1041,7 +1047,7 @@ TXTHOOY EQU $-2
         LD B,6
         LD A,B
         OUT (#FE),A
-HOOYPAU HALT 
+HOOYPAU HALT
         DJNZ HOOYPAU
         XOR A
         OUT (#FE),A
@@ -1051,17 +1057,17 @@ HOOY0   LD HL,TXT_CNG
         LD A,(HL)
         XOR #8
         LD (HL),A
-        RET 
+        RET
 
 SRC_TBL INCBIN "lameKtbl"
 
 END_COD DISPLAY "end code: ",END_COD," (max=#71FF)"
 
         ORG #7575
-INT_VEC DI 
+INT_VEC DI
         PUSH AF,BC,DE,HL
-        EXA 
-        EXX 
+        EXA
+        EXX
         PUSH AF,BC,DE,HL,IX
         LD A,(LAST_BANK)
         PUSH AF
@@ -1109,11 +1115,11 @@ NO_Z_C4 LD (COUN4),A
 
 NO_COUNTERS
         POP IX,HL,DE,BC,AF
-        EXA 
-        EXX 
+        EXA
+        EXX
         POP HL,DE,BC,AF
-        EI 
-        RET 
+        EI
+        RET
 
 END_COD1 DISPLAY "end int_rout: ",END_COD1," (max=#76FF)"
 

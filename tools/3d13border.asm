@@ -1,7 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
-
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
         ORG #6000
 MASK    EQU 0
@@ -20,7 +20,7 @@ TR_DOS  PUSH HL
         LD A,(23823)
         OR A
         JR NZ,TR_DOS
-        RET 
+        RET
 
 TRDOS   PUSH HL
         LD HL,(23613)
@@ -49,16 +49,16 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,R
         IFN MASK
         AND MASK
-        ENDIF 
+        ENDIF
         IFN MASKOR
         OR MASKOR
-        ENDIF 
+        ENDIF
         OUT (#FE),A
         LD A,H
         CP 13
@@ -73,10 +73,10 @@ NO_ERR  POP AF
         EX (SP),HL
 BORD0   XOR A
         OUT (#FE),A
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL

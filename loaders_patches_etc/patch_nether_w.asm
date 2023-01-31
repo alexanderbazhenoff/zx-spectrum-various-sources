@@ -1,3 +1,9 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+
 SC_TRSC EQU #260D
 CHEAT   EQU #FF    ;#FF - on
                    ;1 - lives
@@ -42,7 +48,7 @@ TABL_SM EQU #00C5  ;внутрисекторное смещение
         ORG #AB2B
         DUP 3
         LD B,A
-        EDUP 
+        EDUP
 
         ORG #C2A0
         LD B,A
@@ -66,7 +72,7 @@ DT_XORL LD A,(HL)
         INC HL
         INC DE
         DJNZ DT_XORL
-        RET 
+        RET
 PAUS_IND
         LD HL,#761E
         LD A,(HL)
@@ -86,7 +92,7 @@ PAUS_AF LD (HL),#47
         POP BC
         POP HL
         LD (HL),A
-        RET 
+        RET
 PAUS_TX DB "GAME PAUSED",0
 
 
@@ -118,20 +124,20 @@ SAVE_HS LD A,(#8327)
         LD D,H
         INC E
         LD (HL),L
-        LDIR 
-        DI 
+        LDIR
+        DI
 ;       CALL #F392
 MUTE_SW EQU $-2
         LD (STEK),SP
         CALL REGS
-        LDIR 
+        LDIR
         CALL REGS_1
         DEC BC
         LD D,H
 ;       LD E,L
         INC E
         LD (HL),L
-        LDIR 
+        LDIR
         LD SP,HL
         DEC H
 ;       LD (#5C63),HL
@@ -139,7 +145,7 @@ MUTE_SW EQU $-2
         IM 1
         LD IY,#5C3A
         LD HL,#2758
-        EXX 
+        EXX
         LD (IY),#FF
 ;       LD HL,#5C92
 ;       LD (#5C68),HL
@@ -169,7 +175,7 @@ VAR5D16 EQU $-1
         CALL DAT_XOR
 TR_DOS  LD C,6
         CALL TRDOS
-        DI 
+        DI
         LD A,(23823)
         OR A             ;ok
         JR Z,SC_ERROR
@@ -180,15 +186,15 @@ SC_ERROR
         CALL STOPDRV
         CALL REGS
         EX DE,HL
-        LDIR 
+        LDIR
 ;       CALL #6E3C
         LD A,#FD
         LD I,A
         IM 2
         LD SP,#3131
 STEK    EQU $-2
-        EI 
-        RET 
+        EI
+        RET
 
 DERR    LD SP,#3131
 SP2     EQU $-2
@@ -197,7 +203,7 @@ ERR;    LD HL,#2121
 ;       LD (23613),HL
 ;       LD A,#C9
 ;       LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -211,10 +217,10 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
@@ -245,7 +251,7 @@ TR_SEC  EQU $-2
 REGS    LD DE,#4000
 REGS_1  LD HL,#5C00
         LD BC,#0400
-        RET 
+        RET
 ;       DUP 7
 ;       DB #C9
 ;       EDUP
@@ -316,7 +322,7 @@ NO_GM   INC L
         LD (#7437),A
         LD (#7438),HL
         EX DE,HL
-        LDIR 
+        LDIR
         POP HL
 
 NO_SKPLK
@@ -368,14 +374,14 @@ Y_SL_HS DEC L
 
         LD BC,#EFFE
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_REST_HS
         LD B,C
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_REST_HS
 SHS_KW  IN A,(C)
-        RRA 
+        RRA
         JR NC,SHS_KW
         LD A,6
         CALL BORD_FLASH
@@ -385,7 +391,7 @@ SHS_KW  IN A,(C)
 SAV_HS1 LD HL,#6000
         LD C,6
         CALL TRDOS1
-        DI 
+        DI
         LD A,(23823)
         OR A             ;ok
         JR Z,SAV_HS2
@@ -407,13 +413,13 @@ NO_SL_HS
 
         ORG #6E7D
 BORD_FLASH
-        HALT 
+        HALT
         OUT (#FE),A
-        HALT 
-        HALT 
+        HALT
+        HALT
         XOR A
         OUT (#FE),A
-        RET 
+        RET
 SKPKDATA INCBIN "HLP_KEY"
 ESKPKDATA
 

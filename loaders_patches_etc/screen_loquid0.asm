@@ -1,5 +1,10 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 40000
-        DI 
+        DI
         LD HL,#BDBD
         LD (#BCFF),HL
         LD (HL),#C9
@@ -19,7 +24,7 @@ MASKI_L LD (HL),C
         LD HL,#BE08
         LD A,#80
 BITMSIL LD (HL),A
-        RRCA 
+        RRCA
         DEC L
         DJNZ BITMSIL
 
@@ -35,7 +40,7 @@ BITMSIL LD (HL),A
         LD BC,#0217
         CALL CONV
 
-        EI 
+        EI
         LD DE,#4000
         LD BC,#0A10
         CALL PUT
@@ -49,8 +54,8 @@ BITMSIL LD (HL),A
         IM 1
         LD A,#3F
         POP IY
-        EI 
-        RET 
+        EI
+        RET
 
 PUT     LD HL,#C000
         LD A,C
@@ -66,8 +71,8 @@ PUT01   PUSH BC
         PUSH DE
         XOR A
         OUT (#FE),A
-        EI 
-        HALT 
+        EI
+        HALT
         LD A,7
         OUT (#FE),A
 
@@ -76,8 +81,8 @@ PUT11   PUSH BC
         PUSH DE
         LD A,(HL)
         LD (DE),A
-        RRA 
-        CCF 
+        RRA
+        CCF
         LD A,#FF
         ADC A,0
         INC E
@@ -104,7 +109,7 @@ COMCTRL LD HL,COMFIL
         INC DE
         POP BC
         DJNZ PUTM
-        RET 
+        RET
 
 
 CONV    LD DE,#C000
@@ -127,7 +132,7 @@ CONV1   PUSH BC
         LD A,(IX+0)
 MASKN   EQU $-1
         LD C,A
-        CPL 
+        CPL
         LD B,A
         LD A,(HL)
         AND C
@@ -156,7 +161,7 @@ FF_LIN  POP AF
         POP BC
         DJNZ CONV3
 
-        RET 
+        RET
 
 FILL    LD (DE),A
         INC E
@@ -223,7 +228,7 @@ COMFIL  LD (DE),A
 
 
 
-        RET 
+        RET
 
 NEXTLS  INC D
         LD A,D
@@ -236,7 +241,7 @@ NEXTLS  INC D
         LD A,D
         SUB 8
         LD D,A
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"
 

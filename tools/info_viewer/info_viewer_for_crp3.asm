@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
 ; This is the info viewer for crack releases pack #3 by alx^bw.
@@ -22,9 +23,9 @@ TEST    EQU 1
         DISPLAY "testmode is "
         IFN TEST
         DISPLAY /L,"on"
-        ELSE 
+        ELSE
         DISPLAY /L,"off"
-        ENDIF 
+        ENDIF
 
         ;loader section
         ORG #5D3B
@@ -65,7 +66,7 @@ TR_DOS  PUSH HL
         LD A,(23823)
         OR A
         JR NZ,TR_DOS
-        DI 
+        DI
         LD D,H
         LD E,L
 ;----------------------------------
@@ -93,7 +94,7 @@ Depack         PUSH DE
                JR C,$+4
                LD D,H
                LD E,L
-               LDDR 
+               LDDR
                INC DE
 
                PUSH DE
@@ -105,7 +106,7 @@ UnpackTree     LD DE,BitLenTb1-1
                LD A,#10
                SRL C
                CALL Z,GetNextByte
-               RLA 
+               RLA
                JR NC,$-6
                INC DE
                LD (DE),A
@@ -190,7 +191,7 @@ LastDist       EQU $+1
                OR A
                SBC HL,DE
                POP DE
-               LDIR 
+               LDIR
                POP BC
                JR UnpackWord
 
@@ -203,7 +204,7 @@ Stop           POP AF
 DecodeNum      ADD A,-#05
                RET NC
                ADD A,#05-#03
-               RRA 
+               RRA
                LD L,#01
                RL L
                SRL C
@@ -212,7 +213,7 @@ DecodeNum      ADD A,-#05
                DEC A
                JR NZ,$-8
                INC HL
-               RET 
+               RET
 
 GetWord1       LD HL,Tree1Adr
 
@@ -228,11 +229,11 @@ GetWord        SRL C
                CP #40
                JR NC,GetWord
                LD A,L
-               RET 
+               RET
 GetNextByte    LD C,(IX)
                INC IX
                RR C
-               RET 
+               RET
 
 Tree1Create    LD HL,BitLenTb1
                LD BC,Tree1Adr
@@ -245,7 +246,7 @@ TreeCreate     INC DE
                DEC HL
                DEC HL
                PUSH BC
-               EXX 
+               EXX
                POP DE
                LD H,D
                LD L,E
@@ -256,19 +257,19 @@ TreeCreate     INC DE
                PUSH AF
                LD C,A
 
-TC1            EXX 
+TC1            EXX
                LD B,D
                LD C,E
                ADD HL,BC
-               EXX 
+               EXX
 
 TC2            LD B,A
                LD A,C
-               EXX 
-               CPDR 
+               EXX
+               CPDR
                LD A,B
                OR C
-               EXX 
+               EXX
                LD A,B
                JR NZ,TC4
                INC C
@@ -287,9 +288,9 @@ TC3            INC DE
                PUSH AF
 TC4            CP C
                JR NZ,TC3
-               EXX 
+               EXX
                PUSH BC
-               EXX 
+               EXX
                POP BC
                DEC BC
                LD (HL),B
@@ -329,13 +330,13 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,R
         IFN MASK
         AND MASK
-        ENDIF 
+        ENDIF
         OUT (#FE),A
         LD A,H
         CP 13
@@ -350,10 +351,10 @@ NO_ERR  XOR A
         OUT (#FE),A
         POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
@@ -366,7 +367,7 @@ RIA     DUP 3
         INCBIN "viewer.f"
         DS #800,#00
         ORG FONTADR+2
-        DI 
+        DI
         JP INSTALL
 
         ORG ATRBUF
@@ -385,7 +386,7 @@ FONTCNV2
         RES 3,D
         DUP 4
         ADD A,A
-        EDUP 
+        EDUP
         LD (DE),A
         SET 3,D
         INC HL
@@ -397,7 +398,7 @@ FONTCNV2
         LD HL,#4000
         LD BC,#1000
         POP DE
-        LDIR 
+        LDIR
         LD A,#C9
         LD (#5D92),A
         LD H,L
@@ -434,7 +435,7 @@ INITIM2 LD (HL),A
         LD HL,MUSIC
         LD DE,#C000
         LD BC,EMUSIC-MUSIC
-        LDIR 
+        LDIR
         POP BC
         OUT (C),A
         XOR A
@@ -455,7 +456,7 @@ SCR_AT1 PUSH BC
         LD (IX+3),H
         DUP 4
         INC IX
-        EDUP 
+        EDUP
         LD B,0
         ADD HL,BC
         LD A,E
@@ -472,26 +473,26 @@ SCR_AT2 POP BC
         LD BC,#0610
 COLD_I1 PUSH BC,DE
         LD B,0
-        LDIR 
+        LDIR
         POP DE,BC
         INC D
         DJNZ COLD_I1
 
 LOAD_BLOK
-        DI 
+        DI
         CALL MUSSHUT
         XOR A
         LD I,A
         IM 1
         LD IY,#5C3A
         LD HL,#2758
-        EXX 
+        EXX
         LD A,#00
 BLOK_NO EQU $-1
 
         DUP 2
         ADD A,A
-        EDUP 
+        EDUP
         LD E,A
         LD D,0
         LD HL,BLOK_INDEX
@@ -532,13 +533,13 @@ tsc_ade
         LD L,A
         LD DE,TXTBUF
         PUSH DE
-        LDIR 
+        LDIR
 
-        DI 
+        DI
         LD A,#FE
         LD I,A
         IM 2
-        EI 
+        EI
         POP HL
         PUSH HL
         LD E,(HL)
@@ -590,7 +591,7 @@ LAST_PAGE_SW EQU $-1
 NO_LAST_PAGE
 
 PAGE_PRINT
-        HALT 
+        HALT
         XOR A
         LD (OUT_ATR_SW),A
         LD HL,#5B00
@@ -602,7 +603,7 @@ PAGE_PRINT
         CALL STEK_CLEAR0
 
         LD BC,'FONTADR+1*#100+'FONTADR+9
-        EXX 
+        EXX
         LD IX,SCR_ADR_TABL
         LD HL,#2121
 PAGS_TABL_ADR EQU $-2
@@ -644,12 +645,12 @@ PRINT_L2
         JP Z,PR_SPACE2
         LD C,A
         INC L
-        EXX 
+        EXX
         INC L
-        EXX 
+        EXX
         JP PRINT_L1
 PRINT_1 LD (HL),C
-        EXX 
+        EXX
         LD D,B
         LD E,A
         PUSH HL
@@ -658,15 +659,15 @@ PRINT_1 LD (HL),C
         LD (HL),A
         INC D
         INC H
-        EDUP 
+        EDUP
         LD A,(DE)
         LD (HL),A
         POP HL
-        EXX 
+        EXX
         JP PRINT_L2
 PRINT_2 LD (HL),C
         INC L
-        EXX 
+        EXX
         LD D,C
         LD E,A
         PUSH HL
@@ -676,13 +677,13 @@ PRINT_2 LD (HL),C
         LD (HL),A
         INC D
         INC H
-        EDUP 
+        EDUP
         LD A,(DE)
         OR (HL)
         LD (HL),A
         POP HL
         INC L
-        EXX 
+        EXX
         JP PRINT_L1
 
 PR_SPACE1
@@ -690,21 +691,21 @@ PR_SPACE1
         JP PRINT_L2
 PR_SPACE2
         INC L
-        EXX 
+        EXX
         INC L
-        EXX 
+        EXX
         JP PRINT_L1
 
 PR_NEXTLINE1
         LD L,(IX+2)
         LD H,(IX+3)
-        EXX 
+        EXX
         LD L,(IX+0)
         LD H,(IX+1)
-        EXX 
+        EXX
         DUP 4
         INC IX
-        EDUP 
+        EDUP
         DEC B
         JP NZ,PRINT_L0
 ;end of print page
@@ -712,11 +713,11 @@ PRINT_END
         LD A,H
         LD (OUT_ATR_SW),A
         DUP 3
-        HALT 
-        EDUP 
+        HALT
+        EDUP
 
 MAIN_CYCLE
-        HALT 
+        HALT
         LD HL,KEYBUF+1
         BIT 0,(HL)
         JR Z,PAGE_DOWN
@@ -727,11 +728,11 @@ MAIN_CYCLE
         IFN TEST
         BIT 1,(HL)
         JR Z,EXIT_OUT
-        ENDIF 
+        ENDIF
 
         INC HL
         LD A,(KEYBUF)
-        RRA 
+        RRA
         JR NC,KEY_WITH_CAPS
 
         BIT 2,(HL)
@@ -757,20 +758,20 @@ KEY_SLI INC HL
         LD A,'FONTADR+2
 NB_CPAL
         DUP 8
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD (TABL_ATR_ADR),A
 NO_CPAL BIT 2,(HL)
         JR NZ,NO_SMUS
-        HALT 
+        HALT
         LD A,(MUS_PLAY_SW)
-        CPL 
+        CPL
         OR A
         LD (MUS_PLAY_SW),A
         CALL MUSINIT
         DUP 8
-        HALT 
-        EDUP 
+        HALT
+        EDUP
 NO_SMUS
         JR MAIN_CYCLE
 
@@ -789,14 +790,14 @@ KEY_WITH_CAPS
 
         IFN TEST
 EXIT_OUT
-        DI 
+        DI
         CALL MUSINIT
         XOR A
         LD I,A
         IM 1
-        EI 
-        RET 
-        ENDIF 
+        EI
+        RET
+        ENDIF
 
 PAGE_UP
         LD HL,(PAGS_TABL_ADR)
@@ -852,10 +853,10 @@ L_PRV_BLOK
         OR A
         JR Z,NL_PRV_BLOK
         DEC A
-        EXA 
+        EXA
         XOR A
         LD (LAST_PAGE_SW),A
-        EXA 
+        EXA
         JR L_NNP_BL
 
 ;stek clear
@@ -868,12 +869,12 @@ STEK_CLEAR
 STK_CL1
         DUP #80
         PUSH DE
-        EDUP 
+        EDUP
         DEC B
         JP NZ,STK_CL1
         DUP #7F
         PUSH DE
-        EDUP 
+        EDUP
         LD (STK_CL_LB),SP
         LD SP,#3131
 STK_CL_SP EQU $-2
@@ -883,19 +884,19 @@ STK_CL_LB EQU $-2
         LD (HL),E
         DEC L
         LD (HL),E
-        RET 
+        RET
 
 KEYBUF  DS 8,#C9
 
-INT_SR  DI 
+INT_SR  DI
         LD (INT_SR_HL),HL
         POP HL
         LD (INT_SR_RET),HL
         LD (INT_SR_SP),SP
         LD SP,0
         PUSH DE,BC,AF
-        EXA 
-        EXX 
+        EXA
+        EXX
         PUSH IX,HL,DE,BC,AF
 
         LD HL,KEYBUF
@@ -927,7 +928,7 @@ OUT_ATR_SW EQU $-1
         LD H,'FONTADR+2
 TABL_ATR_ADR EQU $-1
         LD A,48
-OUTATR  EXA 
+OUTATR  EXA
 
         DUP #0F
         LD A,(DE)
@@ -936,14 +937,14 @@ OUTATR  EXA
         INC E
         LD (BC),A
         INC C
-        EDUP 
+        EDUP
         LD A,(DE)
         LD L,A
         LD A,(HL)
         INC DE
         LD (BC),A
         INC BC
-        EXA 
+        EXA
         DEC A
         JP NZ,OUTATR
 NO_OUT_ATR
@@ -954,18 +955,18 @@ NO_OUT_ATR
 
 
         POP AF,BC,DE,HL,IX
-        EXA 
-        EXX 
+        EXA
+        EXX
         POP AF,BC,DE
         LD SP,#3131
 INT_SR_SP EQU $-2
         LD HL,#2121
 INT_SR_HL EQU $-2
-        EI 
+        EI
         JP #C3C3
 INT_SR_RET EQU $-2
 
-MUSPLAY RET 
+MUSPLAY RET
         LD BC,#7FFD
         LD DE,#1110
         OUT (C),D
@@ -973,9 +974,9 @@ MUSPLAY RET
         CALL #C005
         POP BC,DE
         OUT (C),E
-        RET 
+        RET
 
-MUSINIT RET 
+MUSINIT RET
         LD BC,#7FFD
         LD DE,#1110
         OUT (C),D
@@ -983,9 +984,9 @@ MUSINIT RET
         CALL #C000
         POP BC,DE
         OUT (C),E
-        RET 
+        RET
 
-MUSSHUT RET 
+MUSSHUT RET
         LD BC,#7FFD
         LD DE,#1110
         OUT (C),D
@@ -993,7 +994,7 @@ MUSSHUT RET
         CALL #C008
         POP BC,DE
         OUT (C),E
-        RET 
+        RET
 
 BLOK_INDEX
         INCBIN "index#02"

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 46912
 SCFROM  EQU 40000
 SCRTO   EQU #4000
@@ -9,23 +14,23 @@ SCRTO   EQU #4000
         INC DE
         LD (HL),A
         LD BC,#2FF
-        LDIR 
+        LDIR
         INC A
         LD (COMINK+1),A
         LD (COMPAP+1),A
         LD HL,SCFROM
         LD DE,SCRTO
         LD BC,#1800
-        LDIR 
+        LDIR
         PUSH DE
         POP IX
         LD B,7
 LP0     PUSH HL
         PUSH IX
         PUSH BC
-        HALT 
-        HALT 
-        HALT 
+        HALT
+        HALT
+        HALT
         LD BC,#300
 LP1     LD A,(HL)
         PUSH AF             ;1
@@ -44,9 +49,9 @@ NOINK   LD (#2222),IX
         POP AF
 YEPINK  POP AF              ;0
         PUSH AF             ;1
-        RRA 
-        RRA 
-        RRA 
+        RRA
+        RRA
+        RRA
         AND 1+2+4
 COMPAP  CP #FE
         JR NZ,NOPAP
@@ -75,7 +80,7 @@ YEPPAP  INC HL
         POP IX
         POP HL
         DJNZ LP0
-        RET 
+        RET
 
         DISP 40000
         INCBIN "SPYHUNT$"

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 40000
 ATRBUF  EQU #C000
 BORDER  EQU 7
@@ -59,12 +64,12 @@ AROUND  DJNZ LOOP1
         LD B,#3
         PUSH HL
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP HL
         LD D,'ATRBUF+#1
         PUSH DE
-        LDIR 
+        LDIR
         POP HL
         DEC H
         LD B,6
@@ -78,7 +83,7 @@ SFAD_L  PUSH BC
         POP DE
         POP HL
         LD B,4
-        LDIR 
+        LDIR
         LD A,D
         SUB 8
         LD D,A
@@ -91,18 +96,18 @@ SFAD_L  PUSH BC
 OUT_L   PUSH BC
         LD D,#58
         LD B,3
-        EI 
+        EI
         DUP 4
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD A,(HL)
         OUT (#FE),A
         INC H
-        LDIR 
+        LDIR
         POP BC
         DJNZ OUT_L
 
-        RET 
+        RET
 
 FADE_   LD B,#3
 FAD_LP  LD D,(HL)
@@ -124,7 +129,7 @@ NODPAP  LD (HL),D
         LD A,B
         OR C
         JR NZ,FAD_LP
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"
 ZUZU    DISPLAY "lenght: ",ZUZU-40000

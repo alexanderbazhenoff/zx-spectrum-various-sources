@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 
 TRDOS   PUSH HL
         LD HL,(23613)
@@ -24,7 +29,7 @@ ERR     LD HL,#2121
         LD A,#C9
         LD (#5CC2),A
         LD A,(23823)
-        RET 
+        RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -35,7 +40,7 @@ DRIA    EX (SP),HL
         JR Z,NO_ERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     POP HL
         POP HL
         POP HL

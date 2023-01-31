@@ -1,8 +1,11 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
-; sunshine cracktro by alx^bw. almost done but never released.
+
+; don't remember, but looks like a a small never released peace of source and
+; the concept for the ctacktro by alx^bw. never released.
 
 
         ORG #6000
@@ -22,102 +25,102 @@ ATRI0   EQU 2
 ATRI1   EQU 1
 ATRI2   EQU 3
 ATRI4   EQU 5
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-1
 ATRI0   EQU 2
 ATRI1   EQU 2
 ATRI2   EQU 3
 ATRI4   EQU 6
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-2
 ATRI0   EQU 2
 ATRI1   EQU 2
 ATRI2   EQU 4
 ATRI4   EQU 6
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-3
 ATRI0   EQU 2
 ATRI1   EQU 1
 ATRI2   EQU 4
 ATRI4   EQU 6
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-4
 ATRI0   EQU 2
 ATRI1   EQU 1
 ATRI2   EQU 5
 ATRI4   EQU 6
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-5
 ATRI0   EQU 2
 ATRI1   EQU 2
 ATRI2   EQU 5
 ATRI4   EQU 6
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-6
 ATRI0   EQU 2
 ATRI1   EQU 1
 ATRI2   EQU 4
 ATRI4   EQU 5
-        ENDIF 
+        ENDIF
 
         IF0 ATTR_MODE-7
 ATRI0   EQU 2
 ATRI1   EQU 3
 ATRI2   EQU 4
 ATRI4   EQU 6
-        ENDIF 
+        ENDIF
 
         MACRO ATR0
         DB #C0+ATRI0,#40+ATRI0
-        ENDM 
+        ENDM
 
         MACRO ATR1A
         DB #C0+ATRI1,ATRI0
-        ENDM 
+        ENDM
         MACRO ATR1B
         DB #C0+ATRI1,#07
-        ENDM 
+        ENDM
 
         MACRO ATR2A
         DB #C0+ATRI1,#40+ATRI1
-        ENDM 
+        ENDM
         MACRO ATR2B
         DB #C0+ATRI1,ATRI4
-        ENDM 
+        ENDM
 
         MACRO ATR3A
         DB #C0+ATRI2,#40+ATRI2
-        ENDM 
+        ENDM
         MACRO ATR3B
         DB #C0+ATRI2,#40+ATRI1
-        ENDM 
+        ENDM
 
         MACRO ATR4A
         DB #80+ATRI4,#40+ATRI2
-        ENDM 
+        ENDM
         MACRO ATR4B
         DB #C7,#40+ATRI2
-        ENDM 
+        ENDM
 
         MACRO ATR5A
         DB #C0+ATRI4,#40+ATRI4
-        ENDM 
+        ENDM
         MACRO ATR5B
         DB #C0+ATRI4,#47
-        ENDM 
+        ENDM
 
         MACRO ATR6A
         DB #C7,#47
-        ENDM 
+        ENDM
         MACRO ATR6B
         DB #C7,#40+ATRI1
-        ENDM 
+        ENDM
 
         CALL CLS
 ;       CALL INSTALL
@@ -125,48 +128,48 @@ ATRI4   EQU 6
         LD IX,TEXT1
         CALL PRINT_PAGE
         CALL OUTPUT_BUFFER
-MWL     HALT 
+MWL     HALT
         LD HL,TEXT_BUFFER_ATR1
         CALL OUTATR
-        HALT 
+        HALT
         LD HL,TEXT_BUFFER_ATR2
         CALL OUTATR
         CALL #1F54
         RET NC
         JR C,MWL
-        RET 
+        RET
 
 OUTATR  LD DE,#5804
         LD BC,#1818
 OUTAL   PUSH BC
         LD B,0
-        LDIR 
+        LDIR
         EX DE,HL
         LD C,8
         ADD HL,BC
         EX DE,HL
         POP BC
         DJNZ OUTAL
-        RET 
+        RET
 
 
 
         ;-------- CLEAR SCREEN ROUTINES ------------------------
-CLS     EI 
-        HALT 
+CLS     EI
+        HALT
         LD HL,#5800
         LD DE,#5801
         LD BC,#02FF
         LD (HL),L
         PUSH HL
-        LDIR 
+        LDIR
         POP HL
         LD A,C
 CLS2L   DEC HL
         LD (HL),A
         CP (HL)
         JR Z,CLS2L
-        RET 
+        RET
 
         ;-------- CLEAR BUFFER ROUTINES ------------------------
 CLEAR_BUFFER
@@ -176,7 +179,7 @@ CL_BR_L INC HL
         LD (HL),A
         CP (HL)
         JR Z,CL_BR_L
-        RET 
+        RET
 
         ;-------- OUTPUT BUFFER ROUTINES -----------------------
 OUTPUT_BUFFER
@@ -190,7 +193,7 @@ OTPBFL1 PUSH BC
         PUSH HL
         PUSH DE
         LD BC,#18
-        LDIR 
+        LDIR
         POP DE
         CALL DOWN_DE
         POP HL
@@ -205,12 +208,12 @@ OTPBFL1 PUSH BC
         POP BC
         DEC C
         JR NZ,OTPBF_L
-        RET 
+        RET
 
         ;-------- PRINT PAGE ROUTINES --------------------------
 PRINT_PAGE
         LD BC,#100
-        EXX 
+        EXX
         LD HL,TEXT_BUFFER_PIX
         LD DE,TEXT_BUFFER_ATR2
 PRNTPGL LD A,(IX)
@@ -218,20 +221,20 @@ PRNTPGL LD A,(IX)
         RET Z
         BIT 7,A
         JR Z,NO_CHANGE_ATR
-        EXX 
+        EXX
         AND #7F
         LD E,A
         INC IX
         LD D,(IX)
-        EXX 
+        EXX
         JP PR_PG0
 NO_CHANGE_ATR
         LD BC,#18
         CP ENTR_WR
         JR NZ,NO_ENTER_WR
-        EXX 
+        EXX
         INC B
-        EXX 
+        EXX
         EX DE,HL
         ADD HL,BC
         EX DE,HL
@@ -242,11 +245,11 @@ NO_ENTER_WR
         JR NZ,NO_ENTER
         LD HL,TEXT_BUFFER_PIX-#18
         LD DE,TEXT_BUFFER_ATR2-#18
-        EXX 
+        EXX
         INC B
         LD A,B
         LD C,0
-        EXX 
+        EXX
         LD C,#18
 ENTR_AL EX DE,HL
         ADD HL,BC
@@ -275,7 +278,7 @@ NO_TAB
 
         DUP 3
         ADD HL,HL
-        EDUP 
+        EDUP
 
         LD BC,FONT-#100
         ADD HL,BC
@@ -288,22 +291,22 @@ NO_TAB
         LD (HL),A
         INC DE
         ADD HL,BC
-        EDUP 
+        EDUP
         LD A,(DE)
         LD (HL),A
 
         POP HL
         POP DE
-        EXX 
+        EXX
         PUSH DE
-        EXX 
+        EXX
         POP BC
         EX DE,HL
         LD (HL),C
         LD A,H
         DUP 3
         INC H
-        EDUP 
+        EDUP
         LD (HL),B
         LD H,A
         EX DE,HL
@@ -314,15 +317,15 @@ NO_TAB
 PR_PG0  INC IX
         JP PRNTPGL
 
-POS_MNG EXX 
+POS_MNG EXX
         INC C
         LD A,C
         CP #18
         JR NZ,NO_NXTL
         LD C,0
         INC B
-NO_NXTL EXX 
-        RET 
+NO_NXTL EXX
+        RET
         ;------- COUNTER FOR THE NEXT LINE ON SCR$ (DE) --------
 DOWN_DE INC D
         LD A,D
@@ -335,7 +338,7 @@ DOWN_DE INC D
         LD A,D
         SUB 8
         LD D,A
-        RET 
+        RET
 
         ; ----- load font
 FONT    INCBIN "razdolb_.f"
@@ -469,14 +472,14 @@ INSTALL LD HL,INST_
         LD DE,#4000
         LD BC,INSTALL_END-INST_
         PUSH DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 INST_
         DISP #4000
-        RET 
+        RET
 
 
 
-        ENT 
+        ENT
 INSTALL_END
 ZUZU    DISPLAY "END: ",ZUZU

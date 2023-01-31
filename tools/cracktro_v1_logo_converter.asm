@@ -1,8 +1,13 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6000
         LD HL,30000
         LD DE,#4000
         LD BC,#1B00
-        LDIR 
+        LDIR
 
         LD HL,#4008
         LD B,8
@@ -42,7 +47,7 @@ FUCK    PUSH BC
         LD HL,#5818
         LD BC,#0D08
         CALL ATTR
-        RET 
+        RET
 
 SCR
 LOOP    PUSH BC
@@ -63,18 +68,18 @@ LOOP1   LD A,(HL)
         SUB 8
         LD H,A
 AROUND  DJNZ LOOP1
-        HALT 
+        HALT
         POP HL
         INC HL
         POP BC
         DEC C
         JR NZ,LOOP
-        RET 
+        RET
 
 ATTR    PUSH BC
         LD (REG_HL+1),HL
         LD B,0
-        LDIR 
+        LDIR
         PUSH HL
 REG_HL  LD HL,0
         LD A,1+4+16+64+128
@@ -83,14 +88,14 @@ REG_HL  LD HL,0
         PUSH DE
         LD DE,#18
         ADD HL,DE
-        HALT 
-        HALT 
-        HALT 
-        HALT 
-        HALT 
+        HALT
+        HALT
+        HALT
+        HALT
+        HALT
         POP DE
         POP BC
         DJNZ ATTR
-        RET 
+        RET
 
 

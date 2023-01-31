@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         DISPLAY "Livingstone 2.1 128 bank7"
         DISPLAY "save [fname],#DB00,#2301"
         ORG #DB00
@@ -20,23 +25,23 @@
 
         LD BC,#FEFE
         IN A,(C)
-        RRA 
+        RRA
         JP C,NO_SAVLOAD
         LD B,#FD
         IN A,(C)
-        RRA 
-        RRA 
+        RRA
+        RRA
         JR C,NOSAVE
-        DI 
+        DI
         CALL AY_MUTE
         CALL SL_REGZ
         EX DE,HL
-        LDIR 
-        EXX 
+        LDIR
+        EXX
         LD (#FF02),HL
         LD (#FF04),DE
         LD (#FF06),BC
-        EXX 
+        EXX
         PUSH IX
         LD (MSAV_SP),SP
         LD SP,#8000
@@ -46,23 +51,23 @@
 MSAV_SP EQU $-2
         POP IX
         CALL SL_REGZ
-        LDIR 
+        LDIR
         XOR A
         LD (MLOAD_SW),A
-        EI 
+        EI
         JR NO_SAVLOAD
 
 NOSAVE
         LD B,#BF
         IN A,(C)
-        RRA 
-        RRA 
+        RRA
+        RRA
         JR C,NO_SAVLOAD
         LD A,#3F
 MLOAD_SW EQU $-1
         OR A
         JR NZ,NO_SAVLOAD
-        DI 
+        DI
         CALL AY_MUTE
         PUSH IX
         LD (MLOD_SP),SP
@@ -73,12 +78,12 @@ MLOAD_SW EQU $-1
 MLOD_SP EQU $-2
         POP IX
         CALL SL_REGZ
-        LDIR 
-        EXX 
+        LDIR
+        EXX
         LD HL,(#FF02)
         LD DE,(#FF04)
         LD BC,(#FF06)
-        EXX 
+        EXX
         LD BC,#7FFD
         LD A,(#BB32)
         OR 7
@@ -90,22 +95,22 @@ LOD_PC1 PUSH BC
         PUSH DE
         PUSH HL
         LD B,0
-        LDIR 
+        LDIR
         POP HL,DE,BC
         INC H
         INC D
         DJNZ LOD_PC1
         LD H,#5A
         LD D,#DA
-        LDIR 
-        EI 
+        LDIR
+        EI
 
 NO_SAVLOAD
 WOK     LD A,(#AE29)
         AND 7
         OR A
         JR Z,WOK2
-        DI 
+        DI
 WNOK2   LD A,2
         OUT (#FE),A
         LD A,0
@@ -116,10 +121,10 @@ WOK2
         LD (CLS_SP),SP
         LD (INT7_SP2),SP
         LD HL,INTBANK71
-        DI 
+        DI
         LD SP,#5000
         LD (#FCFD),HL
-        EI 
+        EI
         LD DE,(#BB33)
         LD A,(#BB31)
         ADD A,D
@@ -135,10 +140,10 @@ CLS_FBYTE EQU #BB3E
         LD SP,HL
         DUP #3F
         PUSH BC
-        EDUP 
+        EDUP
 CLS_ADDHL=CLS_ADDHL-#100
 CLS_FBYTE=CLS_FBYTE-1
-        EDUP 
+        EDUP
         LD HL,CLS_ADDHL
         ADD HL,DE
         LD BC,(CLS_FBYTE)
@@ -146,7 +151,7 @@ CLS_FBYTE=CLS_FBYTE-1
         LD SP,HL
         DUP #40
         PUSH BC
-        EDUP 
+        EDUP
 
         LD A,8
         LD HL,#BB3E
@@ -154,7 +159,7 @@ CLS1    LD C,(HL)
         LD B,C
         DUP #80
         PUSH BC
-        EDUP 
+        EDUP
         DEC L
         DEC A
         JP NZ,CLS1
@@ -165,7 +170,7 @@ CLS2    LD C,(HL)
         LD B,C
         DUP #80
         PUSH BC
-        EDUP 
+        EDUP
         DEC L
         DEC A
         JP NZ,CLS2
@@ -174,15 +179,15 @@ CLS2    LD C,(HL)
         LD B,C
         DUP #7F
         PUSH BC
-        EDUP 
+        EDUP
 
         LD (CLS3),SP
         LD HL,INTBANK72
-        DI 
+        DI
         LD SP,#3131
 CLS_SP  EQU $-2
         LD (#FCFD),HL
-        EI 
+        EI
         LD HL,#2121
 CLS3    EQU $-2
         DEC L
@@ -214,7 +219,7 @@ CLS4    LD A,(DE)
         LD H,A
         PUSH HL
         POP IY
-        EXX 
+        EXX
         LD BC,(#AE29)
         LD DE,(#BB33)
         LD A,(#BB31)
@@ -222,12 +227,12 @@ CLS4    LD A,(DE)
         LD D,A
         LD A,(#AE3C)
 OUT1
-        EXA 
+        EXA
         PUSH DE
 
 
         DUP #20
-        EXX 
+        EXX
         LD A,(DE)
         INC DE
         LD L,A
@@ -235,15 +240,15 @@ OUT1
         ADD HL,BC
         LD L,(HL)
         LD (IY),L
-        EXX 
+        EXX
         OR A
-        LOCAL 
+        LOCAL
         JR Z,outps1
         LD L,A
         LD H,0
         DUP 3
         ADD HL,HL
-        EDUP 
+        EDUP
         ADD HL,BC
         PUSH DE
         DUP 7
@@ -251,14 +256,14 @@ OUT1
         LD (DE),A
         INC L           ;???
         INC D
-        EDUP 
+        EDUP
         LD A,(HL)
         LD (DE),A
         POP DE
 outps1  INC E
-        ENDL 
+        ENDL
         INC IY
-        EDUP 
+        EDUP
 
         POP DE
         LD A,E
@@ -268,13 +273,13 @@ outps1  INC E
         LD A,D
         ADD A,8
         LD D,A
-OUT2    EXA 
+OUT2    EXA
         DEC A
         JP NZ,OUT1
-        RET 
+        RET
 
 INTBANK71
-        DI 
+        DI
         LD (INT7_SP),SP
         LD SP,#3131
 INT7_SP2 EQU $-2
@@ -285,18 +290,18 @@ INT7_SP2 EQU $-2
 INTEXIT POP HL,BC,AF
         LD SP,#3131
 INT7_SP EQU $-2
-        EI 
-        RET 
+        EI
+        RET
 INTBANK72
-        DI 
+        DI
         PUSH AF,BC,HL
         LD HL,INTEXIT2
         LD (#DB00),HL
         JP #B1E6
 INTEXIT2
         POP HL,BC,AF
-        EI 
-        RET 
+        EI
+        RET
 
 HERO_OUT_ATTR
         LD A,(#BB31)
@@ -321,12 +326,12 @@ HEROA4  INC L
         POP BC
         DEC C
         JP NZ,HEROA1
-        RET 
+        RET
 MISC_OUT_ATTR
         LD A,(#BB31)
         ADD A,H
         LD H,A
-        EXA 
+        EXA
 MISCA1  PUSH BC,HL
 MISCA2  LD (HL),A
         INC L
@@ -342,14 +347,14 @@ MISCA2  LD (HL),A
 SL_REGZ LD HL,#FE02
         LD DE,#7F00
         LD BC,#0100
-        RET 
+        RET
 MRESMOV LD A,(#BB32)
         LD (#7F00),A
         LD HL,MRES
         LD DE,#7F01
         LD BC,EMRES-MRES
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 MRES
         DISP #7F01
@@ -361,7 +366,7 @@ SAVMEM  LD A,(#7F00)
         PUSH BC
         CALL SAVREGS
         PUSH DE
-        LDIR 
+        LDIR
         POP DE
         POP BC
         LD A,(#7F00)
@@ -373,14 +378,14 @@ SAVMEM  LD A,(#7F00)
 SAVMS1  PUSH BC
         PUSH HL
         LD B,0
-        LDIR 
+        LDIR
         POP HL
         POP BC
         INC H
         DJNZ SAVMS1
         LD HL,#5A80
         LD BC,#2480
-        LDIR 
+        LDIR
         PUSH DE
         POP IX
         LD HL,#FE02
@@ -395,7 +400,7 @@ EXITMEM LD BC,#7FFD
         AND #18
         OR 7
         OUT (C),A
-        RET 
+        RET
 LODMEM  LD A,(#7F00)
         AND #18
         OR 6
@@ -405,7 +410,7 @@ LODMEM  LD A,(#7F00)
         CALL SAVREGS
         EX DE,HL
         PUSH HL
-        LDIR 
+        LDIR
         POP HL
         POP BC
         LD A,(#7F00)
@@ -417,14 +422,14 @@ LODMEM  LD A,(#7F00)
 SAVMS2  PUSH BC
         PUSH DE
         LD B,0
-        LDIR 
+        LDIR
         POP DE
         POP BC
         INC D
         DJNZ SAVMS2
         LD DE,#5A80
         LD BC,#2480
-        LDIR 
+        LDIR
         LD IX,#FE02
         LD DE,#0701
         LD B,1
@@ -458,13 +463,13 @@ MOVPGZ1 PUSH BC
         LD A,B
         OR C
         JP NZ,MOVPGZ1
-        RET 
+        RET
 SAVREGS LD HL,#8000
         LD DE,#C000
         LD BC,#4000
-        RET 
+        RET
 
-        ENT 
+        ENT
 EMRES
 
 AY_MUTE LD DE,#0E00
@@ -474,7 +479,7 @@ AY_MUTL DEC D
         LD B,#BF
         OUT (C),E
         JR NZ,AY_MUTL
-        RET 
+        RET
 
         ORG #DB08
 

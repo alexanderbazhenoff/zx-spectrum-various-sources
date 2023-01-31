@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6E9C
         INCBIN "NETH#"
 
@@ -19,6 +24,6 @@ INS_    ;PUSH BC
 
 NOSKIP  LD A,(#FF8E)
         ;POP BC
-        RET 
+        RET
 
         ORG #6E9C

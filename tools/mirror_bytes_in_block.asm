@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         DISPLAY "MIRROR BYTES IN BLOCK ROUTINES"
 
         ORG #5B00
@@ -12,11 +17,11 @@ MIR_L   LD A,(HL)
         DUP 8
         SRL A
         RL E
-        EDUP 
+        EDUP
         LD (HL),E
         INC HL
         DEC BC
         LD A,B
         OR C
         JR NZ,MIR_L
-        RET 
+        RET

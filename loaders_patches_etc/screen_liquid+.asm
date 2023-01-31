@@ -1,6 +1,11 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6000
 
-        DI 
+        DI
         LD HL,#AE00
         LD A,H
         LD I,A
@@ -15,7 +20,7 @@ INTR_L  LD (HL),A
         LD A,#C9
         LD (HL),A
         IM 2
-        EI 
+        EI
 
         LD DE,SCREEN
         LD HL,#C000+#20
@@ -39,24 +44,24 @@ LOOP1   LD A,(DE)
 JMP2    LD HL,ATRIB
         LD DE,#D800
         LD BC,#300
-        LDIR 
+        LDIR
 
         LD HL,#DAE0
         LD BC,#1801
-        EXX 
+        EXX
         LD DE,#D800
         LD HL,#401F
         LD BC,#C0C0
-PUTLOOP EI 
-        HALT 
-        DI 
+PUTLOOP EI
+        HALT
+        DI
         PUSH BC
         LD BC,#0566
 PAUS    DEC C
         JR NZ,PAUS
         DJNZ PAUS
         POP BC
-        EXX 
+        EXX
         DEC C
         JR NZ,NOADD
         PUSH BC
@@ -65,7 +70,7 @@ PAUS    DEC C
 PUTL1   PUSH HL
         PUSH BC
         LD BC,#20
-        LDIR 
+        LDIR
         POP BC
         POP HL
         DJNZ PUTL1
@@ -76,7 +81,7 @@ PUTL1   PUSH HL
         POP BC
         DEC B
         LD C,8
-NOADD   EXX 
+NOADD   EXX
      ;  JR JOPA
         CALL STEKPSH
         PUSH BC
@@ -114,26 +119,26 @@ JOPA
         DEC C
         JR NZ,PUTLOOP
 
-        DI 
+        DI
         LD A,#3F
         LD I,A
         IM 1
         LD HL,#2758
-        EXX 
-        EI 
-        RET 
+        EXX
+        EI
+        RET
 
 STEKOUT LD (STEK+1),SP
         LD SP,HL
         DUP 16
         LD HL,#2121
         PUSH HL
-        EDUP 
+        EDUP
 PUTDATA EQU $-2
         LD (REG_HL+1),SP
 REG_HL  LD HL,#2121
 STEK    LD SP,#3131
-        RET 
+        RET
 
 STEKPSH EX DE,HL
         PUSH DE
@@ -152,7 +157,7 @@ STEKPSH EX DE,HL
         DEC DE
         DEC DE
         DEC DE
-        EDUP 
+        EDUP
 
         LD B,(HL)
         DEC HL
@@ -170,7 +175,7 @@ STEKPSH EX DE,HL
         POP HL
         POP DE
         EX DE,HL
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"
 ATRIB   EQU $-#300

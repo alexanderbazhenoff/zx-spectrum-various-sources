@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 STARTADR        EQU #6000
 
         ORG STARTADR
@@ -7,8 +12,8 @@ STARTADR        EQU #6000
 OUT_1   PUSH BC
         PUSH DE
         PUSH HL
-        EI 
-        HALT 
+        EI
+        HALT
         LD HL,SCREEN+#58
 REG_HL1 EQU $-2
         LD DE,#4860
@@ -16,7 +21,7 @@ REG_DE1 EQU $-2
         CALL OUT_SR1
         DUP 8
         DEC HL
-        EDUP 
+        EDUP
         LD A,E
         SUB #20
         LD E,A
@@ -35,7 +40,7 @@ REG_DE3 EQU $-2
         PUSH DE
         LD C,#20
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP DE
         POP HL
@@ -54,7 +59,7 @@ REG_DE2 EQU $-2
         CALL OUT_SR1
         DUP 8
         INC HL
-        EDUP 
+        EDUP
         LD A,E
         ADD A,#20
         LD E,A
@@ -68,11 +73,11 @@ MTK2    LD (REG_HL2),HL
         POP HL
         POP DE
         LD C,#20
-        LDIR 
+        LDIR
 
         POP BC
         DJNZ OUT_1
-        RET 
+        RET
 
 OUT_SR1 PUSH HL
         PUSH DE
@@ -84,7 +89,7 @@ OUT_SRL PUSH BC
         LD (DE),A
         INC HL
         INC D
-        EDUP 
+        EDUP
         LD A,(HL)
         LD (DE),A
         POP DE
@@ -95,7 +100,7 @@ OUT_SRL PUSH BC
         DJNZ OUT_SRL
         POP DE
         POP HL
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"
 END_OBJECT      DISPLAY "lenght: ",END_OBJECT-STARTADR

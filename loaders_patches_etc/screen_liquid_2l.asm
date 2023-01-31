@@ -1,5 +1,10 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 40000
-        DI 
+        DI
         LD HL,#FF10
         LD E,#11
         LD BC,#7FFD
@@ -39,7 +44,7 @@ MASKI_L LD (HL),C
         LD HL,#BF08
         LD A,#80
 BITMSIL LD (HL),A
-        RRCA 
+        RRCA
         DEC L
         DJNZ BITMSIL
 
@@ -59,7 +64,7 @@ BITMSIL LD (HL),A
         ;LD DE,#5800
         LD D,#58
         LD BC,#1820
-        EXX 
+        EXX
         LD DE,#4000
         LD C,#10
         CALL PUT_
@@ -75,13 +80,13 @@ EXIT    IM 1
         LD I,A
         POP IY
         POP HL
-        EXX 
+        EXX
         LD A,#10
         LD BC,#7FFD
         OUT (C),A
-        RET 
+        RET
 
-PUT48   EXX 
+PUT48   EXX
         LD HL,SCREEN
         LD DE,#4000
         LD BC,#C020
@@ -100,12 +105,12 @@ AROUND  DJNZ LOOP1
         POP BC
         DEC C
         JR NZ,LOOP
-JMP2    EI 
-        HALT 
+JMP2    EI
+        HALT
         LD DE,#5800
         LD B,3
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 PUT_    LD B,#A
 PUT     LD HL,#C000
@@ -119,7 +124,7 @@ PUT     LD HL,#C000
 PUTM    PUSH BC
         PUSH DE
 
-        EXX 
+        EXX
         PUSH BC
         PUSH DE
         PUSH HL
@@ -143,22 +148,22 @@ LIQ_ALM PUSH BC
         INC HL
         INC E
 UZUZ
-        EXX 
+        EXX
 
         LD BC,#C008
 PUT01   PUSH BC
         PUSH DE
 ;       XOR A
 ;       OUT (#FE),A
-        EI 
-        HALT 
+        EI
+        HALT
 
 PUT11   PUSH DE
 
         LD A,(HL)
         LD (DE),A
-        RRA 
-        CCF 
+        RRA
+        CCF
         LD A,#FF
         ADC A,0
         INC E
@@ -198,7 +203,7 @@ COMCTRL LD HL,COMFIL
         DEC B
         JP NZ,PUTM
 
-        RET 
+        RET
 
 
 CONV_   LD B,#A
@@ -222,7 +227,7 @@ CONV1   PUSH BC
         LD A,(IX+0)
 MASKN   EQU $-1
         LD C,A
-        CPL 
+        CPL
         LD B,A
         LD A,(HL)
         AND C
@@ -251,7 +256,7 @@ FF_LIN  POP AF
         POP BC
         DJNZ CONV3
 
-        RET 
+        RET
 
 FILL    LD (DE),A
         INC E
@@ -317,7 +322,7 @@ COMFIL  LD (DE),A
 
 
 
-        RET 
+        RET
 
 ;NEXTLS INC D
 ;       LD A,D

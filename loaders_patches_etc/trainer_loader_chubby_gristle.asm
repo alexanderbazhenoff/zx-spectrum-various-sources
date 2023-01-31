@@ -1,7 +1,12 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #7F00
         DISPLAY "TRAINER AND LOADER 4 Chubby Gristle by Alx/BW"
         DISPLAY "18.06.2002"
-        HALT 
+        HALT
         XOR A
         OUT (#FE),A
         LD HL,#5B00
@@ -33,7 +38,7 @@ WAITKEY BIT 5,(IY+1)
         CP "0"
         JR Z,START
         JR KEYSCAN
-START   HALT 
+START   HALT
         LD HL,#5A00
         LD A,L
         LD B,A
@@ -47,21 +52,21 @@ CLS13L  LD (HL),A
         LD HL,LOADPP
         LD DE,#5D3B
         LD BC,ELOADPP-LOADPP
-        LDIR 
+        LDIR
         LD HL,TRAIN_P
         LD A,(HL)
         OR A
         JR Z,NOTR1
-        CPL 
+        CPL
         LD (TR_PO1),A
 NOTR1   INC HL
         LD A,(HL)
         OR A
         JR Z,NOTR2
-        CPL 
+        CPL
         LD (TR_PO2),A
 NOTR2   JP #5D3B
-        ENT 
+        ENT
 
 TRAINALL
         LD HL,TRAIN_P
@@ -73,7 +78,7 @@ TRAIN1  LD DE,#504A
         LD IX,#5A4A
 TR0     PUSH HL
         LD A,(HL)
-        CPL 
+        CPL
         LD (HL),A
         OR A
         JR Z,TRM1
@@ -82,13 +87,13 @@ TR0     PUSH HL
 TRM1    ADD A,2
         CALL OUT_SPR
         POP HL
-        RET 
+        RET
 
 TRAIN2  LD DE,#50AD
         LD IX,#5AAD
         JR TR0
 
-OUT_SPR HALT 
+OUT_SPR HALT
 OUT_SPR1
         ADD A,A
         LD L,A
@@ -134,7 +139,7 @@ OUTSPR3 DJNZ OUTSPR2
 OUTSPR4 PUSH BC
         PUSH DE
         LD B,0
-        LDIR 
+        LDIR
         POP DE
         LD C,#20
         EX DE,HL
@@ -142,7 +147,7 @@ OUTSPR4 PUSH BC
         EX DE,HL
         POP BC
         DJNZ OUTSPR4
-        RET 
+        RET
 ENDCOD  DISPLAY "End of code: ",ENDCOD
 
         DS #FF,#C9
@@ -175,13 +180,13 @@ TR_PO2  EQU $-1
         LD (25625),A
 NOTRN2  LD A,#BF
         IN A,(#FE)
-        RRA 
+        RRA
         JR NC,NOTRN2
         JP 25500
 
 
 LOAD1   PUSH HL
-LOAD    EI 
+LOAD    EI
         LD DE,(#5CF4)
         LD C,5
 TR_DOS  PUSH HL
@@ -194,7 +199,7 @@ TR_DOS  PUSH HL
         LD A,(23823)
         OR A
         JR NZ,TR_DOS
-        DI 
+        DI
 
 DEP            LD D,H
                LD E,L
@@ -216,7 +221,7 @@ DEPACK         PUSH DE
                JR C,$+4
                LD D,H
                LD E,L
-               LDDR 
+               LDDR
                INC DE
 
                PUSH DE
@@ -228,7 +233,7 @@ UnpackTree     LD DE,BitLenTb1-1
                LD A,#10
                SRL C
                CALL Z,GetNextByte
-               RLA 
+               RLA
                JR NC,$-6
                INC DE
                LD (DE),A
@@ -305,7 +310,7 @@ LastDist       EQU $+1
                OR A
                SBC HL,DE
                POP DE
-               LDIR 
+               LDIR
                POP BC
                JR UnpackWord
 
@@ -318,7 +323,7 @@ Stop           POP AF
 DecodeNum      ADD A,-#05
                RET NC
                ADD A,#05-#03
-               RRA 
+               RRA
                LD L,#01
                RL L
                SRL C
@@ -327,7 +332,7 @@ DecodeNum      ADD A,-#05
                DEC A
                JR NZ,$-8
                INC HL
-               RET 
+               RET
 
 GetWord1       LD HL,Tree1Adr
 
@@ -343,11 +348,11 @@ GetWord        SRL C
                CP #40
                JR NC,GetWord
                LD A,L
-               RET 
+               RET
 GetNextByte    LD C,(IX)
                INC IX
                RR C
-               RET 
+               RET
 
 Tree1Create    LD HL,BitLenTb1
                LD BC,Tree1Adr
@@ -360,7 +365,7 @@ TreeCreate     INC DE
                DEC HL
                DEC HL
                PUSH BC
-               EXX 
+               EXX
                POP DE
                LD H,D
                LD L,E
@@ -371,19 +376,19 @@ TreeCreate     INC DE
                PUSH AF
                LD C,A
 
-TC1            EXX 
+TC1            EXX
                LD B,D
                LD C,E
                ADD HL,BC
-               EXX 
+               EXX
 
 TC2            LD B,A
                LD A,C
-               EXX 
-               CPDR 
+               EXX
+               CPDR
                LD A,B
                OR C
-               EXX 
+               EXX
                LD A,B
                JR NZ,TC4
                INC C
@@ -402,9 +407,9 @@ TC3            INC DE
                PUSH AF
 TC4            CP C
                JR NZ,TC3
-               EXX 
+               EXX
                PUSH BC
-               EXX 
+               EXX
                POP BC
                DEC BC
                LD (HL),B
@@ -424,7 +429,7 @@ CLSL2   DEC HL
         LD (HL),A
         CP (HL)
         JR Z,CLSL2
-        RET 
+        RET
 
 TRDOS   PUSH HL
         LD A,#FF
@@ -453,7 +458,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -467,15 +472,15 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
         JP #3D2F
-        ENT 
+        ENT
 ELOADPP
 ZAZA    DISPLAY "SAVE [fname],#7F00,",ZAZA-#7F00
         ORG #7F00

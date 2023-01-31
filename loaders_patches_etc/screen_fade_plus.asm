@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 ATTR    EQU 0
 SPEED   EQU 1
 
@@ -7,14 +12,14 @@ SPEED   EQU 1
         LD BC,#200C
         IFN ATTR
         LD A,ATTR
-        ELSE 
+        ELSE
         XOR A
-        ENDIF 
+        ENDIF
 ATRDEL1
-        EI 
+        EI
         DUP SPEED
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         PUSH BC
         PUSH BC
 ATRDEL2 LD (HL),A
@@ -27,4 +32,4 @@ ATRDEL3 DEC DE
         POP BC
         DEC C
         JR NZ,ATRDEL1
-        RET 
+        RET

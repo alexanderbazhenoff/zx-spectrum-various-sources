@@ -1,7 +1,12 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
  DISPLAY "OVERLAY MANAGER FOR NINJA HAMSTER GAME. 128K MODE"
         ORG #FF00
         DISP #4900
-        DI 
+        DI
         LD (STEK),SP
         LD SP,#4900
         LD A,(#6D69)
@@ -19,19 +24,19 @@
         LD DE,#6590
         LD BC,#1A9
         PUSH BC
-        LDIR 
+        LDIR
         LD HL,#C6E0
         LD DE,#A12C
         POP BC
-        LDIR 
+        LDIR
         LD HL,#C8E0
         LD DE,#AF32
         LD C,#85
-        LDIR 
+        LDIR
         LD HL,#C9E0
         LD DE,#B3B0
         LD BC,#6FF
-        LDIR 
+        LDIR
         LD HL,#C000
         LD BC,#2600
         CALL MOV_DEP
@@ -42,12 +47,12 @@
         POP IY
         LD SP,#3131
 STEK    EQU $-2
-        EI 
-        HALT 
-        NOP 
-        NOP 
-        NOP 
-        RET 
+        EI
+        HALT
+        NOP
+        NOP
+        NOP
+        RET
 
 TABL    DB #11+8,#13+8,#14+8,#16+8
 
@@ -77,5 +82,5 @@ MOV_L   PUSH BC
         OR C
         JR NZ,MOV_L
         POP IY
-        RET 
+        RET
 

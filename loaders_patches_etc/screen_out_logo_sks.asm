@@ -1,4 +1,9 @@
-        DISPLAY "SKATEBOARD CONSTRUCTION SYYSTEM. GAME"
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+        DISPLAY "SKATEBOARD CONSTRUCTION SYSTEM. GAME"
         DISPLAY "OUT LOGO ROUTINES by Alx^BW"
         DISPLAY "Lenght: #0054"
 
@@ -28,8 +33,8 @@ AROUND  DJNZ DC_Pix1
         POP BC
         DEC C
         JR NZ,DC_PixL
-        EI 
-        HALT 
+        EI
+        HALT
 DC_1    LD HL,#5818
         LD BC,#0818
 DC_AtrL PUSH BC
@@ -43,5 +48,5 @@ DC_Atr1 LD A,(DE)
         POP BC
         DEC C
         JR NZ,DC_AtrL
-        RET 
+        RET
         DS 128,0

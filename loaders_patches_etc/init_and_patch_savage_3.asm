@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6590
         INCBIN "savage3#"
 
@@ -36,13 +41,13 @@ AROUND  DJNZ LOOP1
         LD H,C
         DUP 5
         ADD HL,HL
-        EDUP 
+        EDUP
         LD B,H
         LD C,L
         POP HL
         POP DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 START   EQU #652D
         DISPLAY "savage_main_2",START,#0-#5C0-START-1
@@ -63,11 +68,11 @@ NO_UL   LD A,(#5B15)
         LD (#E129),A
 NO_I    LD BC,#BFFE
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_SKP
         LD B,C
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_SKP
         LD A,3
         LD (#E2F6),A
@@ -92,7 +97,7 @@ NO_SKP
         LD A,#3E
 KPORT   EQU $-1
         IN A,(#FE)
-        CPL 
+        CPL
         AND #E6
 KMASK   EQU $-1
         RET Z
@@ -116,7 +121,7 @@ KMEN_MASK EQU $-1
         LD (KPORT),A
         LD A,#1F
         LD (KMASK),A
-        RET 
+        RET
 
         ;fix troubles while entering password
 
@@ -186,19 +191,19 @@ KEY_INP CALL KEY_II
         JR NZ,KEY_INP
 
         BIT 3,L
-        RET 
+        RET
 
 
 KEY_II  XOR A
         IN A,(#FE)
-        CPL 
+        CPL
         AND #1F
-        RET 
+        RET
         DS 7,#C9
 KEYERR
         DUP 5
         CALL KEY_IN
-        EDUP 
+        EDUP
 
         ;fix score_out bug
         ORG #D682

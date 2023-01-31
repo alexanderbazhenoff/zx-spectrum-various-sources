@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6000
         LD D,#80
         LD HL,SINTAB-1
@@ -10,9 +15,9 @@ INS     INC E
         INC HL
         XOR A
         RLC (HL)
-        RLA 
+        RLA
         RLC (HL)
-        RLA 
+        RLA
         DEC A
         ADD A,B
         LD B,A
@@ -28,10 +33,10 @@ INS     INC E
         POP DE
         BIT 6,E
         JR Z,INS
-        RET 
+        RET
 INSR    LD (DE),A
         SET 7,E
-        NEG 
+        NEG
         LD (DE),A
         INC D
         SBC A,A
@@ -40,5 +45,5 @@ INSR    LD (DE),A
         XOR A
         LD (DE),A
         DEC D
-        RET 
+        RET
 SINTAB  DD #5856155549218552215488548552154855

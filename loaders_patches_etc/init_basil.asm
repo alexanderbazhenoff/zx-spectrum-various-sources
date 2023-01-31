@@ -1,10 +1,15 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 26000
 
-        DI 
+        DI
         LD HL,TABL
         LD DE,#5B00
         LD BC,#FF
-        LDIR 
+        LDIR
         LD SP,26000
         LD HL,#FF10
         LD E,#11
@@ -51,9 +56,9 @@ LOADM   PUSH BC
         LD HL,LEV128
         LD DE,#AE10
         LD BC,#99
-        LDIR 
+        LDIR
         CALL FADE
-        DI 
+        DI
 
 
         CALL #C000
@@ -92,14 +97,14 @@ PAUSB   DJNZ PAUSB
         LD DE,#FC00
         LD BC,#400
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP HL
         PUSH HL
         POP DE
         INC DE
         LD (HL),C
-        LDIR 
+        LDIR
         LD A,200
         LD (23607),A
         LD SP,27000
@@ -122,11 +127,11 @@ LOAD48L PUSH BC
         LD HL,LOAD48
         LD DE,#AE10
         LD BC,#99
-        LDIR 
-        EI 
+        LDIR
+        EI
         CALL FADE
         CALL #C000
-        DI 
+        DI
         XOR A
         CALL LOADL4_
         LD HL,LEVEL
@@ -144,7 +149,7 @@ ADDSEC  INC E
         LD E,0
         INC D
 NONTRK  DJNZ ADDSEC
-        RET 
+        RET
 
 LOAD48
         DISP #AE10
@@ -169,7 +174,7 @@ LADR2   LD H,#E4
         CALL CLS11
         CALL CLS111
         CALL CLS_S
-        RET 
+        RET
 
 LEVEL   LD A,#B0
         LD (LADR1+1),A
@@ -182,7 +187,7 @@ LLEV48  LD (LADR2+1),A
         PUSH HL
         PUSH BC
         PUSH DE
-        EXX 
+        EXX
         EX AF,AF'
         PUSH HL
         PUSH DE
@@ -195,9 +200,9 @@ LLEV48  LD (LADR2+1),A
         IM 1
         LD IY,#5C3A
         LD HL,#2758
-        EXX 
+        EXX
 PPLOAD  CALL LOADL48
-        EXX 
+        EXX
         POP AF
         LD I,A
         IM 2
@@ -207,21 +212,21 @@ PPLOAD  CALL LOADL48
         POP DE
         POP HL
         EX AF,AF'
-        EXX 
+        EXX
         POP DE
         POP BC
         POP HL
-        RET 
+        RET
 
 
 
 
 
-        ENT 
+        ENT
 FADE
         INCLUDE "$FADE0"
-        RET 
-LOAD128 DI 
+        RET
+LOAD128 DI
         PUSH BC
         LD BC,#7FFD
         OUT (C),A
@@ -233,14 +238,14 @@ LOAD12_ PUSH BC
         PUSH DE
         PUSH HL
         CALL LL_3D13
-        DI 
+        DI
         POP HL
         POP DE
         POP BC
         LD A,(23823)
         OR A
         JR NZ,LOAD12_
-        RET 
+        RET
 
 LL_3D13 LD (REG_A+1),A
         PUSH HL
@@ -267,7 +272,7 @@ ERR     LD HL,#2121
         LD (23613),A
         LD A,#C9
         LD (#5CC2),A
-        RET 
+        RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -278,7 +283,7 @@ DRIA    EX (SP),HL
         JR Z,NO_ERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     POP HL
         POP HL
         POP HL
@@ -312,7 +317,7 @@ DAT128L ADD A,A
         LD E,A
         LD D,L
         ADD HL,DE
-        RET 
+        RET
 LEV128H CALL DAT128L
         INC HL
         INC HL
@@ -323,8 +328,8 @@ LEV128H CALL DAT128L
         INC HL
         LD DE,#FFE0
         LD BC,#0A
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 LL3D13  LD (REG_A+1),A
         PUSH HL
@@ -351,7 +356,7 @@ ERR1    LD HL,#2121
         LD (23613),A
         LD A,#C9
         LD (#5CC2),A
-        RET 
+        RET
 DRIA1   EX (SP),HL
         PUSH AF
         LD A,H
@@ -362,7 +367,7 @@ DRIA1   EX (SP),HL
         JR Z,NO_ERR1
 NO_ERR1 POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA1    POP HL
         POP HL
         POP HL
@@ -380,16 +385,16 @@ CLS_L1  LD (HL),A
         INC L
         JR NZ,CLS_L1
         INC H
-        RET 
+        RET
 CLS_S   XOR A
         LD HL,#4FFF
 CLS_SL  DEC HL
         LD (HL),A
         OR (HL)
         JR Z,CLS_SL
-        RET 
+        RET
 
-LOAD    DI 
+LOAD    DI
         LD C,5
         LD L,0
         PUSH HL
@@ -398,15 +403,15 @@ LOAD_   PUSH BC
         PUSH DE
         PUSH HL
         CALL LL3D13
-        DI 
+        DI
         POP HL
         POP DE
         POP BC
         LD A,(23823)
         OR A
         JR NZ,LOAD_
-        RET 
-ENT 
+        RET
+ENT
 
 
 
@@ -438,7 +443,7 @@ LEV128_
         CALL MOVLEV
         LD HL,#5900
         CALL CLS1
-        RET 
+        RET
 
 LEV128F
         PUSH AF
@@ -464,7 +469,7 @@ LEV128F
 
         LD IX,#B000
         CALL MOVLEV
-        RET 
+        RET
 
 MOVLEV  PUSH IX
         LD C,0
@@ -484,10 +489,10 @@ MOVL_L  PUSH BC
         LD A,B
         OR C
         JR NZ,MOVL_L
-        RET 
+        RET
 CLS     LD HL,#5800
 CLS1    LD A,L
 CLS_L   LD (HL),A
         INC L
         JR NZ,CLS_L
-        RET 
+        RET

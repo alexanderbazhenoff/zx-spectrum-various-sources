@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 ADDR    EQU #8E40 ;START OF CODE
 TABL    EQU #8F00
 
@@ -20,12 +25,12 @@ NODINK  LD A,D
 NODPAP  LD (HL),D
         INC L
         DJNZ FAD_LP
-        EI 
+        EI
         LD C,8
-FAD_LL  HALT 
-        HALT 
-        HALT 
-        HALT 
+FAD_LL  HALT
+        HALT
+        HALT
+        HALT
         LD SP,#5800
         LD B,#C0
         LD H,TABL/#100
@@ -51,18 +56,18 @@ FAD_L1  POP DE
         PUSH HL
         LD DE,#E100
         LD BC,0-#E100
-        LDIR 
+        LDIR
         POP HL
         LD DE,#B001
         LD BC,#E0FF-#B000
         LD (HL),L
-        LDIR 
+        LDIR
         LD HL,#5DB1
         LD DE,#5DB2
         LD BC,#6401-#5DB1
         XOR A
         LD (HL),A
-        LDIR 
+        LDIR
         LD HL,#FF81
         PUSH HL
         LD HL,#8E40

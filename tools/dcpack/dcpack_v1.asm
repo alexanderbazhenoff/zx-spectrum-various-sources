@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
 ; DCPack 1.0 by alx^biranwave.
@@ -42,13 +43,13 @@ DEPACK1 PUSH BC
         JR DEPACK3
 DEPACK2 LD C,(HL)
         INC HL
-DEPACK3 LDIR 
+DEPACK3 LDIR
         POP BC
         DEC BC
         LD A,B
         OR C
         JR NZ,DEPACK1
-        RET 
+        RET
 
 
 UNXOR   LD HL,DESTIN_
@@ -85,7 +86,7 @@ UNXOR3  LD A,(DE)
         LD A,B
         OR C
         JR NZ,UNXOR1
-        RET 
+        RET
 
 PACK    LD DE,BEGIN
         LD BC,LENGHT
@@ -106,7 +107,7 @@ PACK1   LD A,(DE)
         LD A,B
         OR C
         JR NZ,PACK1
-        RET 
+        RET
 PACKNZ  LD (HL),E
         INC HL
         LD (HL),D
@@ -166,7 +167,7 @@ PACKCL3 INC DE
         LD A,B
         OR C
         JR NZ,PACKCL1
-        RET 
+        RET
 PACKCL2 PUSH DE
         POP IX
         CP (IX+1)
@@ -177,6 +178,6 @@ PACKCL2 PUSH DE
         JR NZ,PACKCL3
         CP (IX+4)
         JR NZ,PACKCL3
-        RET 
+        RET
 
 

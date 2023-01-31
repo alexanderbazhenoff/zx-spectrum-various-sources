@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6000
         DISP #4800
         LD (STEKK),SP
@@ -135,12 +140,12 @@ FILZ_L1 PUSH BC
         LD E,L
         INC DE
         LD B,A
-        LDIR 
+        LDIR
         POP HL
         POP BC
         INC H
         DJNZ FILZ_L1
-        RET 
+        RET
 
 LOADB   PUSH HL
         PUSH BC
@@ -152,17 +157,17 @@ LOADB   PUSH HL
         POP BC
         LD B,0
         POP DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 
-SAVE    DI 
+SAVE    DI
         LD DE,#0100
 TRSC    EQU $-2
 LL5B1C  PUSH BC
         PUSH DE
         LD A,D
         OR A
-        RRA 
+        RRA
         LD C,A
         LD A,#3C
         JR NC,LL5B28
@@ -195,20 +200,20 @@ LL5B44  PUSH BC
 LL5B5C  POP BC
         DJNZ LL5B44
 LL5B5F  LD (TRSC),DE
-        RET 
+        RET
 DOS     PUSH IX
         JP #3D2F
 
 
 
-LOAD    DI 
+LOAD    DI
         LD DE,0
 TRSC1   EQU $-2
 LL5B1C1 PUSH BC
         PUSH DE
         LD A,D
         OR A
-        RRA 
+        RRA
         LD C,A
         LD A,#3C
         JR NC,LL5B281
@@ -241,7 +246,7 @@ LL5B441 PUSH BC
 LL5B5C1 POP BC
         DJNZ LL5B441
 LL5B5F1 LD (TRSC1),DE
-        RET 
+        RET
 
 BLAMINI LD HL,BLMT1
         LD (BLMPAR),HL
@@ -251,7 +256,7 @@ BLMPAR  EQU $-2
         LD B,3
         CALL PRINT
         LD (BLMPAR),IX
-        RET 
+        RET
 PRINT
 
 PRNTL   PUSH BC
@@ -275,7 +280,7 @@ PRNTSH1 LD A,(HL)
         POP BC
         INC IX
         DJNZ PRNTL
-        RET 
+        RET
 
 TEXT    DEFB "DISK OPTIONS BY ALX/BW/XPJ      "
         DEFB "Press <1>...<4> to select the   "
@@ -305,21 +310,21 @@ ATRPAIN LD D,H
         LD E,L
         INC DE
         LD (HL),A
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 CH_POS  LD A,#F7
         IN A,(#FE)
         LD C,#31
-        RRA 
+        RRA
         RET NC
         INC C
-        RRA 
+        RRA
         RET NC
         INC C
-        RRA 
+        RRA
         RET NC
         INC C
-        RRA 
+        RRA
         RET NC
         JR CH_POS

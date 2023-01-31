@@ -1,8 +1,13 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #9C40
 SCRBUF  EQU #C000
         DISPLAY "OUTPUT SCR FOR COLISEUM"
 
-        DI 
+        DI
         LD HL,SCREEN
         LD DE,SCRBUF
         LD BC,#C020
@@ -21,12 +26,12 @@ LOOP1   LD A,(HL)
         JR NZ,LOOP
         LD DE,SCRBUF+#1800
         LD B,3
-        LDIR 
+        LDIR
         LD B,3
 SCR_OL1 PUSH BC
         LD IX,ADRTABL
-        EI 
-        HALT 
+        EI
+        HALT
         LD B,8
 
 SCR_OL2 PUSH BC
@@ -51,7 +56,7 @@ COUNTER EQU $-1
         EX DE,HL
         ADD HL,BC
         POP BC
-        LDIR 
+        LDIR
 
 NO_PA   AND #1F
         JR NZ,NO_NL
@@ -98,7 +103,7 @@ NO_NL   LD HL,#4000
         DEC BC
         LD A,#7F
         IN A,(#FE)
-        RRA 
+        RRA
         JR NC,FASTOUT
         LD A,B
         OR C
@@ -106,12 +111,12 @@ NO_NL   LD HL,#4000
 FASTOUT LD HL,SCRBUF+#1800
         LD DE,#5800
         LD BC,#300
-        LDIR 
+        LDIR
         LD HL,SCRBUF
         LD DE,#4000
         LD BC,#1800
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 DOWNL   INC D
         LD A,D
@@ -124,7 +129,7 @@ DOWNL   INC D
         LD A,D
         SUB 8
         LD D,A
-        RET 
+        RET
 
 ADRTABL DW 0
         DW 0

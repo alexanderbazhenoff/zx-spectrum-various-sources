@@ -1,5 +1,10 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #8000
-        DI 
+        DI
         XOR A
         LD R,A
         LD HL,CODE+1
@@ -15,13 +20,13 @@ XORKA   LD A,R
         XOR D
         XOR C
         LD (HL),A
-        LDI 
+        LDI
         RET PO
         JR XORKA
 CODE    EQU $-1
         DISP #FF01
         XOR A
-        EI 
+        EI
         CALL 5633
         LD DE,TEXT
         PUSH DE
@@ -37,13 +42,13 @@ CODE    EQU $-1
         CALL BEEPER
         XOR A
         LD B,A
-PAUSH   HALT 
+PAUSH   HALT
         DJNZ PAUSH
         POP BC
         POP HL
         POP DE
         CALL BEEPER
-        RET 
+        RET
 BEEPER  LD (MASK+1),A
 LOOP    PUSH BC
         LD A,(DE)
@@ -71,7 +76,7 @@ PAUS2   DJNZ PAUS2
         JR NZ,BEEP
         POP BC
         DJNZ LOOP
-        RET 
+        RET
 
 
 TEXT    DEFB " Cra<kEd bY BeeR DrUnkEr @lx!!! "

@@ -1,3 +1,9 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+
         ORG #5B14
         DB #FF,#FF
 
@@ -38,19 +44,19 @@ AROUND  DJNZ LOOP1
         LD H,C
         DUP 5
         ADD HL,HL
-        EDUP 
+        EDUP
         LD B,H
         LD C,L
         POP HL
         POP DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 
         ORG #639C
         INCBIN "savaged#"
 
         ORG START
-        DI 
+        DI
         LD A,(#5B14)
         OR A
         JR Z,NO_UL

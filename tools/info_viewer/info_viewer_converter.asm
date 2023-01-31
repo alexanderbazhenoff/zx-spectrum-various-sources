@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
 ; text converter for info viewe by alx^brainwave
@@ -12,11 +13,11 @@ ADDR    EQU #6402
 CONVTO  EQU #6400
 
  DISPLAY "text converter v1.0 for text viewer"
- DISPLAY 
+ DISPLAY
  DISPLAY "input:  text file with name 'textXXX.W'"
  DISPLAY "        xxx is a number of file in DEC (000...127"
  DISPLAY "output: converted file with name 'blokXXX.C'
- DISPLAY 
+ DISPLAY
  DISPLAY "WARNING! текстовый файл не должен начинаться с #0D"
  DISPLAY "(код enter'а) и каждая строка текста в файле"
  DISPLAY "должна быть раскрашена и должна заканчиваться"
@@ -28,7 +29,7 @@ INVERS  EQU 0
 
         ORG #6000
 L_BEG_OBJECT
-        DI 
+        DI
         LD SP,#6000
         XOR A
         OUT (#FE),A
@@ -55,7 +56,7 @@ DCNG_L  LD HL,SRC_DRIV
         LD (DD_TXT0),A
         LD HL,SD_TXT
         CALL PRINT
-        EI 
+        EI
         RES 5,(IY+1)
 WKEY    BIT 5,(IY+1)
         JR Z,WKEY
@@ -131,7 +132,7 @@ FPRIT   LD B,H
         CALL #3D13
 
         ;converting routines
-        DI 
+        DI
         LD IX,ADDR
         LD HL,ADDR
         LD BC,#0101
@@ -163,7 +164,7 @@ CONV2   LD (HL),A
         LD E,L
         INC DE
         LD C,#FF
-        LDIR 
+        LDIR
         POP HL
         LD BC,ADDR
         SBC HL,BC
@@ -283,7 +284,7 @@ FNOC_L  LD A,(DE)
 
         LD HL,DONE_TXT
         CALL PRINT
-        EI 
+        EI
         RES 5,(IY+1)
 DWKEY   BIT 5,(IY+1)
         JR Z,DWKEY
@@ -303,10 +304,10 @@ FNAM_AD0
         DEC HL
         DJNZ FNAM_AD0
         INC (HL)
-        RET 
+        RET
 
 SRC_DRIV_SEL
-        NOP 
+        NOP
         LD A,(SRC_DRIV)
 DR_SEL  LD C,A
         LD (#5CF6),A
@@ -314,9 +315,9 @@ DR_SEL  LD C,A
         AND 4+8+16+32+64+128
         OR C
         LD (#5D16),A
-        RET 
+        RET
 DST_DRIV_SEL
-        NOP 
+        NOP
         LD A,(DST_DRIV)
         JR DR_SEL
 
@@ -325,7 +326,7 @@ SEL_DRIV
         INC A
         AND 3
         LD (HL),A
-        RET 
+        RET
 
 PRINT
         PUSH HL
@@ -344,15 +345,15 @@ PRINTL  LD A,(HL)
 FILE_NO_COPY
         LD HL,FILE_NO
         LD BC,3
-        LDIR 
-        RET 
+        LDIR
+        RET
 DISCR_COPY
         LD C,#13
         PUSH AF
         CALL #3D13
         POP AF
         LD (#5CE5),A
-        RET 
+        RET
 
 
 SRC_DRIV DB 0
@@ -384,23 +385,23 @@ FILE_NO  DB "000"
 FILE_END DB "128"
 L_END_OBJECT
 
-        DISPLAY 
+        DISPLAY
         DISPLAY "Test mode is "
 
         IF0 TESTMOD
         DISPLAY /L,"off."
-        ELSE 
+        ELSE
         DISPLAY /L,"on. RUN and get the saved object!"
-        ENDIF 
+        ENDIF
 
 INVERS=#4803
         DUP 8
         ORG INVERS
         DUP 10
         DB #FF-{$}
-        EDUP 
+        EDUP
 INVERS=INVERS+#100
-        EDUP 
+        EDUP
 
         ORG #6000
 
@@ -444,4 +445,4 @@ BASIC_BEG
  DB "15619",#22,#3A,#EA,#3A,#F7,#22,"convtext",#22,#AF,#0D
  DB #80,#AA,1,0
 BASIC_END
-        ENDIF 
+        ENDIF

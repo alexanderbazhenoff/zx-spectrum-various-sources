@@ -1,3 +1,9 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+
 00
         DISPLAY "TEXT>SCROLLER converter for lamergy #KIDS"
         DISPLAY "save [filename],#C000,IX
@@ -15,7 +21,7 @@ CONV    INC HL
         LD A,B
         OR C
         JR NZ,LOOP
-        RET 
+        RET
 NO_CONV LD (DE),A
         INC DE
         INC IX

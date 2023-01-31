@@ -1,11 +1,16 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
  DISPLAY "OVERLAY MANAGER FOR NINJA HAMSTER GAME. 48K MODE"
         ORG #6000
         DISP #4000
-LOAD48  EI 
+LOAD48  EI
         LD DE,TEXT
         LD BC,TEXT2-TEXT
         CALL #203C
-        DI 
+        DI
         LD (STEK),SP
         LD SP,#4900
         LD A,(#6D69)
@@ -38,19 +43,19 @@ NO_ASEC PUSH IX
         LD DE,#6590
         LD BC,#1A9
         PUSH BC
-        LDIR 
+        LDIR
         LD HL,#C6E0
         LD DE,#A12C
         POP BC
-        LDIR 
+        LDIR
         LD HL,#C8E0
         LD DE,#AF32
         LD C,#85
-        LDIR 
+        LDIR
         LD HL,#C9E0
         LD DE,#B3B0
         LD BC,#6FF
-        LDIR 
+        LDIR
         POP IX
         INC IX
         CALL LOAD_DA
@@ -108,7 +113,7 @@ DEHRUST PUSH DE
         JR C,LL4019
         LD D,H
         LD E,L
-LL4019  LDDR 
+LL4019  LDDR
         EX DE,HL
         POP DE
         LD C,#0C
@@ -124,16 +129,16 @@ LL4025  DEC HL
         DEC A
         JR NZ,LL4025
         LD B,A
-        EXX 
+        EXX
         LD D,#BF
         LD C,#10
         CALL LL4115
 LL4036  LD A,(IX+#00)
         INC IX
-        EXX 
+        EXX
 LL403C  LD (DE),A
         INC DE
-LL403E  EXX 
+LL403E  EXX
 LL403F  ADD HL,HL
         DJNZ LL4045
         CALL LL4115
@@ -143,7 +148,7 @@ LL4049  LD A,#80
 LL404B  ADD HL,HL
         DJNZ LL4051
         CALL LL4115
-LL4051  RLA 
+LL4051  RLA
         JR C,LL404B
         CP #03
         JR C,LL405D
@@ -156,15 +161,15 @@ LL405D  ADD A,E
         JR Z,LL40C4
         ADC A,#FF
         CP #02
-        EXX 
+        EXX
 LL4067  LD C,A
-LL4068  EXX 
+LL4068  EXX
         LD A,#BF
         JR C,LL4082
 LL406D  ADD HL,HL
         DJNZ LL4073
         CALL LL4115
-LL4073  RLA 
+LL4073  RLA
         JR C,LL406D
         JR Z,LL407D
         INC A
@@ -174,14 +179,14 @@ LL4073  RLA
 LL407D  INC A
         JR NZ,LL408D
         LD A,#EF
-LL4082  RRCA 
+LL4082  RRCA
         CP A
 LL4084  ADD HL,HL
         DJNZ LL408A
         CALL LL4115
-LL408A  RLA 
+LL408A  RLA
         JR C,LL4084
-LL408D  EXX 
+LL408D  EXX
         LD H,#FF
         JR Z,LL409B
         LD H,A
@@ -191,14 +196,14 @@ LL408D  EXX
         JR Z,LL40A6
 LL409B  LD L,A
         ADD HL,DE
-        LDIR 
+        LDIR
 LL409F  JR LL403E
-LL40A1  EXX 
+LL40A1  EXX
         RRC D
         JR LL403F
 LL40A6  CP #E0
         JR C,LL409B
-        RLCA 
+        RLCA
         XOR C
         INC A
         JR Z,LL40A1
@@ -207,7 +212,7 @@ LL40B1  LD L,A
         LD C,A
         LD H,#FF
         ADD HL,DE
-        LDI 
+        LDI
         LD A,(IX+#00)
         INC IX
         LD (DE),A
@@ -227,7 +232,7 @@ LL40CC  ADC A,A
 LL40D5  LD B,A
         LD C,(IX+#00)
         INC IX
-        CCF 
+        CCF
         JR LL4068
 LL40DE  CP #0F
         JR C,LL40D5
@@ -241,16 +246,16 @@ LL40E7  POP DE
         INC HL
         DJNZ LL40E7
         LD HL,#2758
-        EXX 
-        RET 
+        EXX
+        RET
 LL40F3  SBC A,A
         LD A,#EF
 LL40F6  ADD HL,HL
         DJNZ LL40FC
         CALL LL4115
-LL40FC  RLA 
+LL40FC  RLA
         JR C,LL40F6
-        EXX 
+        EXX
         JR NZ,LL40B1
         BIT 7,A
         JR Z,LL40DE
@@ -268,7 +273,7 @@ LL4115  LD B,C
         INC IX
         LD H,(IX+#00)
         INC IX
-        RET 
+        RET
 LCODE   EQU $-DEHRUST
 TEXT    DB #10,7,#11,2," BLOCK "
 TEXT2

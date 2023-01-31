@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 40000
 ATRBUF  EQU #C000
 SRCBORD EQU 7
@@ -25,7 +30,7 @@ FADEP   LD DE,ATRBUF
         LD BC,#300
         PUSH DE
         PUSH HL
-        LDIR 
+        LDIR
         POP DE
         POP HL
         LD A,SRCBORD
@@ -35,13 +40,13 @@ FADEPL  PUSH BC
         PUSH DE
         PUSH HL
         PUSH HL
-        EI 
+        EI
         DUP 4
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         OUT (#FE),A
         LD B,3
-        LDIR 
+        LDIR
         POP HL
         CALL FADE_
         POP HL
@@ -86,12 +91,12 @@ AROUND  DJNZ LOOP1
         LD BC,#300
         PUSH HL
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP HL
         LD DE,ATRBUF+#100
         PUSH DE
-        LDIR 
+        LDIR
         POP HL
         DEC H
         LD B,6
@@ -105,7 +110,7 @@ SFAD_L  PUSH BC
         POP DE
         POP HL
         LD B,4
-        LDIR 
+        LDIR
         LD A,D
         SUB 8
         LD D,A
@@ -118,18 +123,18 @@ SFAD_L  PUSH BC
 OUT_L   PUSH BC
         LD DE,#5800
         LD BC,#300
-        EI 
+        EI
         DUP 4
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD A,(HL)
         OUT (#FE),A
         INC H
-        LDIR 
+        LDIR
         POP BC
         DJNZ OUT_L
 
-        RET 
+        RET
 
 FADE_   LD BC,#300
 FAD_LP  LD D,(HL)
@@ -151,6 +156,6 @@ NODPAP  LD (HL),D
         LD A,B
         OR C
         JR NZ,FAD_LP
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"

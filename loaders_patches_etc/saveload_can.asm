@@ -1,17 +1,22 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #C000
         JP INSTAL
         JP LOAD
 
-SAVE    DI 
+SAVE    DI
         LD (STEK+1),SP
         LD SP,#57FF
         LD A,I
         LD (REG_I+1),A
         LD (REG_IY+2),IY
-        EXX 
+        EXX
         LD (REG_HL+1),HL
         LD HL,#2758
-        EXX 
+        EXX
         LD IY,#5C3A
         LD A,#3F
         LD I,A
@@ -57,16 +62,16 @@ OVERWR  LD C,8
 
         JP EXIT
 
-LOAD    DI 
+LOAD    DI
         LD (STEK+1),SP
         LD SP,#57FF
         LD A,I
         LD (REG_I+1),A
         LD (REG_IY+2),IY
-        EXX 
+        EXX
         LD (REG_HL+1),HL
         LD HL,#2758
-        EXX 
+        EXX
         LD IY,#5C3A
         LD A,#3F
         LD I,A
@@ -106,12 +111,12 @@ STEK2   LD SP,#3131
 REG_HL  LD HL,#2121
 REG_IY  LD IY,#2121
 REG_I   LD A,#3E
-        DI 
+        DI
         LD I,A
 STEK    LD SP,#3131
         IM 2
-        EI 
-        RET 
+        EI
+        RET
 
 DOS     EX AF,AF'
 DOS1    PUSH BC
@@ -134,11 +139,11 @@ DOS1    PUSH BC
         JR NZ,DOS1
         XOR A
         INC A
-        RET 
+        RET
 
 SEARCHF LD DE,#5CDD
         LD BC,8
-        LDIR 
+        LDIR
         LD A,"l"    ;EXT OF FILE!!!
         LD (DE),A
         LD A,9
@@ -147,7 +152,7 @@ SEARCHF LD DE,#5CDD
         CALL LL_3D13
         LD A,C
         CP #FF
-        RET 
+        RET
 
 
 
@@ -172,7 +177,7 @@ IFNAGA  CALL IF_CSL
 WCHDRV  CALL CH_DRV
         JR Z,IFNAGA
         LD HL,FNAME+2
-WOCHD   RET 
+WOCHD   RET
 
 
 CH_DRV  LD A,(FNAME)
@@ -193,25 +198,25 @@ CH_DRV  LD A,(FNAME)
         LD (FNAME0),A
         XOR A
         INC A
-        RET 
+        RET
 
 DSKERR  LD A,2+16
         OUT (#FE),A
-        RET 
+        RET
 
 ERRDRV  CALL DSKERR
         XOR A
-        RET 
+        RET
 OPNSTM  LD HL,#5800
         LD DE,#5801
         LD BC,#2FF
         LD (HL),L
-        LDIR 
+        LDIR
         LD A,7
         LD (23693),A
         LD A,2
         CALL 5633
-        RET 
+        RET
 PRNTFN  LD DE,FNAME_M
         LD BC,TXTMEE-FNAME_M
         JR LL_8252
@@ -259,13 +264,13 @@ SVTXTE
 INPUTF  LD HL,FNAME0
         LD DE,FNAME
         LD BC,12
-        LDIR 
+        LDIR
         CALL PRNTFN
 INPUTFN LD A,2
         LD (FN_LEN+1),A
         LD HL,FNAME+2
         LD (SYMADR+1),HL
-WAITKEY EI 
+WAITKEY EI
         RES 5,(IY+1)
 WAITKL  BIT 5,(IY+1)
         JR Z,WAITKL
@@ -306,10 +311,10 @@ SYMADR  LD HL,#2121
         LD (HL),#5F
         INC HL
         LD (HL),#20
-        RET 
+        RET
 
 NO_ES   POP AF
-        RET 
+        RET
 
 BACKSP  CALL POOK
         PUSH AF
@@ -327,7 +332,7 @@ BACKSP  CALL POOK
         LD (HL),#20
 NO_BS   CALL PRNTFN
         POP AF
-        RET 
+        RET
 
 POOK    PUSH AF
         XOR A
@@ -339,9 +344,9 @@ POOK_P  LD B,#10
         DEC C
         JR NZ,POOK_P
         POP AF
-        RET 
+        RET
 
-INSTAL  DI 
+INSTAL  DI
         LD HL,(23606)
         INC H
         LD DE,#C500
@@ -361,7 +366,7 @@ FNT_L   LD A,(HL)
         DEC D
         LD (23606),DE
         CALL SV_VAR
-        RET 
+        RET
 
 
 LEV2SCR LD HL,#61A8
@@ -382,11 +387,11 @@ L_SPAM1 LD DE,#5C00
 SV_VAR  LD DE,#D500
 S_SPAM1 LD HL,#5C00
 L_VAR1  LD BC,#61A7-#5C00
-COMLDIR LDIR 
-        RET 
+COMLDIR LDIR
+        RET
 
 FADE0   LD E,8
-FADEL0  HALT 
+FADEL0  HALT
         LD HL,#5800
         LD B,0
 FADEL1  LD A,(HL)
@@ -397,7 +402,7 @@ NO_FADE INC HL
         DJNZ FADEL1
         DEC E
         JR NZ,FADEL0
-        RET 
+        RET
 
 
         INCLUDE "3D13"

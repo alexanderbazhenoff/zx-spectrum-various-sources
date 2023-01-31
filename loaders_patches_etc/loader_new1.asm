@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #8000
 INTRSECS        EQU 29
 MASK    EQU 1+2+4+8+16
@@ -51,7 +56,7 @@ BitLenTb1      EQU TableAdr+#0480;[#0120]
 BitLenTb2      EQU TableAdr+#05A0;[#0020]
 ;----------------------------------
 
-Depack         DI 
+Depack         DI
                PUSH DE
                LD C,(HL)
                INC HL
@@ -69,7 +74,7 @@ Depack         DI
                JR C,$+4
                LD D,H
                LD E,L
-               LDDR 
+               LDDR
                INC DE
 
                PUSH DE
@@ -81,7 +86,7 @@ UnpackTree     LD DE,BitLenTb1-1
                LD A,#10
                SRL C
                CALL Z,GetNextByte
-               RLA 
+               RLA
                JR NC,$-6
                INC DE
                LD (DE),A
@@ -169,7 +174,7 @@ LastDist       EQU $+1
                OR A
                SBC HL,DE
                POP DE
-               LDIR 
+               LDIR
                POP BC
                JR UnpackWord
 
@@ -182,7 +187,7 @@ Stop           POP AF
 DecodeNum      ADD A,-#05
                RET NC
                ADD A,#05-#03
-               RRA 
+               RRA
                LD L,#01
                RL L
                SRL C
@@ -191,7 +196,7 @@ DecodeNum      ADD A,-#05
                DEC A
                JR NZ,$-8
                INC HL
-               RET 
+               RET
 
 GetWord1       LD HL,Tree1Adr
 
@@ -207,11 +212,11 @@ GetWord        SRL C
                CP #40
                JR NC,GetWord
                LD A,L
-               RET 
+               RET
 GetNextByte    LD C,(IX)
                INC IX
                RR C
-               RET 
+               RET
 
 Tree1Create    LD HL,BitLenTb1
                LD BC,Tree1Adr
@@ -224,7 +229,7 @@ TreeCreate     INC DE
                DEC HL
                DEC HL
                PUSH BC
-               EXX 
+               EXX
                POP DE
                LD H,D
                LD L,E
@@ -235,19 +240,19 @@ TreeCreate     INC DE
                PUSH AF
                LD C,A
 
-TC1            EXX 
+TC1            EXX
                LD B,D
                LD C,E
                ADD HL,BC
-               EXX 
+               EXX
 
 TC2            LD B,A
                LD A,C
-               EXX 
-               CPDR 
+               EXX
+               CPDR
                LD A,B
                OR C
-               EXX 
+               EXX
                LD A,B
                JR NZ,TC4
                INC C
@@ -266,9 +271,9 @@ TC3            INC DE
                PUSH AF
 TC4            CP C
                JR NZ,TC3
-               EXX 
+               EXX
                PUSH BC
-               EXX 
+               EXX
                POP BC
                DEC BC
                LD (HL),B
@@ -308,7 +313,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
 
@@ -333,16 +338,16 @@ NO_ERR  XOR A
         OUT (#FE),A
         POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
         JP #3D2F
 
-        ENT 
+        ENT
 ENDCOD  DISPLAY "lenght: ",ENDCOD-#8000
         DB #80,#AA,#01,0
 

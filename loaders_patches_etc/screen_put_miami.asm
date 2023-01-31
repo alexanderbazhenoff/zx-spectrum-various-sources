@@ -1,12 +1,17 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #8000
 
 BORDER  EQU 5
 
 
-        DI 
-        EXX 
+        DI
+        EXX
         PUSH HL
-        EXX 
+        EXX
         LD BC,#7FFD
         LD HL,#C010
         LD E,#17
@@ -27,7 +32,7 @@ BORDER  EQU 5
         LD I,A
         INC A
         LD (HL),A
-        LDIR 
+        LDIR
         IM 2
         LD A,#C9
         LD (#AFAF),A
@@ -36,16 +41,16 @@ BORDER  EQU 5
         LD H,C
         LD L,H
 
-        EI 
-        HALT 
+        EI
+        HALT
         LD A,#C3
         LD (#AFAF),A
-        EI 
+        EI
 L_LOOP  INC HL
         LD B,15
 L_PAUS  DJNZ L_PAUS
-        NOP 
-        NOP 
+        NOP
+        NOP
         JP L_LOOP
 
 CLCL    POP DE
@@ -71,17 +76,17 @@ CLCL    POP DE
         LD DE,#AC01
         LD (HL),#10
         LD BC,320
-        LDIR 
-        EXX 
+        LDIR
+        EXX
         LD BC,#7FFD
-        EXX 
+        EXX
 
         LD BC,160
         POP HL
         LD DE,#AC00+319
 
-BMLP    EI 
-        HALT 
+BMLP    EI
+        HALT
         LD (#2222),HL
         LD (#2222),HL
         LD (#2222),HL
@@ -129,7 +134,7 @@ BLP1    LD A,(HL)       ;7
         LD A,D          ;4
         OR E            ;4
         JP NZ,BLP1      ;10
-        EXX 
+        EXX
         DEC BC
         LD A,B
         OR C
@@ -144,32 +149,32 @@ BLP1    LD A,(HL)       ;7
         LD HL,#C000
         LD DE,#4000
         LD BC,#1B00
-        LDIR 
+        LDIR
         POP BC
         LD A,#10
         OUT (C),A
         JR EXIT
 
 MOD48   IM 1
-        EI 
-        HALT 
+        EI
+        HALT
         LD HL,#5800
         LD DE,#5801
         LD A,1+8
         LD (HL),A
         LD BC,#2FF
         OUT (#FE),A
-        LDIR 
+        LDIR
         CALL PUTSCR
 
-EXIT    EXX 
+EXIT    EXX
         POP HL
-        EXX 
+        EXX
         IM 1
         LD A,#3B
         LD I,A
-        EI 
-        RET 
+        EI
+        RET
 
 
 
@@ -211,12 +216,12 @@ AROUND  DJNZ LOOP1
         POP BC
         DEC C
         JR NZ,LOOP
-        EI 
-        HALT 
+        EI
+        HALT
 JMP2    LD DE,#5800
         LD BC,#300
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 SCREEN INCBIN "PICTURE"
 ENDFIL

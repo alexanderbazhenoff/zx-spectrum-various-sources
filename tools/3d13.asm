@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
 ; 3D13 TR-DOS call with autoretry and no error messages
@@ -49,7 +50,7 @@ ERR     LD HL,#2121
         LD A,#C9
         LD (#5CC2),A
         LD A,(23823)
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,R
@@ -67,16 +68,16 @@ NO_ERR  POP AF
         EX (SP),HL
 BORD0   XOR A
         OUT (#FE),A
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         XOR A
         LD (23560),A
         LD HL,#FFFF
 BL      LD A,R
         OUT (#FE),A
-        NOP 
+        NOP
         DEC HL
         LD A,L
         OR H

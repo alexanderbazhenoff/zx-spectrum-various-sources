@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #8000
 
         DISP #5D3B
@@ -7,7 +12,7 @@
         DB #13,1,#10,7,#11,1
         DB "  Loader by Alx/BW 04.11.2001  ",#10
 
-        DI 
+        DI
         LD SP,#6100
 CLS     XOR A
         OUT (#FE),A
@@ -24,8 +29,8 @@ CLS_L   DEC HL
         LD B,#11
         CALL LOAD
         LD B,#80
-PAUSE   EI 
-        HALT 
+PAUSE   EI
+        HALT
         LD A,#FE
         IN A,(#FE)
         BIT 3,A
@@ -34,7 +39,7 @@ PAUSE   EI
         LD (CHEAT),A
 NOCHEAT LD A,#DF
         IN A,(#FE)
-        RRA 
+        RRA
         JR C,NOFIX
         XOR A
         LD (FIX),A
@@ -70,7 +75,7 @@ FIX     EQU $-1
         LD HL,MULDAT
         LD DE,#9967
         LD BC,#25
-        LDIR 
+        LDIR
 NO_F    JP #FF00
 
 ;АДРЕС БУФФЕРА ДЛЯ РАСПАКОВКИ.
@@ -104,7 +109,7 @@ DEPACK         PUSH DE
                JR C,$+4
                LD D,H
                LD E,L
-               LDDR 
+               LDDR
                INC DE
 
                PUSH DE
@@ -116,7 +121,7 @@ UnpackTree     LD DE,BitLenTb1-1
                LD A,#10
                SRL C
                CALL Z,GetNextByte
-               RLA 
+               RLA
                JR NC,$-6
                INC DE
                LD (DE),A
@@ -193,7 +198,7 @@ LastDist       EQU $+1
                OR A
                SBC HL,DE
                POP DE
-               LDIR 
+               LDIR
                POP BC
                JR UnpackWord
 
@@ -206,7 +211,7 @@ Stop           POP AF
 DecodeNum      ADD A,-#05
                RET NC
                ADD A,#05-#03
-               RRA 
+               RRA
                LD L,#01
                RL L
                SRL C
@@ -215,7 +220,7 @@ DecodeNum      ADD A,-#05
                DEC A
                JR NZ,$-8
                INC HL
-               RET 
+               RET
 
 GetWord1       LD HL,Tree1Adr
 
@@ -231,11 +236,11 @@ GetWord        SRL C
                CP #40
                JR NC,GetWord
                LD A,L
-               RET 
+               RET
 GetNextByte    LD C,(IX)
                INC IX
                RR C
-               RET 
+               RET
 
 Tree1Create    LD HL,BitLenTb1
                LD BC,Tree1Adr
@@ -248,7 +253,7 @@ TreeCreate     INC DE
                DEC HL
                DEC HL
                PUSH BC
-               EXX 
+               EXX
                POP DE
                LD H,D
                LD L,E
@@ -259,19 +264,19 @@ TreeCreate     INC DE
                PUSH AF
                LD C,A
 
-TC1            EXX 
+TC1            EXX
                LD B,D
                LD C,E
                ADD HL,BC
-               EXX 
+               EXX
 
 TC2            LD B,A
                LD A,C
-               EXX 
-               CPDR 
+               EXX
+               CPDR
                LD A,B
                OR C
-               EXX 
+               EXX
                LD A,B
                JR NZ,TC4
                INC C
@@ -290,9 +295,9 @@ TC3            INC DE
                PUSH AF
 TC4            CP C
                JR NZ,TC3
-               EXX 
+               EXX
                PUSH BC
-               EXX 
+               EXX
                POP BC
                DEC BC
                LD (HL),B
@@ -312,7 +317,7 @@ TR_DOS  PUSH HL
         PUSH DE
         PUSH BC
         CALL TRDOS
-        DI 
+        DI
         POP BC
         POP DE
         POP HL
@@ -348,7 +353,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -362,23 +367,23 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
         JP #3D2F
 
-BANK    DI 
+BANK    DI
         LD BC,#7FFD
         OUT (C),A
-        RET 
+        RET
 
 MULDAT  INCBIN "MUL"
         DB #0D
-        ENT 
+        ENT
 
 ENDOBJ  DISPLAY ENDOBJ
 

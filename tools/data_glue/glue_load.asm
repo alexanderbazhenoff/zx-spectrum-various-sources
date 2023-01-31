@@ -1,7 +1,10 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
+
+;-----------------------------------------------------------
 
 ;п/п извлечения и загрузки файла из склеенного массива
 ;с помощью Data Glue 1.0 By alx/brainwave
@@ -53,19 +56,19 @@ ladr_i00  EQU load_addr ;еслли адрес загрузки блока кр�
         ADD HL,HL
         LD DE,indexaddr
         ADD HL,DE
-        ELSE 
+        ELSE
         ADD A,A
         ADD A,A
         IF0 blok_i00
         LD L,A
         LD H,'indexaddr
-        ELSE 
+        ELSE
         LD E,A
         LD D,0
         LD HL,indexaddr
         ADD HL,DE
-        ENDIF 
-        ENDIF 
+        ENDIF
+        ENDIF
 
         LD A,(HL)
         INC HL
@@ -106,23 +109,23 @@ tsc_ade EX DE,HL
         IF0 ladr_i00
         LD H,'load_addr
         LD L,A
-        ELSE 
+        ELSE
         PUSH DE
         LD E,A
         LD D,0
         LD HL,load_addr
         ADD HL,DE
         POP DE
-        ENDIF 
+        ENDIF
 
         IF0 blpack_sw
         LD C,0
-        ENDIF 
+        ENDIF
 
         LD DE,load_addr
-        LDIR 
+        LDIR
 
-        RET 
+        RET
 
 ;-----------------------[end of clipboard]--------------------
 

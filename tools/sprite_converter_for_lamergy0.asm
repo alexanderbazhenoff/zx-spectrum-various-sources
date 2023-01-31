@@ -1,3 +1,9 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+
         ORG #C000
 SPRITES EQU 6
 SPR_ADR EQU #8000
@@ -12,11 +18,11 @@ SPR_ADR EQU #8000
         LD DE,SPR_ADR+1
         LD BC,#3FFF
         LD (HL),0
-        LDIR 
+        LDIR
         LD HL,SCREEN
         LD DE,#4000
         LD BC,#1B00
-        LDIR 
+        LDIR
         LD HL,#48E0
         LD BC,#0911
         LD IX,#59E0
@@ -80,8 +86,8 @@ CONV_L1 LD A,(HL)
         SUB 8
         LD H,A
 C_ALL   DJNZ CONV_L1
-        EI 
-        HALT 
+        EI
+        HALT
         POP HL
         INC L
         POP BC
@@ -97,7 +103,7 @@ CONV_A1 PUSH BC
         LD (FILLA),A
         LD A,C
         LD B,0
-        LDIR 
+        LDIR
         POP HL
         PUSH HL
 CONV_A2 LD (HL),#B5
@@ -109,16 +115,16 @@ FILLA   EQU $-1
         LD C,#20
         ADD HL,BC
         POP BC
-        HALT 
+        HALT
         DEC B
         JR NZ,CONV_A1
         LD A,50
         OUT (#FE),A
-CONV_P  HALT 
+CONV_P  HALT
         DEC A
         JR NZ,CONV_P
         OUT (#FE),A
-        RET 
+        RET
 
 
 SCREEN  INCBIN "trainer$"

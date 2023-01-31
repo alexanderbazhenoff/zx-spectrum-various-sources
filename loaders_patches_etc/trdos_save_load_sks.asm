@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         DISPLAY "SKATEBOARD CONSTRUCTION SYSTEM.
         DISPLAY "SAVE/LOAD OPTION"
         ORG #C100
@@ -9,10 +14,10 @@ LIN1ADR EQU #506A
 LIN2ADR EQU #508A
         JP LOAD
         JP LOADSCR
-SAVE    DI 
+SAVE    DI
         LD (STEK),SP
         LD SP,TEMP_SP
-        EI 
+        EI
         CALL ENTER_FILENAME
         CALL SEL_DRIVE
         CALL SEARCHING_MES
@@ -48,7 +53,7 @@ SEA_SAL PUSH BC
         LD HL,FILE_DISCRIPT
         LD DE,SEC_BUF+#40
         LD BC,14
-        LDIR 
+        LDIR
         LD HL,(SEC_BUF+#E1)
         LD A,L
         LD (DE),A
@@ -94,7 +99,7 @@ END_OF_CAT_FOUND
         DEC DE
         LD HL,FILE_DISCRIPT
         LD BC,14
-        LDIR 
+        LDIR
         LD HL,#1111
 BODY_TRSC EQU $-2
         LD A,L
@@ -162,7 +167,7 @@ OVERW   LD E,(IX)
         SBC HL,BC
         LD DE,DISCRIPT_OWS
         LD BC,15
-        LDIR 
+        LDIR
         POP HL
         LD A,L
         LD (DE),A
@@ -176,7 +181,7 @@ OVERW   LD E,(IX)
         LD HL,DISCRIPT_OWS
         LD DE,#7A40
         LD BC,16
-        LDIR 
+        LDIR
         LD HL,SEC_BUF
         LD DE,8
         LD BC,#106
@@ -216,12 +221,12 @@ EC_D_L  LD C,(HL)
         INC HL
         INC DE
         DJNZ EC_D_L
-        RET 
+        RET
 
-LOAD    DI 
+LOAD    DI
         LD (STEK),SP
         LD SP,TEMP_SP
-        EI 
+        EI
         CALL ENTER_FILENAME
         CALL SEL_DRIVE
         CALL SEARCHING_MES
@@ -253,14 +258,14 @@ LOAD_DT LD BC,#5F05
         POP HL
         LD DE,#BEB4
         LD BC,#00E2
-        LDIR 
+        LDIR
 
 EXIT    CALL CLEAR1LIN
         CALL CLEAR2LIN
-EXIT_WC DI 
+EXIT_WC DI
         LD SP,#3131
 STEK    EQU $-2
-        RET 
+        RET
 
 LOAD_SC LD BC,#1B05
         LD HL,#4000
@@ -283,7 +288,7 @@ INP_PO1 EQU $-2
 EFN_L   LD A,":"
         LD (EF_MES+1),A
         LD (IX),"_"
-        HALT 
+        HALT
         CALL PR_FNAM
         RES 5,(IY+1)
 WAITK   BIT 5,(IY+1)
@@ -357,8 +362,8 @@ ENTER   LD A,(EF_MES)
         LD HL,FILENAME
         LD DE,FILE_DISCRIPT
         LD BC,8
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 SEARCH_FILE
         LD A,14
@@ -381,7 +386,7 @@ SF_COMP LD A,(DE)
         POP IX
         POP DE
         POP HL
-        RET 
+        RET
 
 SF_COM1 POP DE
         POP HL
@@ -391,7 +396,7 @@ SF_COM1 POP DE
         POP BC
         DEC C
         JR NZ,SF_L
-        RET 
+        RET
 
 
 
@@ -422,19 +427,19 @@ SOUN_L2 DJNZ SOUN_L2
         DEC C
         JR NZ,SOUN_L
         POP BC
-        RET 
+        RET
 
 SEARCHING_MES
         CALL PRNTMES1
         DB "SEARCHING...",#FF
-        RET 
+        RET
 
 PR_FNAM
         CALL PRNTMES2
 EF_MES  DB "A:"
 FILENAME
         DB "         ",#FF
-        RET 
+        RET
 
 NO_FILE
         CALL PRNTMES1
@@ -444,9 +449,9 @@ OP_ERROR
         CALL PRNTMES1
         DB "DISK ERROR! ",#FF
 CL_2LIN CALL CLEAR2LIN
-        EI 
+        EI
         LD B,40
-ER_PAUS HALT 
+ER_PAUS HALT
         LD A,2
         OUT (#FE),A
         DJNZ ER_PAUS
@@ -463,7 +468,7 @@ CLEAR2LIN
         LD DE,LIN2ADR
 CLEARLI CALL PRNTMES
         DB "            ",#FF
-        RET 
+        RET
 
 PRNTMES2
         LD DE,LIN2ADR
@@ -505,7 +510,7 @@ CL_LA   LD DE,LIN1ADR-1
         LD DE,LIN2ADR-1
         CALL PRNTMES
         DB #20,#FF
-        RET 
+        RET
 
 TR_DOS  PUSH HL
         PUSH DE
@@ -568,7 +573,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -582,10 +587,10 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
@@ -598,5 +603,5 @@ BYTE0   DB 0
 FILE_DIS_SCR
         DB "scr",#00,#1B,#1B
 
-ENDOBJ  DISPLAY 
+ENDOBJ  DISPLAY
         DISPLAY "End object: ",ENDOBJ

@@ -1,10 +1,15 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         DISPLAY "WAVE SCREENFADE. CODED BY @LX/BW zo.oz.zooz"
         ORG 25500
 ATRBUF  EQU #8400
 ADRBUF  EQU #BA00
 PHASES  EQU 32
 
-        DI 
+        DI
         LD HL,TABL
         XOR A
 DTABL   LD B,#20
@@ -46,7 +51,7 @@ FADEP   LD DE,ATRBUF
         LD BC,#300
         PUSH DE
         PUSH HL
-        LDIR 
+        LDIR
         POP DE
         POP HL
         LD B,8
@@ -55,12 +60,12 @@ FADEPL  PUSH BC
         PUSH DE
         PUSH HL
         PUSH HL
-        EI 
+        EI
         DUP 4
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD B,3
-        LDIR 
+        LDIR
         POP HL
         CALL FADE_
         POP HL
@@ -97,12 +102,12 @@ AROUND  DJNZ LOOP1
         LD B,3
         PUSH HL
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP HL
         LD DE,ATRBUF
         PUSH DE
-        LDIR 
+        LDIR
         POP HL
         LD B,6
         LD DE,ATRBUF+#1200
@@ -114,7 +119,7 @@ SFAD_L  PUSH BC
         POP DE
         POP HL
         LD B,3
-        LDIR 
+        LDIR
         LD A,D
         SUB 6
         LD D,A
@@ -137,22 +142,22 @@ SFAD_L  PUSH BC
         LD HL,INT
         LD (#BFC0),HL
         IM 2
-        DI 
+        DI
         LD HL,#4000
         LD DE,#C000
         LD BC,#1B00
-        LDIR 
+        LDIR
         LD HL,ATRBUF
         LD DE,ATRBUF+1
         LD BC,#2FF
         LD (HL),L
-        LDIR 
+        LDIR
         LD A,ATRBUF/#100
         LD HL,ADRBUF
         LD DE,ADRBUF+1
 CRADTL  LD B,1
         LD (HL),A
-        LDIR 
+        LDIR
         INC A
         CP ATRBUF/#100+3
         JR NZ,CRADTL
@@ -161,8 +166,8 @@ CRADTL  LD B,1
 OUT_ML  PUSH AF
         INC A
         LD (PHASE),A
-        EI 
-        HALT 
+        EI
+        HALT
         LD DE,#D800
         LD L,E
         LD IX,TABL
@@ -180,7 +185,7 @@ PHASE   EQU $-1
 NOFADZ  LD H,A
         INC IY
         INC IX
-        LDI 
+        LDI
         JP PE,OUT_L1
 ALLATR  POP AF
         INC A
@@ -191,8 +196,8 @@ ALLATR  POP AF
         LD BC,#7FFD
         OUT (C),A
         IM 1
-        EI 
-        RET 
+        EI
+        RET
 
 NOFADZ1 INC IY
         INC IX
@@ -209,16 +214,16 @@ MODE48  LD B,7
 OUT_L   PUSH BC
         LD DE,#5800
         LD BC,#300
-        EI 
+        EI
         DUP 4
-        HALT 
-        EDUP 
-        LDIR 
+        HALT
+        EDUP
+        LDIR
         POP BC
         DJNZ OUT_L
-        RET 
+        RET
 
-INT     DI 
+INT     DI
         PUSH AF
         PUSH BC
         LD A,#15+8
@@ -229,7 +234,7 @@ SCREENP EQU $-1
         LD (SCREENP),A
         POP BC
         POP AF
-        RET 
+        RET
 
 
 
@@ -254,7 +259,7 @@ NODPAP  LD (HL),D
         LD A,B
         OR C
         JR NZ,FAD_LP
-        RET 
+        RET
 
 TABL    DS #300,#C9
 SCREEN  INCBIN "PICTURE"

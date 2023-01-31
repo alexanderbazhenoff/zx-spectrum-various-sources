@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6000
         DISPLAY "Конвертилка из стандартного скрина в"
         DISPLAY "'карандашную рисовалку'"
@@ -124,7 +129,7 @@ NO_AA1
         LD (DE),A
         POP BC
         JP LOOP
-EXIT    RET 
+EXIT    RET
 
 DELETE  EX DE,HL
         LD DE,11
@@ -139,7 +144,7 @@ SOUND   PUSH DE
         LD DE,1
         CALL #03B5
         POP DE
-        RET 
+        RET
 
 BEGIN   LD HL,(AT_AD)
         LD A,(ATTR)

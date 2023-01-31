@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #6000
 
 BORDER  EQU 0
@@ -5,7 +10,7 @@ BORDER  EQU 0
 
 
 
-        DI 
+        DI
         LD BC,#7FFD
         LD HL,#FFFF
         LD DE,#1710
@@ -23,7 +28,7 @@ BORDER  EQU 0
         CALL PR_SCR
         LD DE,#D800
         LD BC,#300
-        LDIR 
+        LDIR
         LD HL,#AE00
         LD A,H
         LD I,A
@@ -38,15 +43,15 @@ INTI_L1 LD (HL),A
         LD (HL),#C9
         IM 2
 
-ML1     EI 
-        HALT 
-        DI 
+ML1     EI
+        HALT
+        DI
         DUP 5
         LD (0),BC
-        EDUP 
+        EDUP
         DUP 4
-        NOP 
-        EDUP 
+        NOP
+        EDUP
 
         LD BC,#7FFD
         LD DE,#1810
@@ -58,8 +63,8 @@ PAUPA11 EQU $-1
 
 PAUS11  DUP 10
         LD (0),BC
-        EDUP 
-        NOP 
+        EDUP
+        NOP
         LD E,#10
         DJNZ PAUS11
 
@@ -70,20 +75,20 @@ PAUPA21 EQU $-1
         OUT (C),L
         DUP 8
         LD (0),BC
-        EDUP 
+        EDUP
         INC A
         DEC A
 
 PAUS21  DUP 21
         LD (0),BC
-        EDUP 
+        EDUP
         DEFB 0,0
         LD E,#10
         DJNZ PAUS21
 
         LD R,A
         LD E,#10
-        NOP 
+        NOP
         LD BC,#7FFD
         OUT (C),E
         LD C,#FE
@@ -113,16 +118,16 @@ PAUPA31 EQU $-1
 
         CALL WAITSPC
 
-        LDIR 
-ML      EI 
-        HALT 
-        DI 
+        LDIR
+ML      EI
+        HALT
+        DI
         DUP 5
         LD (0),BC
-        EDUP 
+        EDUP
         DUP 4
-        NOP 
-        EDUP 
+        NOP
+        EDUP
 
         LD BC,#7FFD
         LD DE,#1810
@@ -134,8 +139,8 @@ PAUPA1  EQU $-1
 
 PAUS1   DUP 10
         LD (0),BC
-        EDUP 
-        NOP 
+        EDUP
+        NOP
         LD E,#10
         DJNZ PAUS1
 
@@ -146,20 +151,20 @@ PAUPA2  EQU $-1
         OUT (C),L
         DUP 8
         LD (0),BC
-        EDUP 
+        EDUP
         INC A
         DEC A
 
 PAUS2   DUP 21
         LD (0),BC
-        EDUP 
+        EDUP
         DEFB 0,0
         LD E,#10
         DJNZ PAUS2
 
         LD R,A
         LD E,#10
-        NOP 
+        NOP
         LD BC,#7FFD
         OUT (C),E
         LD C,#FE
@@ -179,8 +184,8 @@ PAUPA3  EQU $-1
         JP NZ,ML
 
         IM 1
-        EI 
-        RET 
+        EI
+        RET
 
 PR_SCR  LD BC,#C020
 
@@ -206,23 +211,23 @@ AROUND  DJNZ LOOP1
         POP BC
         DEC C
         JR NZ,LOOP
-        RET 
+        RET
 
 WAITSPC LD A,#7F
         IN A,(#FE)
-        RRA 
+        RRA
         JR C,WAITSPC
-        RET 
+        RET
 MODE48  LD HL,SCREEN
         CALL MOVE
         CALL WAITSPC
         LD HL,SCREEN2
         CALL MOVE
-        EI 
-        RET 
+        EI
+        RET
 MOVE    LD DE,#A500
         LD BC,#1B00
-        LDIR 
+        LDIR
         JP 40777
 
 SCREEN  INCBIN "PICTURE"

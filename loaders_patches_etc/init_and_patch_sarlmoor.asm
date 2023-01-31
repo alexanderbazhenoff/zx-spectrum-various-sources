@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 CHEAT   EQU #FF         ;0 - cheat off
 
         ORG #5B14
@@ -10,26 +15,26 @@ CHEAT   EQU #FF         ;0 - cheat off
         ORG #FCB2
         DUP #130
         DB 0
-        EDUP 
+        EDUP
 
         ;clear data garbage
         ORG #FEAE
         DUP #100
         DB 0
-        EDUP 
+        EDUP
 
         ORG #60AE
         DUP 4
         DB 0
-        EDUP 
+        EDUP
         ORG #60B8
-        DI 
+        DI
 
         ;correct CLS
         MACRO CLS
         CALL #7CC3
         CALL #7CE1
-        ENDM 
+        ENDM
         ORG #C219
         CLS
         ORG #C268
@@ -49,30 +54,30 @@ CLS0001 DEC HL
         LD (HL),A
         CP (HL)
         JR Z,CLS0001
-        RET 
-CLS0002 EI 
-        HALT 
+        RET
+CLS0002 EI
+        HALT
         LD HL,#5800
-        RET 
+        RET
 
         ;correct 'game over' & 'congratulations' string routines
         ORG #C4E5
         CALL KPAUS11
 KPAUS12 CALL KEY_RQ
         JR Z,KPAUS12
-        RET 
+        RET
         ORG #C519
         JR #C4E5
 
         ;correct 'slides' routines
         ORG #C98E
 GR_MTK  LD B,7
-GR_MTK0 EI 
-        HALT 
+GR_MTK0 EI
+        HALT
         JR #C9A0
         DUP 6
         DB 0
-        EDUP 
+        EDUP
 
         ORG #C6AE
         LD B,6
@@ -114,19 +119,19 @@ GR_MTK0 EI
         JR #CA19
         DUP 5
         DB 0
-        EDUP 
+        EDUP
 
         ORG #CA02
         LD B,22
-PAUS000 EI 
-        HALT 
+PAUS000 EI
+        HALT
         DJNZ PAUS000
-        RET 
+        RET
 KEY_RQ  XOR A
 KEY_RQ1 IN A,(#FE)
-        CPL 
+        CPL
         AND #1F
-        RET 
+        RET
 
         ORG #6000
         LD A,(#5B14)
@@ -152,7 +157,7 @@ KEY_RQ1 IN A,(#FE)
         LD DE,#82B1
         LD BC,#8395-#82B0
         LD (HL),B
-        LDIR 
+        LDIR
         LD A,#CD
         LD (#9D9F),A
         LD (#9DE2),A
@@ -173,8 +178,8 @@ KEY_RQ1 IN A,(#FE)
 
 NOCHEAT JR #60B2
 SYNCP01
-        EI 
-        HALT 
+        EI
+        HALT
         LD BC,#700
         CALL SYNCPL
         JP #CA19
@@ -183,35 +188,35 @@ SYNCPL  DEC BC
         LD A,B
         OR C
         JR NZ,SYNCPL
-        RET 
+        RET
 
 KPAUS11 CALL KEY_RQ
         JR NZ,KPAUS11
-        RET 
+        RET
 
 CHEATK  LD A,#FB
         CALL KEY_RQ1
         CP 4+8+16
-        RET 
+        RET
 
 SKPLEV1 CALL CHEATK
         LD A,(#6822)
         RET NZ
         LD A,1
-        RET 
+        RET
 SKPLEV2 CALL CHEATK
         LD A,(#6822)
         RET NZ
         LD A,2
         LD (#6D94),A
         DEC A
-        RET 
+        RET
 SKPLEV3 CALL CHEATK
         LD A,(#6822)
         RET NZ
         LD A,4
         LD (#60E1),A
         LD A,1
-        RET 
-        RET 
+        RET
+        RET
 

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #8000
 
         DISP #5D3B
@@ -7,7 +12,7 @@
         DB #13,1,#10,7,#11,0
         DB "  Loader by Alx/BW 23.o1.2oo2  ",#10
 
-        DI 
+        DI
         LD SP,#6F39
         CALL CLS
         LD BC,#EFF7
@@ -27,8 +32,8 @@
         PUSH HL
         CALL LOAD
         LD B,#80
-PAUSE   EI 
-        HALT 
+PAUSE   EI
+        HALT
         LD A,#FE
         IN A,(#FE)
         BIT 3,A
@@ -45,8 +50,8 @@ NOCHEAT DJNZ PAUSE
         CALL LOAD
         CALL ENTER_K
         JR C,NO_SURPRISE
-        EI 
-        HALT 
+        EI
+        HALT
         LD HL,#5A57
         LD B,4
         LD A,#45
@@ -63,7 +68,7 @@ SUR_L   PUSH BC
         INC DE
         LD (HL),A
         LD BC,5
-        LDIR 
+        LDIR
         POP HL
         LD BC,#20
         ADD HL,BC
@@ -72,7 +77,7 @@ SUR_L   PUSH BC
 PAUS_S  CALL ENTER_K
         JR NC,PAUS_S
 NO_SURPRISE
-        DI 
+        DI
         POP HL
         CALL DEP
         JR NO_C
@@ -84,11 +89,11 @@ NO_C    CALL CLS
 
 ENTER_K LD A,#BF
         IN A,(#FE)
-        RRA 
-        RET 
+        RRA
+        RET
 
-CLS     EI 
-        HALT 
+CLS     EI
+        HALT
         XOR A
         OUT (#FE),A
         LD HL,#5B00
@@ -96,7 +101,7 @@ CLS_L   DEC HL
         LD (HL),A
         OR (HL)
         JR Z,CLS_L
-        RET 
+        RET
 
 ;АДРЕС БУФФЕРА ДЛЯ РАСПАКОВКИ.
 TableAdr       EQU #6200;[#05C0]
@@ -126,7 +131,7 @@ DEPACK         PUSH DE
                JR C,$+4
                LD D,H
                LD E,L
-               LDDR 
+               LDDR
                INC DE
 
                PUSH DE
@@ -138,7 +143,7 @@ UnpackTree     LD DE,BitLenTb1-1
                LD A,#10
                SRL C
                CALL Z,GetNextByte
-               RLA 
+               RLA
                JR NC,$-6
                INC DE
                LD (DE),A
@@ -215,7 +220,7 @@ LastDist       EQU $+1
                OR A
                SBC HL,DE
                POP DE
-               LDIR 
+               LDIR
                POP BC
                JR UnpackWord
 
@@ -228,7 +233,7 @@ Stop           POP AF
 DecodeNum      ADD A,-#05
                RET NC
                ADD A,#05-#03
-               RRA 
+               RRA
                LD L,#01
                RL L
                SRL C
@@ -237,7 +242,7 @@ DecodeNum      ADD A,-#05
                DEC A
                JR NZ,$-8
                INC HL
-               RET 
+               RET
 
 GetWord1       LD HL,Tree1Adr
 
@@ -253,11 +258,11 @@ GetWord        SRL C
                CP #40
                JR NC,GetWord
                LD A,L
-               RET 
+               RET
 GetNextByte    LD C,(IX)
                INC IX
                RR C
-               RET 
+               RET
 
 Tree1Create    LD HL,BitLenTb1
                LD BC,Tree1Adr
@@ -270,7 +275,7 @@ TreeCreate     INC DE
                DEC HL
                DEC HL
                PUSH BC
-               EXX 
+               EXX
                POP DE
                LD H,D
                LD L,E
@@ -281,19 +286,19 @@ TreeCreate     INC DE
                PUSH AF
                LD C,A
 
-TC1            EXX 
+TC1            EXX
                LD B,D
                LD C,E
                ADD HL,BC
-               EXX 
+               EXX
 
 TC2            LD B,A
                LD A,C
-               EXX 
-               CPDR 
+               EXX
+               CPDR
                LD A,B
                OR C
-               EXX 
+               EXX
                LD A,B
                JR NZ,TC4
                INC C
@@ -312,9 +317,9 @@ TC3            INC DE
                PUSH AF
 TC4            CP C
                JR NZ,TC3
-               EXX 
+               EXX
                PUSH BC
-               EXX 
+               EXX
                POP BC
                DEC BC
                LD (HL),B
@@ -369,7 +374,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -383,17 +388,17 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
         JP #3D2F
 
         DB #0D
-        ENT 
+        ENT
 
 ENDOBJ  DISPLAY ENDOBJ
 

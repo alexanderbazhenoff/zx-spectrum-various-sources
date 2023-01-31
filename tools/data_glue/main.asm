@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 ; Dataglue packer by alx^bw
 
@@ -9,25 +10,25 @@ TEST    EQU 1
 
         IF0 TEST
 CONVBUF EQU #6600
-        ELSE 
+        ELSE
 CONVBUF EQU #6000
-        ENDIF 
+        ENDIF
 
  DISPLAY "data glue v1.0 by alx/brainwave"
- DISPLAY 
+ DISPLAY
  DISPLAY "max lenght of gluing block: #9F00"
- DISPLAY 
+ DISPLAY
  DISPLAY "index: byte0...2 - смещение"
  DISPLAY "                   [byte мл.,ср.,старший]"
  DISPLAY "       byte3     - длина блока (в секторах)"
- DISPLAY 
+ DISPLAY
  DISPLAY "тестовый режим: "
         IF0 TEST
         DISPLAY /L," вкл."
-        ELSE 
+        ELSE
         DISPLAY /L," выкл."
  DISPLAY "для сохранения кодового блока - RUN OBJECT!"
-        ENDIF 
+        ENDIF
 
 
 
@@ -46,27 +47,27 @@ L_BEG_OBJECT
         LD DE,#5901
         LD BC,#01FF
         LD (HL),L
-        LDIR 
+        LDIR
 
         IFN TEST
         LD HL,CODE_MAIN
         LD DE,#4800
         LD BC,CODE_MAIN_END-CODE_MAIN
         PUSH DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 CODE_MAIN
         DISP #4800
-        ENDIF 
+        ENDIF
         IF0 TEST
         LD (STARTSP),SP
-        ENDIF 
+        ENDIF
 START   IFN TEST
         LD SP,CONVBUF
-        ELSE 
+        ELSE
         LD SP,0
 STARTSP EQU $-2
-        ENDIF 
+        ENDIF
         LD A,2
         CALL 5633
         CALL CL_ATTR
@@ -92,7 +93,7 @@ DCNG_L  LD HL,SRC_DRIV
         LD (DD_TXT0),A
         LD HL,SD_TXT
         CALL PRINT
-        EI 
+        EI
         RES 5,(IY+1)
 WKEY    BIT 5,(IY+1)
         JR Z,WKEY
@@ -257,7 +258,7 @@ NADTRS1
         LD L,0
         LD DE,CONVBUF
         LD B,L
-        LDIR 
+        LDIR
         CALL FNAM_ADD
         LD A,(FILE_NOR)
         INC A
@@ -266,7 +267,7 @@ NADTRS1
         LD (FILE_NOR),A
         DUP 4
         INC IX
-        EDUP 
+        EDUP
         JP EXECUT_L
 
 HEADR_CR
@@ -289,7 +290,7 @@ HEADR_CR
         LD D,'CONVBUF
         LD HL,INNERSEC_STRING
         LD BC,EINNERSEC_STRING-INNERSEC_STRING
-        LDIR 
+        LDIR
         LD HL,CONVBUF
         LD DE,(LAST_SAVED_TRSEC)
         LD BC,#0106
@@ -342,7 +343,7 @@ CRGLH_2 LD (#50E1),HL
         LD H,0
         DUP 4
         ADD HL,HL
-        EDUP 
+        EDUP
         PUSH HL
         POP DE
 
@@ -362,7 +363,7 @@ CRGLH_2 LD (#50E1),HL
 COPY_5CF4_TO_LSTS
         LD HL,(#5CF4)
         LD (LAST_SAVED_TRSEC),HL
-        RET 
+        RET
 
 CRGLDISCR
         PUSH HL,DE,BC
@@ -386,7 +387,7 @@ CRGLDISCR
         POP BC,DE,HL
         LD (#5CEB),DE
         LD B,0
-        RET 
+        RET
 
 
 
@@ -403,10 +404,10 @@ FNAM_AD0
         DEC HL
         DJNZ FNAM_AD0
         INC (HL)
-        RET 
+        RET
 
 SRC_DRIV_SEL
-        NOP 
+        NOP
         LD A,(SRC_DRIV)
 DR_SEL  LD C,A
         LD (#5CF6),A
@@ -414,9 +415,9 @@ DR_SEL  LD C,A
         AND 4+8+16+32+64+128
         OR C
         LD (#5D16),A
-        RET 
+        RET
 DST_DRIV_SEL
-        NOP 
+        NOP
         LD A,(DST_DRIV)
         JR DR_SEL
 
@@ -425,7 +426,7 @@ SEL_DRIV
         INC A
         AND 3
         LD (HL),A
-        RET 
+        RET
 
 PRINT
 PRINTL  LD A,(HL)
@@ -441,7 +442,7 @@ DISCR_COPY
         LD C,#13
         JP #3D13
 
-DOS0    EXA 
+DOS0    EXA
         PUSH HL
         LD HL,(23613)
         LD (ERR+1),HL
@@ -459,7 +460,7 @@ DOS0    EXA
         LD (#5D15),A
         LD (#5D17),A
         LD (SP2),SP
-        EXA 
+        EXA
         JP #3D13
 DERR    LD SP,#3131
 SP2     EQU $-2
@@ -468,7 +469,7 @@ ERR     LD HL,#2121
         LD (23613),HL
         LD A,#C9
         LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -482,10 +483,10 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
@@ -494,7 +495,7 @@ RIA     DUP 3
 DOS     PUSH IX,HL,DE,BC,AF
         CALL DOS0
         POP AF,BC,DE,HL,IX
-        EXA 
+        EXA
         LD A,(23823)
         OR A
         RET Z
@@ -505,13 +506,13 @@ DOS     PUSH IX,HL,DE,BC,AF
         LD A,2
         OUT (#FE),A
         DUP 4
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         XOR A
         OUT (#FE),A
-        EXA 
+        EXA
         JR DOS
-        RET 
+        RET
 OPEREND2
         CALL HEADR_CR
         LD HL,ERRTXT_END2
@@ -551,8 +552,8 @@ CL_ATTR XOR A
         LD DE,#5821
         LD BC,#00DF
         LD (HL),A
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 SRC_DRIV DB 0
 DST_DRIV DB 0
@@ -604,10 +605,10 @@ INNERSEC_STRING
 EINNERSEC_STRING
 
         IFN TEST
-        ENT 
+        ENT
 CODE_MAIN_END
 L_END_OBJECT
-        ENDIF 
+        ENDIF
 
         IFN TEST
         ORG #E000
@@ -649,5 +650,5 @@ BASIC_BEG
  DB "15619",#22,#3A,#EA,#3A,#F7,#22,"DGlue1_0",#22,#AF,#0D
  DB #80,#AA,1,0
 BASIC_END
-        ENDIF 
+        ENDIF
 

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #639C
         LD SP,#5FFF
         INCLUDE "BORDER"
@@ -23,13 +28,13 @@ NODPAP  LD (HL),D
         XOR A
         OUT (#FE),A
         DJNZ FAD_LP
-        EI 
+        EI
         LD B,8
 FAD_LL  PUSH BC
-        HALT 
-        HALT 
-        HALT 
-        HALT 
+        HALT
+        HALT
+        HALT
+        HALT
         LD HL,#5800
         LD BC,#300
         LD D,#FF
@@ -47,7 +52,7 @@ FAD_L1  LD E,(HL)
         LD DE,#4000
         PUSH DE
         LD B,1
-        LDIR 
+        LDIR
         LD HL,FILE
         LD DE,#6000
         LD B,#90
@@ -79,6 +84,6 @@ PAUS    DEC BC
         LD (#746B),HL
 NO_SI   JP #714B
 
-        ENT 
+        ENT
 FILE    INCBIN "CODE"
 ENDFILE

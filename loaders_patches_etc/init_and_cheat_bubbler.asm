@@ -1,5 +1,10 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG 25000
-        DI 
+        DI
         LD SP,#5E00
         LD B,#FF
 BRDM    PUSH BC
@@ -43,13 +48,13 @@ NODINK  LD A,D
 NODPAP  LD (HL),D
         INC L
         DJNZ FAD_LP
-        EI 
+        EI
         LD B,8
 FAD_LL  PUSH BC
-        HALT 
-        HALT 
-        HALT 
-        HALT 
+        HALT
+        HALT
+        HALT
+        HALT
         LD HL,#5800
         LD BC,#300
         LD D,#FF
@@ -63,7 +68,7 @@ FAD_L1  LD E,(HL)
         JR NZ,FAD_L1
         POP BC
         DJNZ FAD_LL
-        DI 
+        DI
         LD HL,JAJA
         LD DE,#4000
         LD BC,COD_BL-JAJA
@@ -74,7 +79,7 @@ JAJA
         LD HL,COD_BL
         LD DE,#5E00
         LD BC,#9470
-        LDIR 
+        LDIR
         JR NO_UL
         LD A,#B7
         LD (#E0AA),A
@@ -92,7 +97,7 @@ NO_OOF  JR NO_IGK
         LD HL,DATA
         LD DE,#5B00
         LD BC,#002A
-        LDIR 
+        LDIR
         LD A,#C3
         LD (#CE39),A
         LD HL,#5B00
@@ -128,7 +133,7 @@ DATA    CALL #E4CC
         PUSH AF
         LD BC,#DFFE
         IN A,(C)
-        RRA 
+        RRA
         JR C,NOSKIP
         LD B,#BF
         IN A,(C)
@@ -146,6 +151,6 @@ NOSKIP  POP AF
         POP BC
         JP #CE3C
 
-        ENT 
+        ENT
 COD_BL  INCBIN "CODE"
 ENDCODE

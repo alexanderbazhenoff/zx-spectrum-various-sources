@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
 ; Compare differences and save routines for DCpack v1.0 by alx^bw
@@ -16,7 +17,7 @@ MODE    EQU 0           ;0 - XOR, 1 - PUT DIFFERENCES OF 1,
                         ;2 - PUT DIFFERENCES OF 2
 
 ;       DISP #4000
-        DI 
+        DI
         LD (STEK),SP
         LD SP,#4800
         LD B,LENGHT
@@ -55,10 +56,10 @@ CPLOOP  LD A,(DE)
         POP AF
         IF0 MODE
         XOR (HL)
-        ENDIF 
+        ENDIF
         IF0 MODE-1
         LD A,(HL)
-        ENDIF 
+        ENDIF
 
         LD (IX),A
 ANALOG  INC HL
@@ -77,5 +78,5 @@ ATTRIB  EQU $-2
         DJNZ LOOP
         LD SP,#3131
 STEK    EQU $-2
-        RET 
+        RET
 ;       ENT

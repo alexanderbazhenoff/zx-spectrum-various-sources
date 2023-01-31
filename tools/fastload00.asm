@@ -1,27 +1,27 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
-
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
         ORG #6000+#8E00
         INCLUDE "BORDER"
         INCLUDE "$FADE0"
-        DI 
+        DI
         LD HL,TEST
         LD DE,#4000
         LD BC,#20
-        LDIR 
+        LDIR
         CALL #4000
         JR NZ,MODE128
         LD HL,LOAD
         LD DE,#5B00
         LD BC,#80
-        LDIR 
+        LDIR
         JR START
 MODE128 LD HL,ZUZU
         LD DE,#B71B
         LD BC,#10
-        LDIR 
+        LDIR
 START   LD HL,#A784
         PUSH HL
         LD HL,#6000+#8E00
@@ -29,7 +29,7 @@ START   LD HL,#A784
         LD BC,#FFFF-#6000-#8E00
         JP #33C3
 
-ZUZU    DI 
+ZUZU    DI
         IM 1
         LD BC,#7FFD
         LD A,#11
@@ -38,7 +38,7 @@ ZUZU    DI
 
 LOAD
         DISP #5B00
-        DI 
+        DI
         LD HL,#5800
         LD B,L
         LD A,L
@@ -52,7 +52,7 @@ LL5B1C  PUSH BC
         PUSH DE
         LD A,D
         OR A
-        RRA 
+        RRA
         LD C,A
         LD A,#3C
         JR NC,LL5B28
@@ -98,4 +98,4 @@ TEST    LD HL,#FFFF
         LD (HL),E
         OUT (C),D
         CP E
-        RET 
+        RET

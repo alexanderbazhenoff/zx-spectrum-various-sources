@@ -1,13 +1,18 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 ROUTADR EQU 40000
 ATRBUF  EQU #C000
 SPEED   EQU 6
 
         ORG ROUTADR
 
-SCRFADE DI 
+SCRFADE DI
         LD HL,#2758
-        EXX 
-        EI 
+        EXX
+        EI
         LD HL,#5800
         LD BC,#300
         LD D,B
@@ -32,7 +37,7 @@ FADEP   LD DE,ATRBUF
         LD B,3
         PUSH DE
         PUSH HL
-        LDIR 
+        LDIR
         POP DE
         POP HL
         LD B,8
@@ -42,10 +47,10 @@ FADEPL  PUSH BC
         PUSH HL
         PUSH HL
         DUP SPEED
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD B,3
-        LDIR 
+        LDIR
         POP HL
         CALL FADE_
         POP HL
@@ -85,12 +90,12 @@ AROUND  DJNZ LOOP1
         LD B,3
         PUSH HL
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP HL
         LD DE,ATRBUF
         PUSH DE
-        LDIR 
+        LDIR
         POP HL
         LD B,6
         LD DE,ATRBUF+#1200
@@ -102,7 +107,7 @@ SFAD_L  PUSH BC
         POP DE
         POP HL
         LD B,3
-        LDIR 
+        LDIR
         LD A,D
         SUB 6
         LD D,A
@@ -117,13 +122,13 @@ OUT_L   PUSH BC
         ;LD BC,#300
         LD B,3
         DUP SPEED
-        HALT 
-        EDUP 
-        LDIR 
+        HALT
+        EDUP
+        LDIR
         POP BC
         DJNZ OUT_L
 
-        RET 
+        RET
 
 FADE_   ;LD BC,#300
         LD B,3
@@ -146,7 +151,7 @@ NODPAP  LD (HL),D
         LD A,B
         OR C
         JR NZ,FAD_LP
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"
 ENDOBJ  DISPLAY "total lenght: ",ENDOBJ-ROUTADR

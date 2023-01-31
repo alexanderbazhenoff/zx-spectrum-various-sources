@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 
 ADDR    EQU #6000 ;START OF CODE
 TABL    EQU #FF00
@@ -21,12 +26,12 @@ NODINK  LD A,D
 NODPAP  LD (HL),D
         INC L
         DJNZ FAD_LP
-        EI 
+        EI
         LD C,8
-FAD_LL  HALT 
-        HALT 
-        HALT 
-        HALT 
+FAD_LL  HALT
+        HALT
+        HALT
+        HALT
         LD (STEK),SP
         LD SP,#5800
         LD B,#C0
@@ -50,7 +55,7 @@ FAD_L1  POP DE
 STEK    EQU $-2
         DEC C
         JR NZ,FAD_LL
-        RET 
+        RET
 ENDOBJ
         DISPLAY "SCREEN FADE TO 7 SUB-PROG (STEK VER.) (C)ALX"
         DISPLAY "Org_addr=",ADDR

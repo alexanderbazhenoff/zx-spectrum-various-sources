@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 ATRBUF  EQU #8400
 ADRBUF  EQU #BA00
 PHASES  EQU 33
@@ -21,9 +26,9 @@ TRACKSEC        EQU #2606
         ORG PART-2
         IFN CHEAT
         DW #FFFF
-        ELSE 
+        ELSE
         DW 0
-        ENDIF 
+        ENDIF
 
         ORG #5D3B
         INCBIN "LOADER.B"
@@ -31,25 +36,25 @@ TRACKSEC        EQU #2606
         ORG #6000
         JP START
 FADEOUT0
-        DI 
+        DI
         LD HL,#2758
-        EXX 
+        EXX
 WAITK   XOR A
         IN A,(#FE)
-        CPL 
+        CPL
         AND #1F
         JR Z,WAITK
         LD B,8
 FADO0_  PUSH BC
-        EI 
+        EI
         DUP FADOUT
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD HL,#5800
         CALL FADE_
         POP BC
         DJNZ FADO0_
-        RET 
+        RET
 
 FADE_   ;LD BC,#300
         LD B,3
@@ -72,7 +77,7 @@ NODPAP  LD (HL),D
         LD A,B
         OR C
         JR NZ,FAD_LP
-        RET 
+        RET
 TEST128K
         LD HL,#FFFF
         LD DE,#1310
@@ -80,7 +85,7 @@ TEST128K
         JR Z,MODE128
         XOR A
 MODE128 LD (#5B5C),A
-        RET 
+        RET
 
 TEST128_
         LD BC,#7FFD
@@ -91,7 +96,7 @@ TEST128_
         OUT (C),E
         LD A,(HL)
         CP E
-        RET 
+        RET
 SKIPSEC LD HL,(#5CF4)
 SKIPSC_ INC L
         BIT 4,L
@@ -100,12 +105,12 @@ SKIPSC_ INC L
         INC H
 SKIPSC1 DJNZ SKIPSC_
         LD (#5CF4),HL
-        RET 
+        RET
 START
-        DI 
+        DI
         LD SP,#6000
         LD HL,#2758
-        EXX 
+        EXX
         LD A,(PART)
         OR A
         JR Z,PART1
@@ -122,7 +127,7 @@ PART3   LD HL,SCREEN3
         LD HL,YO_DAT3
         LD DE,#A700
         LD B,1
-        LDIR 
+        LDIR
         LD HL,LO_YO3
         LD DE,#5B90
         LD C,ELO_YO3-LO_YO3
@@ -133,13 +138,13 @@ PART1   CALL OUTSCR
         LD HL,YO_DAT1
         LD DE,#B700
         LD B,1
-        LDIR 
+        LDIR
         LD HL,LO_YO1
         LD C,ELO_YO1-LO_YO1
 PART_   LD DE,#5D3B
 PART0_  PUSH DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 
         ;---- PART2
 PART2   LD HL,SCREEN2
@@ -149,7 +154,7 @@ PART2   LD HL,SCREEN2
         LD HL,YO_DAT2
         LD DE,#7300
         LD B,1
-        LDIR 
+        LDIR
         LD A,#C9
         LD (DEP),A
         LD B,#56
@@ -164,7 +169,7 @@ PART2   LD HL,SCREEN2
         LD A,(#5B5C)
         OR A
         JR Z,PART2481
-        DI 
+        DI
         CALL DEP+1
         CALL #6300
 PART2481
@@ -189,7 +194,7 @@ PART2481
         JR NZ,PART2128A
         CALL FADEOUT0
 PART2128A
-        DI 
+        DI
         POP HL
         LD BC,#7FFD
         LD A,#18
@@ -206,7 +211,7 @@ PART2128A
         LD HL,#C000
         LD DE,#4000
         LD B,8
-        LDIR 
+        LDIR
         POP BC
         LD A,#10
         OUT (C),A
@@ -216,8 +221,8 @@ PART2482
 
 MOVESCR LD DE,SCREEN
         LD BC,#1B00
-        LDIR 
-        RET 
+        LDIR
+        RET
 
         ;-- LOADER1
 LO_YO1
@@ -226,7 +231,7 @@ LO_YO1
         LD B,#56
         CALL LOAD_DEP
         JP #F800
-        ENT 
+        ENT
 ELO_YO1
         ;-- LOADER3
 LO_YO3
@@ -248,7 +253,7 @@ LO_YO3
         LD HL,#C162
         LD DE,#CA00
         LD B,1
-        LDIR 
+        LDIR
         LD A,#F3
         LD (DEP),A
         LD HL,#D200
@@ -259,25 +264,25 @@ LO_YO3
         LD A,#10
         CALL LO_YO3_BANK
 LO_YO348
-        DI 
+        DI
         POP HL
         CALL DEP+1
 LO_YO3WK
         XOR A
         IN A,(#FE)
-        CPL 
+        CPL
         AND #1F
         JR Z,LO_YO3WK
         LD HL,#300
         LD (#73C5),HL
         JP #7354
 LO_YO3_BANK
-        DI 
+        DI
         LD BC,#7FFD
         LD (#5B5C),A
         OUT (C),A
-        RET 
-        ENT 
+        RET
+        ENT
 ELO_YO3
 
 YO_DAT1 INCBIN "y1#1B.o"
@@ -285,7 +290,7 @@ YO_DAT2 INCBIN "y2#2#BA.o"
 YO_DAT3 INCBIN "y3#3B.o"
 YO_EDAT
 
-OUTSCR  DI 
+OUTSCR  DI
         LD HL,#BE00
         LD B,L
         LD A,H
@@ -313,7 +318,7 @@ NO0ATR  DEC BC
         LD A,D
         OR E
         JR Z,NOFADE0
-        ENDIF 
+        ENDIF
 
         IFN FADBEF
 FADEP   LD DE,ATRBUF
@@ -322,7 +327,7 @@ FADEP   LD DE,ATRBUF
         LD BC,#300
         PUSH DE
         PUSH HL
-        LDIR 
+        LDIR
         POP DE
         POP HL
         LD B,8
@@ -331,12 +336,12 @@ FADEPL  PUSH BC
         PUSH DE
         PUSH HL
         PUSH HL
-        EI 
+        EI
         DUP FADOUT
-        HALT 
-        EDUP 
+        HALT
+        EDUP
         LD B,3
-        LDIR 
+        LDIR
         POP HL
         CALL FADE_
         POP HL
@@ -345,9 +350,9 @@ FADEPL  PUSH BC
         POP BC
         DJNZ FADEPL
         LD D,#40
-        ELSE 
+        ELSE
         LD DE,#4000
-        ENDIF 
+        ENDIF
 
 NOFADE0 LD HL,SCREEN
         LD BC,#C020
@@ -377,13 +382,13 @@ AROUND  DJNZ LOOP1
         LD B,3
         PUSH HL
         PUSH BC
-        LDIR 
+        LDIR
         POP BC
         POP HL
         ;LD DE,ATRBUF
         LD D,'ATRBUF
         PUSH DE
-        LDIR 
+        LDIR
         POP HL
         LD B,6
         ;LD DE,ATRBUF+#1200
@@ -396,7 +401,7 @@ SFAD_L  PUSH BC
         POP DE
         POP HL
         LD B,3
-        LDIR 
+        LDIR
         LD A,D
         SUB 6
         LD D,A
@@ -413,23 +418,23 @@ SFAD_L  PUSH BC
         LD HL,INT
         LD (#BFC0),HL
         IM 2
-        DI 
+        DI
         LD HL,#4000
         LD DE,#C000
         LD BC,#1B00
-        LDIR 
+        LDIR
         ;LD HL,ATRBUF
         LD H,'ATRBUF
         LD DE,ATRBUF+1
         LD BC,#2FF
         LD (HL),L
-        LDIR 
+        LDIR
         LD A,'ATRBUF
         LD HL,ADRBUF
         LD DE,ADRBUF+1
 CRADTL  LD B,1
         LD (HL),A
-        LDIR 
+        LDIR
         INC A
         CP ATRBUF/#100+3
         JR NZ,CRADTL
@@ -438,8 +443,8 @@ CRADTL  LD B,1
 OUT_ML  PUSH AF
         INC A
         LD (PHASE),A
-        EI 
-        HALT 
+        EI
+        HALT
         LD DE,#D800
         LD L,E
         LD IX,TABL
@@ -457,7 +462,7 @@ PHASE   EQU $-1
 NOFADZ  LD H,A
         INC IY
         INC IX
-        LDI 
+        LDI
         JP PE,OUT_L1
 ALLATR  POP AF
         INC A
@@ -468,8 +473,8 @@ ALLATR  POP AF
         LD BC,#7FFD
         OUT (C),A
         IM 1
-        EI 
-        RET 
+        EI
+        RET
 
 NOFADZ1 INC IY
         INC IX
@@ -487,16 +492,16 @@ MODE48  LD B,7
 OUT_L   PUSH BC
         LD DE,#5800
         LD BC,#300
-        EI 
+        EI
         DUP FADOUT
-        HALT 
-        EDUP 
-        LDIR 
+        HALT
+        EDUP
+        LDIR
         POP BC
         DJNZ OUT_L
-        RET 
+        RET
 
-INT     DI 
+INT     DI
         PUSH AF
         PUSH BC
         LD A,#15+8
@@ -507,7 +512,7 @@ SCREENP EQU $-1
         LD (SCREENP),A
         POP BC
         POP AF
-        RET 
+        RET
 TABL    INCBIN "PLASMTBL"
 SCREEN  INCBIN "y1$$"
 SCREEN2 INCBIN "y2$$"

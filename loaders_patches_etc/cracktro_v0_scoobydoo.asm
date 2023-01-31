@@ -1,15 +1,20 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #9000
-        DI 
+        DI
         LD HL,LOADER
         LD DE,#5D3B
         LD BC,ENDLOAD-LOADER
-        LDIR 
+        LDIR
 
         LD HL,FONT
         PUSH HL
         LD DE,#8000
         LD BC,#200
-        LDIR 
+        LDIR
 
         XOR A
         LD (23624),A
@@ -22,7 +27,7 @@
         PUSH DE
         LD (23606),HL
 
-        EI 
+        EI
         XOR A
         LD (23659),A
         LD A,2
@@ -31,7 +36,7 @@
         LD DE,TXT
         LD BC,ENDTEXT-TXT
         CALL 8252
-        HALT 
+        HALT
         LD DE,ATRTEXT
         LD HL,#5800
 ATRTX_L LD A,(DE)
@@ -51,21 +56,21 @@ ATREND
 ATREND1 LD HL,#5800
         LD DE,#FD00
         LD BC,#300
-        LDIR 
+        LDIR
 
-        HALT 
+        HALT
         LD A,7
         OUT (#FE),A
         LD A,#3F
         CALL FILATR2
         CALL PRNTGR
-        HALT 
+        HALT
         XOR A
         OUT (#FE),A
         LD HL,#FD00
         LD DE,#5800
         LD BC,#300
-        LDIR 
+        LDIR
 
         LD A,R
         AND 1+2
@@ -79,7 +84,7 @@ ATREND1 LD HL,#5800
 
 
         LD B,102
-PLOOP   HALT 
+PLOOP   HALT
         PUSH BC
         LD A,(#5C08)
         CP "1"
@@ -115,7 +120,7 @@ NOC2
         LD (23659),A
         JP #5D3B
 
-PRNTGR  HALT 
+PRNTGR  HALT
 PR_AGA  LD DE,GRHEAD
         LD BC,9
         CALL 8252
@@ -133,31 +138,31 @@ GR_AGA  LD HL,GRTEXT
         JR PR_AGA
 ENDPG   INC HL
         LD (REG_HL+1),HL
-        RET 
+        RET
 
 FLASH1  LD DE,#0778
         LD B,8
 FLSH1_L PUSH BC
-        HALT 
+        HALT
         CALL ATRFIL
-        HALT 
+        HALT
         CALL ATRFIL
         POP BC
         DJNZ FLSH1_L
-        RET 
+        RET
 
 FILLATR LD HL,32*16+#5800
 FILLA   LD B,#20
 FILLA_L LD (HL),A
         INC HL
         DJNZ FILLA_L
-        RET 
+        RET
 FILATR2 LD HL,#5800
         LD C,24
 FILATL2 CALL FILLA
         DEC C
         JR NZ,FILATL2
-        RET 
+        RET
 
 ATRFIL  LD A,D
         OUT (#FE),A
@@ -174,14 +179,14 @@ ATRFL_L LD A,(HL)
         LD A,D
         XOR 7
         LD D,A
-        RET 
+        RET
 
 CHEAT1  LD DE,CHETPR1
         LD BC,9
         CALL 8252
         LD HL,CHEATP1
 CHEND   CALL TOGGLE
-        RET 
+        RET
 CHEAT2  LD DE,CHETPR2
         LD BC,9
         CALL 8252
@@ -189,7 +194,7 @@ CHEAT2  LD DE,CHETPR2
         JR CHEND
 
 TOGGLE  LD A,(HL)
-        CPL 
+        CPL
         LD (HL),A
         OR A
         JR Z,CH_NOP
@@ -197,13 +202,13 @@ TOGGLE  LD A,(HL)
         RST 16
         LD A,"E"
         RST 16
-        RET 
+        RET
 
 CH_NOP  LD A,"N"
         RST 16
         LD A,"O"
         RST 16
-        RET 
+        RET
 
 CHEATP1 DEFB #00
 CHEATP2 DEFB #00
@@ -304,7 +309,7 @@ CCC2    EQU $-1
         XOR A
         LD (34536),A
 NO_FIX
-        EI 
+        EI
         RES 5,(IY+1)
 KEYPAU  BIT 5,(IY+1)
         JR Z,KEYPAU
@@ -323,7 +328,7 @@ LOAD1   PUSH HL
         LD A,(23823)
         OR A
         JR NZ,LOAD1
-        RET 
+        RET
 
 LL_3D13 LD (REG_A+1),A
         PUSH HL
@@ -351,7 +356,7 @@ ERR     LD HL,#2121
         LD (23613),A
         LD A,#C9
         LD (#5CC2),A
-        RET 
+        RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -362,7 +367,7 @@ DRIA    EX (SP),HL
         JR Z,NO_ERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     POP HL
         POP HL
         POP HL
@@ -375,5 +380,5 @@ RIA     POP HL
         EX (SP),HL
         JP #3D2F
 
-        ENT 
+        ENT
 ENDLOAD

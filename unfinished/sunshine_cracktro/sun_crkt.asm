@@ -1,3 +1,9 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
+
 START_ADR       EQU #6000
         ORG START_ADR
 
@@ -43,11 +49,11 @@ SUN_ATR_ROUT    EQU TXTROU_TABL_ADR+#1D58
 TEXT_ADR        EQU TXTROU_TABL_ADR+#2422
 
         CALL INSTALL_ALL
-        EI 
+        EI
         CALL NEXT_PAGE
 MAIN_KOLBASSING
-        EI 
-        HALT 
+        EI
+        HALT
         CALL TXTMOV_CONTR
         LD A,(KB_FN)
         CP #C9
@@ -75,17 +81,17 @@ NPOINTZ=NPOINTZ*2+TXTROU_TABL_ADR
         CALL INS_TS
         LD HL,NPOINT4
         CALL INS_TS
-        ENDIF 
+        ENDIF
         IF0 TRAINER_POINTS-3
         LD HL,NPOINT3
         CALL INS_TS
-        ENDIF 
+        ENDIF
 DELAY   LD A,(KB_FN)
         OR A
         JR NZ,DELAY
 
 TRAINER_KOLBASSING
-        HALT 
+        HALT
         LD A,(KB_FN)
         OR A
         JR Z,TRAINER_KOLBASSING
@@ -98,18 +104,18 @@ TRAINER_KOLBASSING
         JR NZ,TRAINER_KOLBASSING
         CALL MUS_ADR
         LD HL,#2758
-        EXX 
+        EXX
         LD IY,#5C3A
         LD A,#3F
         LD I,A
         IM 1
-        EI 
+        EI
         LD BC,0
         JP CLS2
 
 ;-------trainer routines--------
 SWITCH_ALL
-        DI 
+        DI
         LD A,TRAINER_POINTS
 SWIT_AL PUSH AF
         DEC A
@@ -121,14 +127,14 @@ SWIT_AL PUSH AF
         JR TRAINER_KOLBASSING
 
 SWITCH_POINTER
-        DI 
+        DI
         DEC A
         CALL SWITCH_POINTER0
-PAUSE   EI 
+PAUSE   EI
         LD B,#F
-PAUSE_L HALT 
+PAUSE_L HALT
         DJNZ PAUSE_L
-        RET 
+        RET
 
 
 SWITCH_POINTER0
@@ -137,10 +143,10 @@ SWITCH_POINTER0
         LD E,A
         DUP 3
         ADD A,A
-        EDUP 
+        EDUP
         LD L,A
         LD A,(DE)
-        CPL 
+        CPL
         LD (DE),A
         LD E,(HL)
         INC L
@@ -149,9 +155,9 @@ SWITCH_POINTER0
         OR A
         JR Z,SWP_OFF
         INC L,L
-SWP_OFF LDI 
-        LDI 
-        RET 
+SWP_OFF LDI
+        LDI
+        RET
 
 INS_TS  LD A,L
         LD (DE),A
@@ -161,14 +167,14 @@ INS_TS  LD A,L
         INC E
         PUSH BC
         LD BC,4
-        LDIR 
+        LDIR
         POP BC
         DEC L
         LD (HL),B
         DEC L
         LD (HL),C
         INC E,E
-        RET 
+        RET
 
 ;-------text movement controller
 TXTMOV_CONTR
@@ -181,7 +187,7 @@ TXTMOV_CONTR
         JR Z,NEXT_PAGE
         CP 6
         JR Z,PREV_PAGE
-        RET 
+        RET
 
 TXTLINE_NEXTADDR DW TEXT_ADR+37
 
@@ -203,16 +209,16 @@ PAGER   RET Z
         PUSH HL
         LD B,6
 PAGERL1 PUSH BC
-        EI 
-        HALT 
-        DI 
+        EI
+        HALT
+        DI
         LD B,4
 PAGERL2 PUSH BC
 
         IFN TEST
         LD A,5
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         CALL #CDCD
 PAGE_SR EQU $-2
@@ -220,7 +226,7 @@ PAGE_SR EQU $-2
         IFN TEST
         LD A,7
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         POP BC
         DJNZ PAGERL2
@@ -228,8 +234,8 @@ PAGE_SR EQU $-2
         DJNZ PAGERL1
         POP HL
         LD (HL),H
-        EI 
-        RET 
+        EI
+        RET
 
 ;-------print previous textline---------
 
@@ -242,7 +248,7 @@ TEMPLINE_DEC
         JR NZ,TLD_NZ
         LD A,#17
 TLD_NZ  LD (HL),A
-        RET 
+        RET
 
 PREV_LC LD BC,37*#19
         LD HL,(TXTLINE_NEXTADDR)
@@ -250,13 +256,13 @@ PREV_LC LD BC,37*#19
         SBC HL,BC
         LD A,(HL)
         OR A
-        RET 
+        RET
 
 PREV_LINE
         IF0 TEST-1
         LD A,5
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         CALL PREV_LC
         RET Z
@@ -272,7 +278,7 @@ PREV_LINE
         ;in:  A=line_num
 COPY_TXTGFX
 
-        DI 
+        DI
         ADD A,A
         LD L,A
         LD H,'TXTROU_TABL_ADR
@@ -294,7 +300,7 @@ COPY_TXTGFX
         LD H,'TXTLIN_BUF
         LD D,'FONT_ADR+5
 COPY_TXTGFX_L1
-        EXA 
+        EXA
         LD L,0
 
         DUP 8
@@ -327,7 +333,7 @@ COPY_TXTGFX_L1
         INC L
         PUSH BC
         DEC SP,SP
-        EDUP 
+        EDUP
 
         LD A,(HL)
         LD E,A
@@ -359,9 +365,9 @@ COPY_TXTGFX_L1
 
         DUP 4
         DEC SP
-        EDUP 
+        EDUP
         DEC D
-        EXA 
+        EXA
         DEC A
         JP NZ,COPY_TXTGFX_L1
 
@@ -376,7 +382,7 @@ COPY_TXTGFX_L1
         PUSH BC
 ;       DEC SP,SP
         PUSH DE
-        EDUP 
+        EDUP
 
         LD C,(HL)
         INC L
@@ -385,7 +391,7 @@ COPY_TXTGFX_L1
 
         DUP 4
         DEC SP
-        EDUP 
+        EDUP
         LD L,.ATRLIN_BUF2
 
         DUP 8
@@ -396,7 +402,7 @@ COPY_TXTGFX_L1
         PUSH BC
 ;       DEC SP,SP
         PUSH DE
-        EDUP 
+        EDUP
 
         LD C,(HL)
         INC L
@@ -409,24 +415,24 @@ COPY_TXTGFX_SP EQU $-2
         IF0 TEST-1
         LD A,7
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         LD A,H
         OR A
-        RET 
+        RET
 
 ;-------print next textline---------
 
 NEXT_LC LD HL,(TXTLINE_NEXTADDR)
         LD A,(HL)
         OR A
-        RET 
+        RET
 
 NEXT_LINE
         IF0 TEST-1
         LD A,5
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         CALL NEXT_LC
         RET Z
@@ -444,7 +450,7 @@ TEMPLINE_INC
         XOR A
 TLI_NZ  LD (HL),A
 
-        RET 
+        RET
 
 ;-------copy text and attributes to linebuffer------
 
@@ -455,11 +461,11 @@ TLI_NZ  LD (HL),A
         ;out: HL=next_addr
 
 COPY_TEXTLINE
-        EXX 
+        EXX
         LD HL,ATRLIN_BUF1
         LD DE,ATRLIN_BUF2
         LD BC,ATTR_NORMAL
-        EXX 
+        EXX
         LD DE,TXTLIN_BUF
         LD B,18
         CALL COPY_TL_AL
@@ -470,34 +476,34 @@ COPY_TL_L1
         CALL COPY_TL_AL
         LD (DE),A
         INC E
-        EXX 
+        EXX
         LD (HL),B
         LD A,C
         LD (DE),A
         INC L
         INC E
-        EXX 
+        EXX
         DJNZ COPY_TL_L1
-        RET 
+        RET
 
 COPY_TL_AL
         LD A,(HL)
         INC HL
         CP ALLOW+1
         RET NC
-        EXX 
+        EXX
         CP NORMAL
         JR Z,COPYTN
         LD BC,ATTR_ALLOW
-        EXX 
-        RET 
+        EXX
+        RET
 COPYTN  LD BC,ATTR_NORMAL
-        EXX 
-        RET 
+        EXX
+        RET
 
 ;-------clear screen-------
 CLS     LD BC,#3F07
-CLS2    HALT 
+CLS2    HALT
         CALL CLS1
 CLS0    LD HL,#5800
         XOR A
@@ -505,15 +511,15 @@ CLS_L   DEC HL
         LD (HL),A
         OR (HL)
         JR Z,CLS_L
-        RET 
+        RET
 CLS1    LD A,C
         OUT (#FE),A
         LD HL,#5800
         LD DE,#5801
         LD (HL),B
         LD BC,#02FF
-        LDIR 
-        RET 
+        LDIR
+        RET
 
 ;-------keyboard scan---------
 
@@ -522,84 +528,84 @@ KEYBOARD_SCAN
       ;--o/p/q/a/space
         LD BC,#FBFE
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_UP
         LD B,#FD
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_DOWN
         LD B,#DF
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_PAGEDN
-        RRA 
+        RRA
         JR NC,KB_PAGEUP
         LD B,#7F
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_SPC
       ;--enter
         LD B,#BF
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_ENTER
       ;--cs
         LD B,#FE
         IN A,(C)
-        RRA 
+        RRA
         LD B,#EF
         JR NC,KB_CURSORE_PGUPDN
       ;--sinclair2
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_SPC
-        RRA 
+        RRA
         JR NC,KB_UP
-        RRA 
+        RRA
         JR NC,KB_DOWN
-        RRA 
+        RRA
         JR NC,KB_PAGEDN
-        RRA 
+        RRA
         JR NC,KB_PAGEUP
         LD E,1
         LD B,#F7
         IN A,(C)
-        RRA 
+        RRA
         JR NC,KB_NUM1_4
         INC E
-        RRA 
+        RRA
         JR NC,KB_NUM1_4
         IFN TRAINER_POINTS-2
         DUP TRAINER_POINTS-2
         INC E
-        RRA 
+        RRA
         JR NC,KB_NUM1_4
-        EDUP 
-        ENDIF 
+        EDUP
+        ENDIF
 KB_END  XOR A
         LD (HL),A
-        RET 
+        RET
 
 KB_CURSORE_PGUPDN
       ;--cursore/pg_up/pg_dn
         IN A,(C)
-        RRA 
-        RRA 
-        RRA 
+        RRA
+        RRA
+        RRA
         JR NC,KB_PAGEDN
-        RRA 
+        RRA
         JR NC,KB_UP
-        RRA 
+        RRA
         JR NC,KB_DOWN
         LD B,#F7
         IN A,(C)
-        RRA 
-        RRA 
-        RRA 
+        RRA
+        RRA
+        RRA
         JR NC,KB_PAGEUP
-        RRA 
+        RRA
         JR NC,KB_PAGEDN
-        RRA 
+        RRA
         JR NC,KB_PAGEUP
         JR KB_END
 
@@ -615,30 +621,30 @@ KB_FN   DB #00
 
 KB_PAGEUP
         LD (HL),6
-        RET 
+        RET
 KB_PAGEDN
         LD (HL),7
-        RET 
+        RET
 KB_UP
         LD (HL),8
-        RET 
+        RET
 KB_DOWN
         LD (HL),9
-        RET 
+        RET
 KB_SPC
         LD (HL),#C9
-        RET 
+        RET
 KB_ENTER
         LD (HL),#36
-        RET 
+        RET
 KB_NUM1_4
         LD (HL),E
-        RET 
+        RET
 
 ;-------int routines----------
 
 INT_ROUTINES
-        DI 
+        DI
         PUSH AF,BC,DE,HL
         CALL MUS_ADR+5
         CALL KEYBOARD_SCAN
@@ -646,12 +652,12 @@ INT_ROUTINES
         IFN TEST
         LD A,4
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         ;-----fill sun_attr
         LD A,0
 COUNTER1 EQU $-1
-        CPL 
+        CPL
         LD (COUNTER1),A
         OR A
         LD A,'SUN_ATTR
@@ -665,18 +671,18 @@ SUN_ATTR_NO_SWITCH
         IFN TEST
         LD A,#3
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         CALL TXTGFX_KERN
 
         IFN TEST
         LD A,7
         OUT (#FE),A
-        ENDIF 
+        ENDIF
 
         POP HL,DE,BC,AF
-        EI 
-        RET 
+        EI
+        RET
 
         ;-----out txtgfx
 TXTGFX_KERN
@@ -699,12 +705,12 @@ INSTALL_ALL
         LD HL,SCR_FONT
         LD BC,#4020
         CALL CONV_SCR
-        DI 
+        DI
         LD HL,#4000
         LD DE,FONT_ADR
 ;       LD BC,#600
         LD B,6
-        LDIR 
+        LDIR
 ;       LD HL,#5800
         LD H,#58
         CALL CLS0
@@ -715,7 +721,7 @@ INSTALL_ALL
         LD HL,SRC_MUS_END
         LD DE,MUS_ADR+MUS_LEN
         LD BC,SRC_MUS_END-SRC_TEXT
-        LDDR 
+        LDDR
         EX DE,HL
         INC HL
 
@@ -766,10 +772,10 @@ CONV_TXT_NFS ;)
 DECRUNCH_OSR
         LD DE,TXTROU_TABL_ADR
         LD HL,TXTOUT_ROUT_ADR
-        EXX 
+        EXX
         LD B,TXTLINES_COL
 TXT_OUT_DECR0
-        EXX 
+        EXX
         LD B,H
         LD C,L
         EX DE,HL
@@ -806,22 +812,22 @@ TXTOUT_DECR2
         LD (HL),#31
         INC HL
         PUSH HL
-        EXX 
+        EXX
         POP DE
         POP HL
         LD (HL),E
         INC HL
         LD (HL),D
         PUSH DE
-        EXX 
+        EXX
         POP HL
         INC HL
         INC HL
         LD (HL),#C9
         INC HL
-        EXX 
+        EXX
         DJNZ TXT_OUT_DECR0
-        EXX 
+        EXX
 
 ;-------decrunch sun_attr fill sr--------
 DECR_SUN_ATR
@@ -893,15 +899,15 @@ INT_INIT_L
         IM 2
         CALL MUS_ADR
 
-        RET 
+        RET
 
 INSTALL_TXTROU_MAIN
-        EXA 
+        EXA
 
-        EXX 
+        EXX
         LD DE,TXTATR_ADDR
         LD BC,#20
-        EXX 
+        EXX
 
         LD B,TXTLINES_COL
         LD DE,TXTLIN_ADDR
@@ -911,7 +917,7 @@ INSTALL_TXTROU_MAIN_L
         EX DE,HL
         LD HL,INSTALL_DATA1
         LD BC,INSTALL_DATA2-INSTALL_DATA1
-        LDIR 
+        LDIR
         EX DE,HL
         POP DE
         PUSH DE
@@ -933,7 +939,7 @@ INSTALL_TXTROU_MAIN_L
         LD (HL),#21
         INC HL
         PUSH HL
-        EXX 
+        EXX
         POP HL
         LD (HL),E
         INC HL
@@ -941,17 +947,17 @@ INSTALL_TXTROU_MAIN_L
         EX DE,HL
         ADD HL,BC
         EX DE,HL
-        EXX 
+        EXX
         INC HL
         INC HL
         LD (HL),#16
         INC HL
         LD (HL),#16
         INC HL
-        EXA 
+        EXA
         LD (HL),A
         INC HL
-        EXA 
+        EXA
         LD (HL),#CD
         INC HL
         POP DE
@@ -963,7 +969,7 @@ INSTALL_TXTROU_MAIN_L
         INC DE
         LD HL,INSTALL_DATA2
         LD C,INSTALL_DATA2E-INSTALL_DATA2
-        LDIR 
+        LDIR
         EX DE,HL
         POP DE
         LD A,E
@@ -978,7 +984,7 @@ INSTALL_TXTROU_MAIN0
         DJNZ INSTALL_TXTROU_MAIN_L
         LD (HL),#C9
         INC HL
-        RET 
+        RET
 
 INSTALL_DATA1
         LD H,'TXTROU_TABL_ADR
@@ -1004,11 +1010,11 @@ TXTOUT_DECRB1
         LD (HL),1
         DUP 3
         INC HL
-        EDUP 
+        EDUP
         LD (HL),#C5
         INC HL
         DJNZ TXTOUT_DECRB1
-        RET 
+        RET
 
 CONV_SCR
         LD DE,#4000
@@ -1034,7 +1040,7 @@ CSLOOP0 DJNZ CSLOOP1
         POP BC
         DEC C
         JR NZ,CSLOOP
-        RET 
+        RET
 
 TRAINER_TEXT
         DB 6,".fuckin trainer.yep.fuckin trainer.."         ;00

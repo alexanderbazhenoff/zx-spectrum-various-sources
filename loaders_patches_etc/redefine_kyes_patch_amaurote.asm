@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #67FF
 
 BORDER  EQU 5
@@ -5,7 +10,7 @@ INTTABL EQU #7800
 FONT    EQU #7A00
 K_TABL  EQU #6800+#400
 
-        DI 
+        DI
         LD A,BORDER
         OUT (#FE),A
         LD BC,#7FFD
@@ -21,7 +26,7 @@ K_TABL  EQU #6800+#400
         LD (#5B5C),A
         CALL REDEFK
         CALL PANEL
-        DI 
+        DI
         LD HL,#67E8
         PUSH HL
         LD HL,#4000
@@ -29,7 +34,7 @@ K_TABL  EQU #6800+#400
         LD BC,#1800
         JP #33C3
 
-CLS     DI 
+CLS     DI
         LD BC,#7FFD
         LD HL,#FFFF
         LD DE,#1F18
@@ -58,15 +63,15 @@ INTI_L  LD (HL),A
         LD (HL),#C9
         IM 2
 
-ML      EI 
-        HALT 
-        DI 
+ML      EI
+        HALT
+        DI
         DUP 5
         LD (0),BC
-        EDUP 
+        EDUP
         DUP 4
-        NOP 
-        EDUP 
+        NOP
+        EDUP
 
         LD BC,#7FFD
         LD DE,#1810
@@ -78,8 +83,8 @@ PAUPA1  EQU $-1
 
 PAUS1   DUP 10
         LD (0),BC
-        EDUP 
-        NOP 
+        EDUP
+        NOP
         LD E,#10
         DJNZ PAUS1
 
@@ -90,21 +95,21 @@ PAUPA2  EQU $-1
         OUT (C),L
         DUP 8
         LD (0),BC
-        EDUP 
+        EDUP
         INC A
         DEC A
 
 PAUS2   DUP 21
         LD (0),BC
-        EDUP 
-        NOP 
-        NOP 
+        EDUP
+        NOP
+        NOP
         LD E,#10
         DJNZ PAUS2
 
         LD R,A
         LD E,#10
-        NOP 
+        NOP
         LD BC,#7FFD
         OUT (C),E
         LD C,#FE
@@ -127,11 +132,11 @@ PAUPA3  EQU $-1
         LD A,#10
         OUT (C),A
         IM 1
-        EI 
-        RET 
+        EI
+        RET
 
-MODE48  EI 
-        HALT 
+MODE48  EI
+        HALT
         XOR A
         OUT (#FE),A
         LD HL,#5B00
@@ -139,7 +144,7 @@ CL48L   DEC HL
         LD (HL),A
         OR A
         JR Z,CL48L
-        RET 
+        RET
 
 REDEFK  LD HL,#3C00
         XOR A
@@ -151,7 +156,7 @@ REDEFK  LD HL,#3C00
         LD (23606),DE
         INC D
 FNTDL   LD A,(HL)
-        RRA 
+        RRA
         OR (HL)
         LD (DE),A
         INC HL
@@ -224,13 +229,13 @@ NOPC
 NOPRCC  LD HL,K_DRIV
         LD DE,#8B4F
         LD BC,K_DRVE-K_DRIV
-        LDIR 
+        LDIR
 NOPR    POP HL
         LD (23606),HL
         CALL CLSCR
         LD A,2
         LD (23659),A
-        RET 
+        RET
 
 CLSCR   LD B,#0C
         LD HL,#20*4+#5800+#03
@@ -241,13 +246,13 @@ CLSCNC  PUSH BC
         INC DE
         LD (HL),0
         LD BC,25
-        LDIR 
+        LDIR
         POP HL
         LD DE,#20
         ADD HL,DE
         POP BC
         DJNZ CLSCNC
-        RET 
+        RET
 
 REDFL   LD DE,TXTLK
         LD BC,TXTRK-TXTLK
@@ -267,7 +272,7 @@ REDFF   LD DE,TXTFK
 
 KEYINP  CALL 8252
 KEY     LD IY,#5C3A
-        EI 
+        EI
         RES 5,(IY+1)
 WAITK   BIT 5,(IY+1)
         JR Z,WAITK
@@ -319,7 +324,7 @@ DECODK  CALL PAUSE
         LD E,#E6
         POP HL
         LD L,#FE
-        RET 
+        RET
 
 REP_KEY CP #00
         RET Z
@@ -328,44 +333,44 @@ REP_K2  CP #00
 REP_K3  CP #00
         RET Z
 REP_K4  CP #00
-        RET 
+        RET
 
 
 PAUSE   LD B,#0A
-PAUSEL  HALT 
+PAUSEL  HALT
         DJNZ PAUSEL
-        RET 
+        RET
 K_DRIV
 PO_R    LD A,#3E
         IN A,(#FE)
-        CPL 
+        CPL
 BI_R    AND #E6
         LD (HL),A
         INC HL
 
 PO_D    LD A,#3E
         IN A,(#FE)
-        CPL 
+        CPL
 BI_D    AND #E6
         LD (HL),A
         INC HL
 
 PO_U    LD A,#3E
         IN A,(#FE)
-        CPL 
+        CPL
 BI_U    AND #E6
         LD (HL),A
         INC HL
 
 PO_L    LD A,#3E
         IN A,(#FE)
-        CPL 
+        CPL
 BI_L    AND #E6
         LD (HL),A
 
 PO_F    LD A,#3E
         IN A,(#FE)
-        CPL 
+        CPL
 BI_F    AND #E6
 
 K_DRVE

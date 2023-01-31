@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 START   EQU #6000
 LENGHT  EQU #9EFE
 COMPRTO EQU #5F00 ;куда все упихивать
@@ -24,16 +29,16 @@ COMPLEN EQU $-2
 DECR_L  LD A,(HL)
         CP #00
 PREFIX1C        EQU $-1
-        SCF 
+        SCF
         JR Z,DECR_SEQ
         CP #00
 PREFIX2C        EQU $-1
         JR Z,DECR_SEQ
-DECR_M1 LDI 
+DECR_M1 LDI
         JP PE,DECR_L
 DECREND JP #0052
 DECR_SEQ
-        EXA 
+        EXA
         INC HL
         DEC BC
         LD A,(HL)
@@ -41,7 +46,7 @@ DECR_SEQ
         INC HL
         DEC BC
         JR Z,INST_PREFIX
-        EXA 
+        EXA
         LD A,0
         JR C,DECR_SEQ0
         LD A,(HL)
@@ -51,7 +56,7 @@ DECR_SEQ
 DECR_SEQ0
         PUSH BC
         LD C,A
-        EXA 
+        EXA
         LD B,A
         LD A,C
 DECR_SEQL2
@@ -66,14 +71,14 @@ DECR_M3
         JR DECREND
 
 INST_PREFIX
-        EXA 
+        EXA
         LD (DE),A
         INC DE
         JR DECR_M3
 DECR_ENDOF
         ;----
 
-COMPRES DI 
+COMPRES DI
         LD (DEP_SW),A
         LD (DEP_SW2),A
         LD HL,COMPRTO
@@ -136,16 +141,16 @@ CNTBTL0 LD DE,0
 CNTBTL  CP (HL)
         JR NZ,NO_ADD
         INC DE
-NO_ADD  EXA 
+NO_ADD  EXA
         INC HL
         DEC BC
         LD A,B
         OR C
         JR Z,CNTBT_END
-        EXA 
+        EXA
         JR CNTBTL
 CNTBT_END
-        EXA 
+        EXA
         LD L,A
         LD H,'BT_TABL
         LD (HL),D
@@ -237,7 +242,7 @@ DPR6    EQU $-2
         EX DE,HL
         LD HL,DECR_L
         LD BC,DECREND-DECR_L-2
-        LDIR 
+        LDIR
         EX DE,HL
 
         LD BC,DEPADR+#A
@@ -249,12 +254,12 @@ DPR6    EQU $-2
         INC HL
         INC HL
         LD BC,DECR_ENDOF-DECREND
-        LDIR 
+        LDIR
         LD BC,#58
         ADD IY,BC
-        RET 
-        NOP 
-        NOP 
+        RET
+        NOP
+        NOP
 
 CMP_PREFIX
         LD (HL),A
@@ -318,7 +323,7 @@ CMP_MM1 LD A,D
 SRCH_MIN
         LD H,'BT_TABL
         LD L,A
-        EXA 
+        EXA
         LD A,(HL)
         CP D
         JR NZ,SRCH_NXT
@@ -326,15 +331,15 @@ SRCH_MIN
         LD A,(HL)
         CP E
         JR NZ,SRCH_NXT
-        EXA 
-        RET 
+        EXA
+        RET
 SRCH_NXT
-        EXA 
+        EXA
         INC A
         JR NZ,SRCH_MIN
         INC DE
         JR SRCH_MIN
 
-        ENT 
+        ENT
 
 

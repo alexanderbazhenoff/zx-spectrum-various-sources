@@ -1,9 +1,10 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
-; UNRIP (depacker for RIP by Roman Petrov) with border FXs
+; UNRIP (depacker for RIP by Roman Petrov) with border FXs (by alx/bw).
 
 
 ;Распаковщик RIP'а.
@@ -20,7 +21,7 @@
                LD HL,SOURCE
                LD DE,DESTINATION
                CALL Depack
-               RET 
+               RET
 
 BORDER  EQU 1           ;если 0, то бордюрных трещалок нет
 MASK    EQU 1+2+4+8+16
@@ -59,7 +60,7 @@ Depack         PUSH DE
                JR C,MoveBlk
                LD D,H
                LD E,L
-MoveBlk        LDDR 
+MoveBlk        LDDR
                INC DE
 
                PUSH DE
@@ -71,7 +72,7 @@ UnpackTree     LD DE,BitLenTb1-1
 UnpackTreeL1   LD A,#10
 UnpackTreeL0   SRL C
                CALL Z,GetNextByte
-               RLA 
+               RLA
                JR NC,UnpackTreeL0
                INC DE
                LD (DE),A
@@ -123,7 +124,7 @@ UnpW0          CALL GetWord1
                XOR A
                OUT (#FE),A
                POP AF
-               ENDIF 
+               ENDIF
 
                DEC H
                JR NZ,UnpW0
@@ -159,7 +160,7 @@ LastDist       EQU $+1
                OR A
                SBC HL,DE
                POP DE
-               LDIR 
+               LDIR
                POP BC
                JR UnpackWord
 
@@ -172,7 +173,7 @@ Stop           POP AF
 DecodeNum      ADD A,-#05
                RET NC
                ADD A,#05-#03
-               RRA 
+               RRA
                LD L,#01
                RL L
 DNum0          SRL C
@@ -181,7 +182,7 @@ DNum0          SRL C
                DEC A
                JR NZ,DNum0
                INC HL
-               RET 
+               RET
 
 GetWord1       LD HL,Tree1Adr
 
@@ -197,11 +198,11 @@ GetW0          LD A,(HL)
                CP #40
                JR NC,GetWord
                LD A,L
-               RET 
+               RET
 GetNextByte    LD C,(IX)
                INC IX
                RR C
-               RET 
+               RET
 
 Tree1Create    LD HL,BitLenTb1
                LD BC,Tree1Adr
@@ -214,7 +215,7 @@ TreeCreate     INC DE
                DEC HL
                DEC HL
                PUSH BC
-               EXX 
+               EXX
                POP DE
                LD H,D
                LD L,E
@@ -225,19 +226,19 @@ TreeCreate     INC DE
                PUSH AF
                LD C,A
 
-TC1            EXX 
+TC1            EXX
                LD B,D
                LD C,E
                ADD HL,BC
-               EXX 
+               EXX
 
 TC2            LD B,A
                LD A,C
-               EXX 
-               CPDR 
+               EXX
+               CPDR
                LD A,B
                OR C
-               EXX 
+               EXX
                LD A,B
                JR NZ,TC4
                INC C
@@ -256,9 +257,9 @@ TC3            INC DE
                PUSH AF
 TC4            CP C
                JR NZ,TC3
-               EXX 
+               EXX
                PUSH BC
-               EXX 
+               EXX
                POP BC
                DEC BC
                LD (HL),B

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
 MODE    EQU 1           ;0 - 48k mode
 CHEAT   EQU #00         ;0 - off
 
@@ -13,9 +18,9 @@ TABL_SM EQU #00B6  ;внутрисекторное смещение
         DB 1
         ORG #C000,#11
         INCBIN "ffood3"
-        ELSE 
+        ELSE
         DB 0
-        ENDIF 
+        ENDIF
 
         ORG #6000
         INCBIN "ffood#"
@@ -36,7 +41,7 @@ KMPST   IN A,(#1F)
         JR NZ,KMPST
         DEC A
 KMPSTN  LD (#6ABD),A
-        RET 
+        RET
         DB 0,0,0,0
 
         ;correct pause mode
@@ -49,7 +54,7 @@ PMOD2   CALL KEYRQ_P
         JR NZ,PMOD2
 PMOD3   CALL KEYRQ_P
         JR Z,PMOD3
-        RET 
+        RET
 KEYRQ_P CALL #C619
         LD A,#A0
         JP #C5E3
@@ -115,7 +120,7 @@ SAVE_HS CALL SYNC0
         CALL DAT_XOR
 TR_DOS  LD C,6
         CALL TRDOS
-        DI 
+        DI
         LD A,(23823)
         OR A             ;ok
         JR Z,SC_ERROR
@@ -130,8 +135,8 @@ SC_ERROR
         JR Z,NOIM2
         IM 2
 NOIM2
-        EI 
-        RET 
+        EI
+        RET
 
         ORG #5B15
 STOPDRV XOR A
@@ -150,7 +155,7 @@ DT_XORL LD A,(HL)
         INC HL
         INC DE
         DJNZ DT_XORL
-        RET 
+        RET
 TRDOS
         LD HL,#5D3B
 TRDOS1  LD DE,#1111
@@ -181,7 +186,7 @@ ERR;    LD HL,#2121
 ;       LD (23613),HL
 ;       LD A,#C9
 ;       LD (#5CC2),A
-COMRET  RET 
+COMRET  RET
 DRIA    EX (SP),HL
         PUSH AF
         LD A,H
@@ -195,10 +200,10 @@ DRIA    EX (SP),HL
         JR Z,DERR
 NO_ERR  POP AF
         EX (SP),HL
-        RET 
+        RET
 RIA     DUP 3
         POP  HL
-        EDUP 
+        EDUP
         LD A,"R"
         LD HL,#3F7E
         EX (SP),HL
@@ -207,15 +212,15 @@ REND_E
 
 
         ORG #6587
-SYNC0   EI 
-SYNCH   HALT 
+SYNC0   EI
+SYNCH   HALT
         DJNZ SYNCH
         LD B,C
 SYNCL   DEC BC
         LD A,B
         OR C
         JR NZ,SYNCL
-        RET 
+        RET
 
         ;skip level keys
 SKPLEVL EQU #661D
@@ -239,7 +244,7 @@ SKPLEVL EQU #661D
         LD DE,SKPLVD
         LD BC,ESKPLVD-SKPLVD
         EX DE,HL
-        LDIR 
+        LDIR
         LD HL,#00C0
         LD (#B9FB),HL
         LD HL,#67D0
@@ -260,14 +265,14 @@ NOCHEAT XOR A
 
         LD BC,#EFFE
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_REST_HS
         LD B,C
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_REST_HS
 SHS_KW  IN A,(C)
-        RRA 
+        RRA
         JR NC,SHS_KW
         LD A,6
         CALL BORD_FLASH
@@ -277,7 +282,7 @@ SHS_KW  IN A,(C)
 SAV_HS1 LD HL,#FF00
         LD C,6
         CALL TRDOS1
-        DI 
+        DI
         LD A,(23823)
         OR A             ;ok
         JR Z,SAV_HS2
@@ -297,13 +302,13 @@ NO_SL_HS
         JP #6100
 
 BORD_FLASH
-        HALT 
+        HALT
         OUT (#FE),A
-        HALT 
-        HALT 
+        HALT
+        HALT
         XOR A
         OUT (#FE),A
-        RET 
+        RET
 
 SKPLVD
         LD BC,#FBFE
@@ -311,7 +316,7 @@ SKPLVD
         AND 4+8+16
         JR Z,SKPLEV
         LD A,(#AE73)
-        RET 
+        RET
 SKPLEV  LD A,1
         LD (#B30A),A
         JP #BA48

@@ -1,6 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
 ; ----------------------------------------------------
@@ -34,27 +35,27 @@ LFLP    EQU #2    ;пауза при сканинге пилот-тона [#415]
         LD HL,SCR
         LD DE,#4000
         LD BC,#1B00
-        LDIR 
+        LDIR
 
         LD IX,#4000
         LD DE,#1B00
         LD A,#FF
         CALL SAVE
-        RET 
+        RET
 
         LD HL,#4000
         LD DE,#4001
         LD BC,#1AFF
         LD (HL),L
-        LDIR 
+        LDIR
 
 LOA
         LD IX,#4000
         LD DE,#1B00
         LD A,#FF
-        SCF 
+        SCF
         CALL load
-        
+
         ; ---- dexor
         LD HL,#4000
         LD BC,#1B00
@@ -66,7 +67,7 @@ DEXORL  LD A,(HL)
         LD A,B
         OR C
         JR NZ,DEXORL
-        RET 
+        RET
 
         ;JP NC,error
 
@@ -77,7 +78,7 @@ SAVE    LD      HL,LPILOT
 LL04D0  EX      AF,AF'
         INC     DE
         DEC     IX
-        DI 
+        DI
         LD      A,'CPILOT
         LD      B,A
 LL04D8  DJNZ    LL04D8
@@ -117,7 +118,7 @@ LL0505  LD      A,H
         XOR     L
 LL0507  LD      H,A
         LD      A,#01
-        SCF 
+        SCF
         JP      LL0525
 LL050E  LD      L,H
         JR      LL0505
@@ -140,25 +141,25 @@ LL0525  RL      L
         LD      B,#31
         LD      A,#7F
         IN      A,(#FE)
-        RRA 
+        RRA
         RET     NC
         LD      A,D
         INC     A
         JP      NZ,LL04FE
         LD      B,#3B
 LL053C  DJNZ    LL053C
-        RET 
+        RET
 
 load   INC D
        EX AF,AF'
        DEC D
-       DI 
+       DI
        LD A,8
        OUT (#FE),A
        LD HL,#053F
        PUSH HL
        IN A,(#FE)
-       RRA 
+       RRA
        AND #20
        OR 2
        LD C,A
@@ -202,20 +203,20 @@ LL884  EX AF,AF'
        JR NZ,LL894
        JR NC,LL904
         IFN DEXOR
-        EXA 
+        EXA
         LD A,L
         XOR LX
        LD (IX),A
-        EXA 
-        ELSE 
+        EXA
+        ELSE
         LD (IX),L
-        ENDIF 
+        ENDIF
        JR LL909
 LL894  RL C
        XOR L
        RET NZ
        LD A,C
-       RRA 
+       RRA
        LD C,A
        INC DE
        JR LL911
@@ -242,7 +243,7 @@ LL917  CALL LL942
        JR NZ,LL884
        LD A,H
        CP 1
-       RET 
+       RET
 LL942  CALL LL946
        RET NC
 
@@ -259,32 +260,32 @@ LL952  INC B
        RET Z
        LD A,#7F
        IN A,(#FE)
-       RRA 
-       NOP 
+       RRA
+       NOP
        XOR C
        AND #20
        JR Z,LL952
        LD A,C
-       CPL 
+       CPL
        LD C,A
         IF0 LOMODE-1
         LD R,A
         AND 7
         OR 8
         OUT (#FE),A
-        SCF 
-        ENDIF 
+        SCF
+        ENDIF
         IF0 LOMODE-2
         LD R,A
         AND 4
         OR 8
         OUT (#FE),A
-        SCF 
-        RET 
-        ENDIF 
-        RET 
+        SCF
+        RET
+        ENDIF
+        RET
 
-        ELSE 
+        ELSE
 
 LL946  LD A,#12         ;#16
 LL948  DEC A
@@ -294,30 +295,30 @@ LL952  INC B
        RET Z
        LD A,#7F
        IN A,(#FE)
-       RRA 
+       RRA
 ;      NOP
        XOR C
        AND #20
        JR Z,LL952
        LD A,C
-       CPL 
+       CPL
        LD C,A
 
         PUSH BC
         AND 4
         LD C,A
-        RRA 
+        RRA
         OR C
-        RRA 
+        RRA
         OR C
         AND 7
         OR 8
-        NOP 
+        NOP
         OUT (#FE),A
         POP BC
-        SCF 
-        RET 
+        SCF
+        RET
 
-        ENDIF 
+        ENDIF
 
 SCR    INCBIN "Castle0"

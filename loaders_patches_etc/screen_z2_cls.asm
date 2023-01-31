@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #9C40
 
 
@@ -6,7 +11,7 @@ INTTABL EQU #AE00
 
 
 
-        DI 
+        DI
         LD BC,#7FFD
         LD HL,#FFFF
         LD DE,#1710
@@ -24,7 +29,7 @@ INTTABL EQU #AE00
         LD DE,#4001
         LD BC,#1AFF
         LD (HL),L
-        LDIR 
+        LDIR
 
 
         LD HL,INTTABL
@@ -41,15 +46,15 @@ INTI_L  LD (HL),A
         LD (HL),#C9
         IM 2
 
-ML      EI 
-        HALT 
-        DI 
+ML      EI
+        HALT
+        DI
         DUP 5
         LD (0),BC
-        EDUP 
+        EDUP
         DUP 4
-        NOP 
-        EDUP 
+        NOP
+        EDUP
 
         LD BC,#7FFD
         LD DE,#1810
@@ -61,8 +66,8 @@ PAUPA1  EQU $-1
 
 PAUS1   DUP 10
         LD (0),BC
-        EDUP 
-        NOP 
+        EDUP
+        NOP
         LD E,#10
         DJNZ PAUS1
 
@@ -73,20 +78,20 @@ PAUPA2  EQU $-1
         OUT (C),L
         DUP 8
         LD (0),BC
-        EDUP 
+        EDUP
         INC A
         DEC A
 
 PAUS2   DUP 21
         LD (0),BC
-        EDUP 
+        EDUP
         DEFB 0,0
         LD E,#10
         DJNZ PAUS2
 
         LD R,A
         LD E,#10
-        NOP 
+        NOP
         LD BC,#7FFD
         OUT (C),E
         LD C,#FE
@@ -111,7 +116,7 @@ PAUPA3  EQU $-1
 
 
         IM 1
-MODE48  EI 
-        RET 
+MODE48  EI
+        RET
 
 

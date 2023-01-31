@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #5B14
         DB #FF,#FF
 
@@ -33,13 +38,13 @@ AROUND  DJNZ LOOP1
         LD H,C
         DUP 5
         ADD HL,HL
-        EDUP 
+        EDUP
         LD B,H
         LD C,L
         POP HL
         POP DE
-        LDIR 
-        RET 
+        LDIR
+        RET
 
         ORG #5B17
 ZZUU    LD A,7
@@ -64,11 +69,11 @@ NO_UL   LD A,(#5B15)
         LD (#7F75),A
 NO_I    LD BC,#BFFE
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_SKP
         LD B,C
         IN A,(C)
-        RRA 
+        RRA
         JR C,NO_SKP
         LD A,3
         LD (#E064),A
@@ -97,9 +102,9 @@ DDEP_L1 PUSH BC
         PUSH DE
 DDEP_L2 LD A,(DE)
         DUP 8
-        RLA 
+        RLA
         RR C
-        EDUP 
+        EDUP
         LD A,C
         XOR (HL)
         LD (HL),A
@@ -118,11 +123,11 @@ DDEP_L2 LD A,(DE)
         POP DE
         POP HL
         LD B,#18
-        LDIR 
+        LDIR
         LD HL,CODCHG
         LD DE,#6010
         LD C,#10
-        LDIR 
+        LDIR
         LD A,#ED
         LD (#6033),A
         LD HL,#A600
@@ -156,31 +161,31 @@ SCR_SYNC_COUNTER EQU $-1
         AND 3
         LD (SCR_SYNC_COUNTER),A
         CALL Z,SCRFIX
-        NOP 
-        NOP 
+        NOP
+        NOP
 
         ORG #669C
 SCRFIX
         PUSH IY
         PUSH HL
         LD HL,#2758
-        EXX 
+        EXX
         LD IY,#5C3A
         LD A,I
         PUSH AF
         XOR A
         LD I,A
         IM 1
-        EI 
-        HALT 
-        DI 
+        EI
+        HALT
+        DI
         IM 2
         POP AF
         LD I,A
-        EXX 
+        EXX
         POP HL
         POP IY
-        RET 
+        RET
 
 
 
@@ -255,19 +260,19 @@ KEY_INP CALL KEY_II
         JR NZ,KEY_INP
 
         BIT 0,L
-        RET 
+        RET
 
 
 KEY_II  XOR A
         IN A,(#FE)
-        CPL 
+        CPL
         AND #1F
-        RET 
+        RET
         DS 17,0
 KEYERR
         DUP 6
         CALL KEY_IN
-        EDUP 
+        EDUP
 
         ;clear garbage (before setting steck memory here)
         ORG #D012

@@ -1,3 +1,8 @@
+; This Source Code Form is subject to the terms of the MIT
+; hLicense. If a copy of the MPL was not distributed with
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+
         ORG #9C40
 
         LD HL,SCREEN
@@ -30,14 +35,14 @@ JMP2    LD HL,SCREEN+#1800+384-32+11
         LD DE,#5800+384-32+11
         LD BC,#020A
         LD A,12
-ATR_L   HALT 
+ATR_L   HALT
         PUSH AF
         PUSH BC
         PUSH DE
         PUSH HL
 ATR_L1  PUSH BC
         LD B,0
-        LDIR 
+        LDIR
 D_BC    LD C,22
         ADD HL,BC
         EX DE,HL
@@ -65,7 +70,7 @@ D_BC    LD C,22
         POP AF
         DEC A
         JR NZ,ATR_L
-        RET 
+        RET
 
 SCREEN  INCBIN "PICTURE"
 ENDSCR

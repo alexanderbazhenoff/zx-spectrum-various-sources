@@ -1,18 +1,18 @@
 ; This Source Code Form is subject to the terms of the MIT
 ; hLicense. If a copy of the MPL was not distributed with
-; this file, You can obtain one at https://github.com/aws/mit-0
-
+; this file, You can obtain one at:
+; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 ; TR-DOS Fast saver (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
         ORG #8000
-        DI 
+        DI
         LD DE,#0100
 TRSC    EQU $-2
 LL5B1C  PUSH BC
         PUSH DE
         LD A,D
         OR A
-        RRA 
+        RRA
         LD C,A
         LD A,#3C
         JR NC,LL5B28
@@ -45,6 +45,6 @@ LL5B44  PUSH BC
 LL5B5C  POP BC
         DJNZ LL5B44
 LL5B5F  LD (TRSC),DE
-        RET 
+        RET
 DOS     PUSH IX
         JP #3D2F
