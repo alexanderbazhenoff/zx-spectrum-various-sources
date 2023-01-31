@@ -1,8 +1,27 @@
 # zx-spectrum various sources
 
+# About
+
 Lots of my various ZX-Spectrum assembler sources. Some of them written in the end of 90s, so I can't remember them all.
 Here is some my handmade tools and converters, which nowadays usually making on python etc. Others are loaders, screen
 output routines and patches, so you can find a 'game poke' or another tips. Unfinished sources also.
+
+# Preamble
+
+Since a school days in 90s I was totally passioned by 8-bit demoscane culture. A specially crack releases where all
+these wonderful effects first time came from. In the begging I was too lazy. So I watched some cool stuff and debug
+some stuff to watch a code tricks using hardware `shadow monitor` in my 
+[`Scorpion ZS-256`](https://en.wikipedia.org/wiki/Scorpion_ZS-256), a Sergery Zonov's ZX-Spectrum Russian clone.
+
+In the end of 90s I was inspired to made not also a crack intro, just would love to fix firm bugs, performance, add
+TR-DOS save/load, exam some history of game making and all these stuff. In those days cracking games on ZX-Spectrum
+mostly went to the past, but still here was some revers-research. And yes, Russian users had their specific disk
+systems, so you need to adapt them from time to time. If you look on ZX-Spectrum archive you'll find a various TR-DOS
+versions of the same game from different crack teams. The reason is only in making this better than another guys, as the
+scene tradition.
+
+So until the middle 2005 more than 50 crack releases came. Some of them was with an intros, some of them just with sign,
+but fixed, packed, etc.
 
 ## TLDR
 
@@ -38,7 +57,7 @@ memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc.
 
 ## Detailed folder contents
 
-Browse folders for README(s).
+Browse folders for README(s) or read traditional [`files.bbs`](files.bbs).
 
 ## Related URLs
 
