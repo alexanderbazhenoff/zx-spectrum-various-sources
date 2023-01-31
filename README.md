@@ -25,7 +25,7 @@ allows you to decrease end-of-sector spaces on the disk and move data after load
 Also [`nfo viewer`](https://zxart.ee/rus/soft/demoscene/nfo-viewer/), a text info viewer with two-bitplan colours (25fps
 coloure mixing like 'Gigascreen'). `nfo viewer` was done, but wasn't released.
 
-![Nfo Viewer](https://zxart.ee//release/id:273669/mode:view/filename:.nfoview.png)
+![Nfo Viewer](https://zxart.ee/image/type:prodImage/id:273669/filename:nfoview.png)
 
 - [**unfinished**](unfinished): unfinished cracktros: first one with two-bitplan colours (again my fav 25fps colour
 mixing), another is [*`sunshine cracktro`*](unfinished/sunshine_cracktro) which was almost done, but never released.
