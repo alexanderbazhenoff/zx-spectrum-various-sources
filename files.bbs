@@ -1,80 +1,80 @@
-├── files.bbs
-├── LICENSE
+├── files.bbs                                              - This file
+├── LICENSE                                                - Tell me what's this about 30 years ago or so
 ├── loaders_patches_etc
-│         ├── $FADE0.asm
-│         ├── cheat_chubby_g.asm
-│         ├── count_screen_screen.asm
-│         ├── cracktro_mini.asm
-│         ├── cracktro_v0_scoobydoo.asm
+│         ├── $FADE0.asm                                   - A variation of screen fade routines for title screen output
+│         ├── cheat_chubby_g.asm                           -
+│         ├── count_screen_screen.asm                      -
+│         ├── cracktro_mini.asm                            -
+│         ├── cracktro_v0_scoobydoo.asm                    -
 │         ├── cracktro_v4_mini
-│         │         ├── crk4.asm
-│         │         ├── KR4_GFX1.C.bin
-│         │         ├── KR4_GFX2.C.bin
-│         │         ├── kr4_tbl2.C.bin
-│         │         └── kr4_tbl.C.bin
-│         ├── fastfood_init_and_patches.asm
-│         ├── helpkeys_nether_w.asm
-│         ├── inisin.asm
-│         ├── init_and_cheat_bubbler.asm
-│         ├── init_and_patch_sarlmoor.asm
-│         ├── init_and_patch_savage_1.asm
-│         ├── init_and_patch_savage_2.asm
-│         ├── init_and_patch_savage_3.asm
-│         ├── init_basil.asm
-│         ├── init_savage_0.asm
-│         ├── livingstone_2.1_+3_bank7_v3.asm
-│         ├── livingstone_2.2_+3_bank7_v3.asm
-│         ├── livingstone_2.2_+3_bank7_v4.asm
+│         │         ├── crk4.asm                           -
+│         │         ├── KR4_GFX1.C.bin                     -
+│         │         ├── KR4_GFX2.C.bin                     -
+│         │         ├── kr4_tbl2.C.bin                     -
+│         │         └── kr4_tbl.C.bin                      -
+│         ├── fastfood_init_and_patches.asm                -
+│         ├── helpkeys_nether_w.asm                        -
+│         ├── inisin.asm                                   - Sine table generator
+│         ├── init_and_cheat_bubbler.asm                   -
+│         ├── init_and_patch_sarlmoor.asm                  -
+│         ├── init_and_patch_savage_1.asm                  -
+│         ├── init_and_patch_savage_2.asm                  -
+│         ├── init_and_patch_savage_3.asm                  -
+│         ├── init_basil.asm                               -
+│         ├── init_savage_0.asm                            -
+│         ├── livingstone_2.1_+3_bank7_v3.asm              -
+│         ├── livingstone_2.2_+3_bank7_v3.asm              -
+│         ├── livingstone_2.2_+3_bank7_v4.asm              -
 │         ├── lmg0intro
-│         │         ├── 014!   lamescrl.f.bin
-│         │         ├── 015!   lameKmus.C.bin
-│         │         ├── 019!   lameKmu0.C.bin
-│         │         ├── 020!   lameKi1.W.bin
-│         │         ├── 021!   lameKi2.W.bin
-│         │         ├── lamergy_kids_intro.asm
-│         │         └── sprite_converter_for_lamergy0.asm
-│         ├── loader_and_trainer_sks.asm
-│         ├── loader_astemix.asm
-│         ├── loader_cyly.asm
-│         ├── loader_depack_wor.asm
-│         ├── loader_drunker_logo.asm
-│         ├── loader_icet.asm
-│         ├── loader_mask3.asm
-│         ├── loader_miami_c.asm
-│         ├── loader_new1.asm
-│         ├── loader_new2.asm
-│         ├── loader_new3.asm
-│         ├── loader_new.asm
-│         ├── loader_runstn.asm
-│         ├── loader_trainer_captain_trueno.asm
-│         ├── loader_trainer_forgotten_w.asm
-│         ├── loader_trainer_miami_c.asm
-│         ├── loader_trainer_thanathos.asm
-│         ├── loader_wor.asm
-│         ├── loader_ws_baseball.asm
-│         ├── overlay_manager_ninja_hamst128.asm
-│         ├── overlay_manager_ninja_hamst48.asm
-│         ├── PASMTBL.C.bin
-│         ├── patch_cheatkeys_nether_w.asm
-│         ├── patch_nether_w.asm
-│         ├── patch_savage_demo.asm
-│         ├── PLSMTBL3.C.bin
-│         ├── redefine_kyes_patch_amaurote.asm
-│         ├── rle_packer_fastfood.asm
-│         ├── saveload_can.asm
-│         ├── saveload_shadow_of_the_mordor.asm
-│         ├── saveload_trdos_patch_cylu.asm
-│         ├── screen_2put.asm
-│         ├── screen_clear_miami.asm
-│         ├── screen_count.asm
-│         ├── screen_cyclone0.asm
-│         ├── screen_fade0s.asm
-│         ├── screen_fade2.asm
-│         ├── screen_fade2plus.asm
-│         ├── screen_fade7s.asm
-│         ├── screen_fade+.asm
-│         ├── screen_fade.asm
-│         ├── screen_fade_plus.asm
+│         │         ├── 014!   lamescrl.f.bin              -
+│         │         ├── 015!   lameKmus.C.bin              -
+│         │         ├── 019!   lameKmu0.C.bin              -
+│         │         ├── 020!   lameKi1.W.bin               -
+│         │         ├── 021!   lameKi2.W.bin               -
+│         │         ├── lamergy_kids_intro.asm             -
+│         │         └── sprite_converter_for_lamergy0.asm  -
+│         ├── loader_and_trainer_sks.asm                   -
+│         ├── loader_astemix.asm                           -
+│         ├── loader_cyly.asm                              -
+│         ├── loader_depack_wor.asm                        -
+│         ├── loader_drunker_logo.asm                      -
+│         ├── loader_icet.asm                              -
+│         ├── loader_mask3.asm                             -
+│         ├── loader_miami_c.asm                           -
+│         ├── loader_new1.asm                              -
+│         ├── loader_new2.asm                              -
+│         ├── loader_new3.asm                              -
+│         ├── loader_new.asm                               -
+│         ├── loader_runstn.asm                            -
+│         ├── loader_trainer_captain_trueno.asm            -
+│         ├── loader_trainer_forgotten_w.asm               -
+│         ├── loader_trainer_miami_c.asm                   -
+│         ├── loader_trainer_thanathos.asm                 -
+│         ├── loader_wor.asm                               -
+│         ├── loader_ws_baseball.asm                       -
+│         ├── overlay_manager_ninja_hamst128.asm           -
+│         ├── overlay_manager_ninja_hamst48.asm            -
+│         ├── PASMTBL.C.bin                                -
+│         ├── patch_cheatkeys_nether_w.asm                 -
+│         ├── patch_nether_w.asm                           -
+│         ├── patch_savage_demo.asm                        -
+│         ├── PLSMTBL3.C.bin                               -
+│         ├── redefine_kyes_patch_amaurote.asm             -
+│         ├── rle_packer_fastfood.asm                      -
+│         ├── saveload_can.asm                             -
+│         ├── saveload_shadow_of_the_mordor.asm            -
+│         ├── saveload_trdos_patch_cylu.asm                -
+│         ├── screen_2put.asm                              -
+│         ├── screen_clear_miami.asm                       -
+│         ├── screen_count.asm                             -
+│         ├── screen_cyclone0.asm                          -
+│         ├── screen_fade0s.asm                            - A variation of screen fade routines for title screen output
+│         ├── screen_fade2.asm                             - A variation of screen fade routines for title screen output
+│         ├── screen_fade2plus.asm                         - A variation of screen fade routines for title screen output
+│         ├── screen_fade7s.asm                            - A variation of screen fade routines for title screen output
+│         ├── screen_fade+.asm                             - A variation of screen fade routines for title screen output
+│         ├── screen_fade.asm                              - A variation of screen fade routines for title screen output
+│         ├── screen_fade_plus.asm                         - A variation of screen fade routines for title screen output
 │         ├── screen_fade_xor.asm
 │         ├── screen_liquid_2l+.asm
 │         ├── screen_liquid_2l.asm
