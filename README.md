@@ -14,8 +14,8 @@ These sources are for Zilog Z80 Assembler in Alasm format. You should import and
 ## Folder contents in short
 
 - [**tools**](tools): file compare tools, 
-[*`RLE packing`*](https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/tools/rle_pack.asm)
-(Run-length encoding) for huge code blocks, [*`DCpack`*](tools/dcpack) (delta packing tool), various converters, tr-dos
+[`RLE packing`](https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/tools/rle_pack.asm)
+(Run-length encoding) for huge code blocks, [`DCpack`](tools/dcpack) (delta packing tool), various converters, tr-dos
 and tape save/load routines. Especially
 [`Data Glue Utility`](https://zxart.ee/rus/soft/tool/io-handling/diskovye-utility/data-glue-utility/qid:366462/) which 
 allows you to decrease end-of-sector spaces on the disk and move data after loading. 
@@ -23,7 +23,7 @@ allows you to decrease end-of-sector spaces on the disk and move data after load
 ![Data Glue](https://zxart.ee/zxscreen/type:standard/id:392818/zoom:1/filename:image.png)
 
 Also [`nfo viewer`](https://zxart.ee/rus/soft/demoscene/nfo-viewer/), a text info viewer with two-bitplan colours (25fps
-colour mixing like 'Gigascreen'). `nfo viewer` was done, but wasn't ever released.
+colour mixing like *'Gigascreen'*, ZX-Spectrum software screen mode). `nfo viewer` was done, but wasn't ever released.
 
 ![Nfo Viewer](https://zxart.ee/image/type:prodImage/id:273669/filename:nfoview.png)
 
@@ -34,7 +34,7 @@ mixing), another is [*`sunshine cracktro`*](unfinished/sunshine_cracktro) which 
 
 - [**loaders, patches, screen output routines, etc**](loaders_patches_etc): mini-cracktros, trainer modes (some
 exclusive *'game pokes'* are placed in init patches), methods how to initialize tr-dos variables when #5b00...#6000
-memory was used by data (check save/load patches), etc.
+memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc.
 
 ## Related URLs
 
@@ -42,3 +42,4 @@ memory was used by data (check save/load patches), etc.
 - [brainwave cracktro v2 sources](https://github.com/alexanderbazhenoff/brainwave-cracktro-v2)
 - [stripped 512b intro sources](https://github.com/alexanderbazhenoff/stripped-512-bytes-inro)
 - [Virtue Da Dirty Soul Intro sources](https://github.com/alexanderbazhenoff/virtue-da-dirty-soul-intro)
+- [zxart.ee archive](https://zxart.ee/rus/avtory/a/alx/)
