@@ -41,19 +41,24 @@ allows you to decrease end-of-sector spaces on the disk and move data after load
 
 ![Data Glue](https://zxart.ee/zxscreen/type:standard/id:392818/zoom:1/filename:image.png)
 
-Also [`nfo viewer`](https://zxart.ee/rus/soft/demoscene/nfo-viewer/), a text info viewer with two-bitplan colours (25fps
-colour mixing like `gigascreen`, a ZX-Spectrum software screen mode). `nfo viewer` was done, but wasn't ever released.
+Also [`nfo viewer`](tools/info_viewer), a text info viewer with two-bitplan colours (25fps colour mixing like
+[`gigascreen`](https://speccy.info/Gigascreen), a ZX-Spectrum software screen mode).
+[`nfo viewer`](https://zxart.ee/rus/soft/demoscene/nfo-viewer/) was done, but wasn't ever released.
 
 ![Nfo Viewer](https://zxart.ee/image/type:prodImage/id:273669/filename:nfoview.png)
 
 - [**unfinished**](unfinished): unfinished cracktros: first one with two-bitplan colours (again my fav 25fps colour
-mixing), another is [*`sunshine cracktro`*](unfinished/sunshine_cracktro) which was almost done, but never released.
+mixing), another is [`sunshine cracktro`](unfinished/sunshine_cracktro) which was almost done, but never released.
 
 ![Sunshine cracktro](https://zxart.ee/zxscreen/border:7/mode:mix/pal:srgb/type:gigascreen/zoom:1/id:195010/)
 
-- [**loaders, patches, screen output routines, etc**](loaders_patches_etc): mini-cracktros, trainer modes (some
-exclusive *'game pokes'* are placed in init patches), methods how to initialize tr-dos variables when #5b00...#6000
-memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc.
+- [**loaders, patches, screen output routines, etc**](loaders_patches_etc): mini cracktros, tittle screen and logos
+output routines (liquid alike, plasm-style, with ZX-Spectrum border interaction), tittle screen fadeout routines,
+trainer modes (some exclusive *'game pokes'* are placed in init patches found by me), methods how to initialize tr-dos
+variables when #5b00...#6000 memory was used by data (check [`save/load patches`](loaders_patches_etc)), etc. Also 
+`Lamergy #0`, [`Lamergy X-Mas`](https://vtrd.in/release.php?r=30fb060eda1ec8eb68e3cade38fbf9e9) and 
+[`Lamergy Kids`](https://vtrd.in/release.php?r=2bb45ef330a7fc973a847d41f9a62d70) (a humor scene-magazine): routines,
+intros, etc...
 
 ## Detailed folder contents
 

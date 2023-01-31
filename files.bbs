@@ -2,9 +2,9 @@
 ├── LICENSE                                                - Tell me what's this about 30 years ago or so
 ├── loaders_patches_etc
 │         ├── $FADE0.asm                                   - A variation of screen fade routines for title screen output
-│         ├── cheat_chubby_g.asm                           -
-│         ├── count_screen_screen.asm                      -
-│         ├── cracktro_mini.asm                            -
+│         ├── cheat_chubby_g.asm                           - Init and poke routines
+│         ├── count_screen_screen.asm                      - A variation of screen output
+│         ├── cracktro_mini.asm                            - Mini cracktro (mini crack intro for earliest crack releases)
 │         ├── cracktro_v0_scoobydoo.asm                    -
 │         ├── cracktro_v4_mini
 │         │         ├── crk4.asm                           -
@@ -25,14 +25,15 @@
 │         ├── livingstone_2.1_+3_bank7_v3.asm              -
 │         ├── livingstone_2.2_+3_bank7_v3.asm              -
 │         ├── livingstone_2.2_+3_bank7_v4.asm              -
-│         ├── lmg0intro
-│         │         ├── 014!   lamescrl.f.bin              -
-│         │         ├── 015!   lameKmus.C.bin              -
-│         │         ├── 019!   lameKmu0.C.bin              -
-│         │         ├── 020!   lameKi1.W.bin               -
-│         │         ├── 021!   lameKi2.W.bin               -
-│         │         ├── lamergy_kids_intro.asm             -
-│         │         └── sprite_converter_for_lamergy0.asm  -
+│         ├── lamergy_magazine_intros
+│         │         ├── 014!   lamescrl.f.bin              - font for Lamergy #KIDS
+│         │         ├── 015!   lameKmus.C.bin              - Lamergy #KIDS music
+│         │         ├── 019!   lameKmu0.C.bin              - Lamergy #KIDS music (2)
+│         │         ├── 020!   lameKi1.W.bin               - Lamergy #KIDS binary (probably packed or converted text, don't remember)
+│         │         ├── 021!   lameKi2.W.bin               - Lamergy #KIDS binary (2) (probably packed or converted text, don't remember)
+│         │         ├── lamergy_kids_intro.asm             - intro for Lamergy #KIDS (humor scene-magazine)
+│         │         ├── sprite_converter_for_lamergy0.asm  - Graphics sprite (or tiles) converter for Lamergy #Kids
+│         │         └── text_to_3E_scroll.asm              - CR/LF to CR text converter for Lamergy #KIDS
 │         ├── loader_and_trainer_sks.asm                   -
 │         ├── loader_astemix.asm                           -
 │         ├── loader_cyly.asm                              -
@@ -66,39 +67,38 @@
 │         ├── saveload_trdos_patch_cylu.asm                -
 │         ├── screen_2put.asm                              -
 │         ├── screen_clear_miami.asm                       -
-│         ├── screen_count.asm                             -
-│         ├── screen_cyclone0.asm                          -
+│         ├── screen_count.asm                             - A variation of screen output
+│         ├── screen_cyclone0.asm                          - A variation of screen output (probably liquid alike style)
 │         ├── screen_fade0s.asm                            - A variation of screen fade routines for title screen output
 │         ├── screen_fade2.asm                             - A variation of screen fade routines for title screen output
 │         ├── screen_fade2plus.asm                         - A variation of screen fade routines for title screen output
-│         ├── screen_fade7s.asm                            - A variation of screen fade routines for title screen output
+│         ├── screen_fade7s.asm                            - A variation of screen fade routines for title screen output (probably white color mode)
 │         ├── screen_fade+.asm                             - A variation of screen fade routines for title screen output
 │         ├── screen_fade.asm                              - A variation of screen fade routines for title screen output
 │         ├── screen_fade_plus.asm                         - A variation of screen fade routines for title screen output
-│         ├── screen_fade_xor.asm
-│         ├── screen_liquid_2l+.asm
-│         ├── screen_liquid_2l.asm
-│         ├── screen_liquid+.asm
-│         ├── screen_liquid.asm
-│         ├── screen_loquid0.asm
-│         ├── screen_out_logo_sks.asm
-│         ├── screen_output_coliseum.asm
-│         ├── screen_pendraw_convert.asm
-│         ├── screen_plasm_fade.asm
-│         ├── screen_plasmfade.asm
-│         ├── screen_put1.asm
-│         ├── screen_put_miami.asm
-│         ├── screen_roadw.asm
-│         ├── screen_wave_fade.asm
-│         ├── screen_yogi.asm
-│         ├── screen_z2.asm
-│         ├── screen_z2_cls.asm
-│         ├── text_to_3E_scroll.asm
+│         ├── screen_fade_xor.asm                          - A variation of screen output (probably liquid alike style)
+│         ├── screen_liquid_2l+.asm                        - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
+│         ├── screen_liquid_2l.asm                         - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
+│         ├── screen_liquid+.asm                           - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
+│         ├── screen_liquid.asm                            - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
+│         ├── screen_loquid0.asm                           - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
+│         ├── screen_out_logo_sks.asm                      - A variation of screen output
+│         ├── screen_output_coliseum.asm                   - A variation of screen output
+│         ├── screen_pendraw_convert.asm                   - A variation of screen output (as a pen draw)
+│         ├── screen_plasm_fade.asm                        - A variation of plasm-styled screen fade (fade-out title screen)
+│         ├── screen_plasmfade.asm                         - A variation of plasm-styled screen fade (fade-out title screen)
+│         ├── screen_put1.asm                              - A variation of screen output
+│         ├── screen_put_miami.asm                         - A variation of screen output (interlaced with ZX-Spectrum screen border)
+│         ├── screen_roadw.asm                             - A variation of screen output
+│         ├── screen_wave_fade.asm                         - A variation of plasm-styled screen fade (fade-out title screen)
+│         ├── screen_yogi.asm                              - A variation of screen output (3 converted pictures for different parts)
+│         ├── screen_z2.asm                                - A variation of tittle screen clear with ZX-Spectrum border interaction
+│         ├── screen_z2_cls.asm                            - A variation of tittle screen clear with ZX-Spectrum border interaction
 │         ├── trainer_loader_chubby_gristle.asm
 │         ├── trdos_gamesave_sks.asm
 │         ├── trdos_load_sks.asm
 │         └── trdos_save_load_sks.asm
-├── README.md
+├── README.md                                              - README file
 ├── tools
 │         ├── 1#2f3$conv.asm
 │         ├── 3d13.asm
