@@ -6,12 +6,21 @@ Lots of my various ZX-Spectrum assembler sources. Some of them written in the en
 Here is some my handmade tools and converters, which nowadays usually making on python etc. Others are loaders, screen
 output routines and patches, so you can find a 'game poke' or another tips. Unfinished sources also.
 
+## TLDR
+
+These sources are for Zilog Z80 Assembler in Alasm format. You should import and compile this source in
+[Alasm](https://zxart.ee/rus/soft/tool/music/pro-tracker-alasm/qid:365628/) ZX-Spectrum assembler
+[(I have used v5.08)](https://speccy.info/ALASM) to compile. Or convert this source manually for 
+[SjASMPlus](http://speccy.info/SjASMPlus) which is cross-platform.
+
 ## Preamble
 
 Since a school days in 90s I was totally passioned by 8-bit demoscane culture. A specially crack releases where all
 these wonderful effects first time came from. In the begging I was too lazy. So I watched some cool stuff and debug
 some stuff to watch a code tricks using hardware `shadow monitor` in my 
-[`Scorpion ZS-256`](https://en.wikipedia.org/wiki/Scorpion_ZS-256), a Sergery Zonov's ZX-Spectrum Russian clone.
+[`Scorpion ZS-256`](https://en.wikipedia.org/wiki/Scorpion_ZS-256), a Sergery Zonov's ZX-Spectrum Russian clone. Later I
+moved to a Russian demoscene classic ZX-Spectrum clone, 
+[`Pentagon 128`](https://en.wikipedia.org/wiki/Pentagon_(computer)) and these all started.
 
 In the end of 90s I was inspired to made not also a crack intro, just would love to fix firm bugs, performance, add
 TR-DOS save/load, exam some history of game making and all these stuff. In those days cracking games on ZX-Spectrum
@@ -22,13 +31,6 @@ scene tradition.
 
 So until the middle 2005 more than 50 crack releases came. Some of them was with an intros, some of them just with sign,
 but fixed, packed, etc.
-
-## TLDR
-
-These sources are for Zilog Z80 Assembler in Alasm format. You should import and compile this source in
-[Alasm](https://zxart.ee/rus/soft/tool/music/pro-tracker-alasm/qid:365628/) ZX-Spectrum assembler
-[(I have used v5.08)](https://speccy.info/ALASM) to compile. Or convert this source manually for 
-[SjASMPlus](http://speccy.info/SjASMPlus) which is cross-platform.
 
 ## Folder contents in short
 
