@@ -30,7 +30,7 @@ coloure mixing like 'Gigascreen'). `nfo viewer` was done, but wasn't released.
 - [**unfinished**](unfinished): unfinished cracktros: first one with two-bitplan colours (again my fav 25fps colour
 mixing), another is [*`sunshine cracktro`*](unfinished/sunshine_cracktro) which was almost done, but never released.
 
-![Sunshine cracktro](https://zxart.ee/zxscreen/border:7/mode:mix/pal:srgb/type:gigascreen/zoom:3/id:195010/){:height="240px" width="320px"}
+![Sunshine cracktro](https://zxart.ee/zxscreen/border:7/mode:mix/pal:srgb/type:gigascreen/zoom:1/id:195010/)
 
 - [**loaders, patches, screen output routines, etc**](loaders_patches_etc): mini-cracktros, trainer modes (some
 exclusive *'game pokes'* are placed in init patches), methods how to initialize tr-dos variables when #5b00...#6000
