@@ -64,14 +64,6 @@ intros, etc...
 
 Browse folders for README(s) or read traditional [`files.bbs`](files.bbs).
 
-## License
-
-All repository code, binaries, info, cheat codes, pokes and patches are under [`MIT-0 license`](LICENSE). You can use
-them for software reverse engineering, gaming, exploring history, improve your retro programming skills or other fun
-whatever you want. All engines, trademarks and software for which all these patches, cheat codes, adaptations (or
-conversions) and fixes was made, belongs to their respective owners. Search an info for any details. Cracktros 
-(`crack instros`), tools and binary includes are absolutely free forever without any doubt or nuances.
-
 ## Related URLs
 
 - [brainwave cracktro v1 sources](https://github.com/alexanderbazhenoff/brainwave-cracktro-v1)
