@@ -3,7 +3,7 @@
 ; this file, You can obtain one at:
 ; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
-; TR-DOS Fast saver (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
+; TR-DOS Fast save (use VG chip and TR-DOS ROM directrly instead of #3D13 entry point)
         ORG #8000
         DI
         LD DE,#0100

@@ -1,30 +1,30 @@
 ├── files.bbs                                              - This file
-├── LICENSE                                                - Tell me what's this about 30 years ago or so
+├── LICENSE                                                - License file
 ├── loaders_patches_etc
 │         ├── $FADE0.asm                                   - A variation of screen fade routines for title screen output
-│         ├── cheat_chubby_g.asm                           - Init and poke routines
+│         ├── cheat_chubby_g.asm                           - Game init (after load-depack) and poke routines
 │         ├── count_screen_screen.asm                      - A variation of screen output
 │         ├── cracktro_mini.asm                            - Mini cracktro (mini crack intro for earliest crack releases)
-│         ├── cracktro_v0_scoobydoo.asm                    -
+│         ├── cracktro_v0_scoobydoo.asm                    - A variation of mini cracktro with tr-dos loader (earliest)
 │         ├── cracktro_v4_mini
-│         │         ├── crk4.asm                           -
-│         │         ├── KR4_GFX1.C.bin                     -
-│         │         ├── KR4_GFX2.C.bin                     -
-│         │         ├── kr4_tbl2.C.bin                     -
-│         │         └── kr4_tbl.C.bin                      -
-│         ├── fastfood_init_and_patches.asm                -
-│         ├── helpkeys_nether_w.asm                        -
+│         │         ├── crk4.asm                           - Mini cracktro for crack releases pack #4
+│         │         ├── KR4_GFX1.C.bin                     - Mini cracktro graphics (sign-logo)
+│         │         ├── KR4_GFX2.C.bin                     - Mini cracktro graphics (2) (sign-logo)
+│         │         ├── kr4_tbl2.C.bin                     - A trajectory table for logo-sign movement for mini cracktro
+│         │         └── kr4_tbl.C.bin                      - A trajectory table (2) for logo-sign movement for mini cracktro
+│         ├── fastfood_init_and_patches.asm                - Game init (after load-depack) and poke routines
+│         ├── helpkeys_nether_w.asm                        - Help keys (probably cheat keys: skip level, etc) patch
 │         ├── inisin.asm                                   - Sine table generator
-│         ├── init_and_cheat_bubbler.asm                   -
-│         ├── init_and_patch_sarlmoor.asm                  -
-│         ├── init_and_patch_savage_1.asm                  -
-│         ├── init_and_patch_savage_2.asm                  -
-│         ├── init_and_patch_savage_3.asm                  -
-│         ├── init_basil.asm                               -
-│         ├── init_savage_0.asm                            -
-│         ├── livingstone_2.1_+3_bank7_v3.asm              -
-│         ├── livingstone_2.2_+3_bank7_v3.asm              -
-│         ├── livingstone_2.2_+3_bank7_v4.asm              -
+│         ├── init_and_cheat_bubbler.asm                   - Game init (after load-depack) and poke routines
+│         ├── init_and_patch_sarlmoor.asm                  - Game init (after load-depack) and poke routines
+│         ├── init_and_patch_savage_1.asm                  - Game init (after load-depack) and poke routines
+│         ├── init_and_patch_savage_2.asm                  - Game init (after load-depack) and poke routines
+│         ├── init_and_patch_savage_3.asm                  - Game init (after load-depack) and poke routines
+│         ├── init_basil.asm                               - Game init (after load-depack) and poke routines (unreleased)
+│         ├── init_savage_0.asm                            - Game init (after load-depack) and poke routines
+│         ├── livingstone_2.1_+3_bank7_v3.asm              - Game init for ZX-Spectrum +2a to 128k conversion (finished) ver. 3
+│         ├── livingstone_2.2_+3_bank7_v3.asm              - Game init for ZX-Spectrum +2a to 128k conversion ver. 3
+│         ├── livingstone_2.2_+3_bank7_v4.asm              - Game init for ZX-Spectrum +2a to 128k conversion ver. 4 (unfinished)
 │         ├── lamergy_magazine_intros
 │         │         ├── 014!   lamescrl.f.bin              - font for Lamergy #KIDS
 │         │         ├── 015!   lameKmus.C.bin              - Lamergy #KIDS music
@@ -34,39 +34,39 @@
 │         │         ├── lamergy_kids_intro.asm             - intro for Lamergy #KIDS (humor scene-magazine)
 │         │         ├── sprite_converter_for_lamergy0.asm  - Graphics sprite (or tiles) converter for Lamergy #Kids
 │         │         └── text_to_3E_scroll.asm              - CR/LF to CR text converter for Lamergy #KIDS
-│         ├── loader_and_trainer_sks.asm                   -
-│         ├── loader_astemix.asm                           -
-│         ├── loader_cyly.asm                              -
-│         ├── loader_depack_wor.asm                        -
-│         ├── loader_drunker_logo.asm                      -
-│         ├── loader_icet.asm                              -
-│         ├── loader_mask3.asm                             -
-│         ├── loader_miami_c.asm                           -
-│         ├── loader_new1.asm                              -
-│         ├── loader_new2.asm                              -
-│         ├── loader_new3.asm                              -
-│         ├── loader_new.asm                               -
-│         ├── loader_runstn.asm                            -
-│         ├── loader_trainer_captain_trueno.asm            -
-│         ├── loader_trainer_forgotten_w.asm               -
-│         ├── loader_trainer_miami_c.asm                   -
-│         ├── loader_trainer_thanathos.asm                 -
-│         ├── loader_wor.asm                               -
-│         ├── loader_ws_baseball.asm                       -
-│         ├── overlay_manager_ninja_hamst128.asm           -
-│         ├── overlay_manager_ninja_hamst48.asm            -
-│         ├── PASMTBL.C.bin                                -
-│         ├── patch_cheatkeys_nether_w.asm                 -
-│         ├── patch_nether_w.asm                           -
-│         ├── patch_savage_demo.asm                        -
-│         ├── PLSMTBL3.C.bin                               -
-│         ├── redefine_kyes_patch_amaurote.asm             -
-│         ├── rle_packer_fastfood.asm                      -
-│         ├── saveload_can.asm                             -
-│         ├── saveload_shadow_of_the_mordor.asm            -
-│         ├── saveload_trdos_patch_cylu.asm                -
-│         ├── screen_2put.asm                              -
-│         ├── screen_clear_miami.asm                       -
+│         ├── loader_and_trainer_sks.asm                   - Trainer (pokes) menu and tr-dos loader
+│         ├── loader_astemix.asm                           - Tr-dos loader
+│         ├── loader_cyly.asm                              - Tr-dos loader
+│         ├── loader_depack_wor.asm                        - Tr-dos loader and depack routines
+│         ├── loader_drunker_logo.asm                      - 'BeeR DrUnkEr @lx' tr-dos loader
+│         ├── loader_icet.asm                              - Tr-dos loader
+│         ├── loader_mask3.asm                             - Tr-dos loader
+│         ├── loader_miami_c.asm                           - Tr-dos loader
+│         ├── loader_new1.asm                              - A version of tr-dos #3d13 loader with errors handling with rip depack routines
+│         ├── loader_new2.asm                              - A version of tr-dos #3d13 loader with errors handling with rip depack routines
+│         ├── loader_new3.asm                              - A version of tr-dos #3d13 loader with errors handling with rip depack routines
+│         ├── loader_new.asm                               - A version of tr-dos #3d13 loader with errors handling with rip depack routines
+│         ├── loader_runstn.asm                            - 'BeeR DrUnkEr @lx' tr-dos loader
+│         ├── loader_trainer_captain_trueno.asm            - Trainer (pokes) menu and tr-dos loader
+│         ├── loader_trainer_forgotten_w.asm               - Trainer (pokes) menu and tr-dos loader
+│         ├── loader_trainer_miami_c.asm                   - Trainer (pokes) menu and tr-dos loader
+│         ├── loader_trainer_thanathos.asm                 - Trainer (pokes) menu and tr-dos loader
+│         ├── loader_wor.asm                               - Tr-dos loader
+│         ├── loader_ws_baseball.asm                       - Tr-dos loader
+│         ├── overlay_manager_ninja_hamst128.asm           - Overlay (levels) patch for tr-dos
+│         ├── overlay_manager_ninja_hamst48.asm            - Overlay (levels) patch for tr-dos
+│         ├── PASMTBL.C.bin                                - A version of plasm-style fade data table
+│         ├── patch_cheatkeys_nether_w.asm                 - Cheat mode keys patch
+│         ├── patch_nether_w.asm                           - Cheat mode and init patch
+│         ├── patch_savage_demo.asm                        - Cheat mode and init patch
+│         ├── PLSMTBL3.C.bin                               - A version of plasm-style fade data table
+│         ├── redefine_keys_patch_amaurote.asm             - Re-define keys patch for a game (firm bug fix)
+│         ├── rle_packer_fastfood.asm                      - A variation of rle packer routines
+│         ├── saveload_can.asm                             - Save/load patch for tr-dos
+│         ├── saveload_shadow_of_the_mordor.asm            - Save/load patch for tr-dos
+│         ├── saveload_trdos_patch_cylu.asm                - Save/load patch for tr-dos
+│         ├── screen_2put.asm                              - A variation of screen output
+│         ├── screen_clear_miami.asm                       - A variation of interlaced tittle screen clear which interacts with ZX-Spectrum border
 │         ├── screen_count.asm                             - A variation of screen output
 │         ├── screen_cyclone0.asm                          - A variation of screen output (probably liquid alike style)
 │         ├── screen_fade0s.asm                            - A variation of screen fade routines for title screen output
@@ -77,11 +77,11 @@
 │         ├── screen_fade.asm                              - A variation of screen fade routines for title screen output
 │         ├── screen_fade_plus.asm                         - A variation of screen fade routines for title screen output
 │         ├── screen_fade_xor.asm                          - A variation of screen output (probably liquid alike style)
-│         ├── screen_liquid_2l+.asm                        - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
-│         ├── screen_liquid_2l.asm                         - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
-│         ├── screen_liquid+.asm                           - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
-│         ├── screen_liquid.asm                            - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
-│         ├── screen_loquid0.asm                           - A variation of liquid alike style title screen output (don't remember which is vertical or horizontal)
+│         ├── screen_liquid_2l+.asm                        - A variation of liquid alike style title screen output
+│         ├── screen_liquid_2l.asm                         - A variation of liquid alike style title screen output
+│         ├── screen_liquid+.asm                           - A variation of liquid alike style title screen output
+│         ├── screen_liquid.asm                            - A variation of liquid alike style title screen output
+│         ├── screen_loquid0.asm                           - A variation of liquid alike style title screen output
 │         ├── screen_out_logo_sks.asm                      - A variation of screen output
 │         ├── screen_output_coliseum.asm                   - A variation of screen output
 │         ├── screen_pendraw_convert.asm                   - A variation of screen output (as a pen draw)
@@ -94,58 +94,54 @@
 │         ├── screen_yogi.asm                              - A variation of screen output (3 converted pictures for different parts)
 │         ├── screen_z2.asm                                - A variation of tittle screen clear with ZX-Spectrum border interaction
 │         ├── screen_z2_cls.asm                            - A variation of tittle screen clear with ZX-Spectrum border interaction
-│         ├── trainer_loader_chubby_gristle.asm
-│         ├── trdos_gamesave_sks.asm
-│         ├── trdos_load_sks.asm
-│         └── trdos_save_load_sks.asm
+│         ├── trainer_loader_chubby_gristle.asm            - Trainer (pokes) menu and tr-dos loader
+│         ├── trdos_gamesave_sks.asm                       - Tr-dos save/load patch routines
+│         ├── trdos_load_sks.asm                           - Tr-dos save/load patch routines
+│         └── trdos_save_load_sks.asm                      - Tr-dos save/load patch routines
 ├── README.md                                              - README file
 ├── tools
-│         ├── 1#2f3$conv.asm
-│         ├── 3d13.asm
-│         ├── 3d13border.asm
-│         ├── 3d13minus.asm
-│         ├── atr_chng.asm
-│         ├── compare_trdos_files.asm
-│         ├── compare_trdos_files_plus.asm
-│         ├── cracktro_v1_logo_converter.asm
+│         ├── 1#2f3$conv.asm                               - One third ZX-Spectrum screen converter (two columns)
+│         ├── 3d13.asm                                     - #3d13 tr-dos routines with errors handling
+│         ├── 3d13border.asm                               - #3d13 tr-dos routines with errors handling with border interaction
+│         ├── 3d13minus.asm                                - A version of #3d13 tr-dos routines with errors handling
+│         ├── atr_chng.asm                                 - Change ZX-Spectrum screen atributes (don't remember details)
+│         ├── compare_trdos_files.asm                      - Compare files on tr-dos disk
+│         ├── compare_trdos_files_plus.asm                 - Compare files on tr-dos disk (enhanced)
+│         ├── cracktro_v1_logo_converter.asm               - Logo converter for cracktro v1
 │         ├── data_glue
-│         │         ├── glue_load.asm
-│         │         ├── info.txt
-│         │         ├── main.asm
-│         │         └── README.md
+│         │         ├── glue_load.asm                      - Data glue depack and load sources
+│         │         ├── info.txt                           - Original info file
+│         │         ├── main.asm                           - Data glue packer sources
+│         │         └── README.md                          - Folder README file
 │         ├── dcpack
-│         │         ├── dcpack_v1.asm
-│         │         └── diff_compare_savage.asm
-│         ├── diskload.asm
-│         ├── fastload00.asm
-│         ├── fastload.asm
-│         ├── fastsave.asm
+│         │         ├── dcpack_v1.asm                      - Dcpack sources, a tool to compress diff (probably rle, don't remember)
+│         │         └── diff_compare_savage.asm            - Compare differences and save routines for DCpack
+│         ├── diskload.asm                                 - #3d13 tr-dos load sectors routines
+│         ├── fastload00.asm                               - A variation of tr-dos fast load sectors (use VG chip and TR-DOS ROM directly)
+│         ├── fastload.asm                                 - Tr-dos fast load sectors (use VG chip and TR-DOS ROM directly)
+│         ├── fastsave.asm                                 - tr-dos fast save sectors (use VG chip and TR-DOS ROM directly)
 │         ├── info_viewer
-│         │         ├── info_viewer_converter.asm
-│         │         ├── info_viewer_for_crp3.asm
-│         │         ├── nfo_view.scl
-│         │         ├── viewer.f.bin
-│         │         └── view_mus.C.bin
-│         ├── mirror_bytes_in_block.asm
-│         ├── rle_pack.asm
-│         ├── tape_turbo_save_load.asm
-│         └── unrip_boreder.asm
+│         │         ├── info_viewer_converter.asm          - Text converter for nfo viewer
+│         │         ├── info_viewer_for_crp3.asm           - Nfo viewer main sources
+│         │         ├── nfo_view.scl                       - ZX-Spectrum scl image with info viewer executable binaries
+│         │         ├── viewer.f.bin                       - Nfo viewer font
+│         │         └── view_mus.C.bin                     - Nfo viwer music by c-jeff (seajeff nowdays)
+│         ├── mirror_bytes_in_block.asm                    - mirror bytes in code block (don't remember details)
+│         ├── rle_pack.asm                                 - Code block rle packer sources (used for large code blocks before rip packer)
+│         ├── tape_turbo_save_load.asm                     - ZX-Spectrum tape turbo save/load routines (probably unfinished or so)
+│         └── unrip_boreder.asm                            - UNRIP (depacker for RIP by Roman Petrov) with border FXs by alx
 └── unfinished
     ├── cracktro_gigascreen
-    │         ├── cracktro3_unfinished.asm
-    │         ├── nmc.asm
-    │         ├── nmc_font.f.bin
-    │         └── razdolb_.f.bin
+    │         ├── cracktro3_unfinished.asm                 - A version of a sources of unfinished giga-screen cracktro (unfinished, details n/a)
+    │         ├── nmc.asm                                  - A version of a sources of unfinished giga-screen cracktro (unfinished, details n/a)
+    │         ├── nmc_font.f.bin                           - A font for giga-screen cracktro
+    │         └── razdolb_.f.bin                           - A font for cracktro
     └── sunshine_cracktro
-        ├── crackmuz.C.bin
-        ├── crak2log.C.bin
-        ├── crk2musD.C.bin
-        ├── sun_crk.asm
-        ├── sun_crkt.asm
-        ├── sun_fnt.f.bin
-        ├── sunfont.s.bin
-        ├── sun_logo.C.bin
-        ├── sun_mus.C.bin
-        └── sun_txt.C.bin
+        ├── sun_crk.asm                                    - Sunshine cracktro main sources (never released)
+        ├── sun_crkt.asm                                   - Sunshine cracktro additional sources file
+        ├── sun_fnt.f.bin                                  - Sunshine cracktro font
+        ├── sunfont.s.bin                                  - Sunshine cracktro font
+        ├── sun_logo.C.bin                                 - Sunshine Cracktro logo https://zxart.ee/rus/avtory/a/alx/bw-sun_cracktro/
+        ├── sun_mus.C.bin                                  - Sunshine Cracktro music by c-jeff (seajeff nowdays)
+        └── sun_txt.C.bin                                  - Sunshine Cracktro text (converted to special format)
 
-10 directories, 139 files
