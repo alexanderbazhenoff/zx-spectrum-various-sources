@@ -5,7 +5,7 @@
 
 
 ; This is the info viewer for crack releases pack #3 by alx^bw.
-; Never relesed.
+; Never released.
 
 
 FONTADR EQU #6000

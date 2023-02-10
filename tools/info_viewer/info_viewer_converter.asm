@@ -4,7 +4,7 @@
 ; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
-; text converter for info viewe by alx^brainwave
+; text converter for info viewer by alx^brainwave
 
 
 TESTMOD EQU 1
