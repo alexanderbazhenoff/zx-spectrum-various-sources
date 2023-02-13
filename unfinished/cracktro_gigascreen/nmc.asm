@@ -4,8 +4,8 @@
 ; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
-; a small never released peace of source and the concept for the
-; ctacktro by alx^bw. never released.
+; a small never released part of source and the concept for the
+; ctacktro by alx^bw. Never released.
 
         ORG #6000
 ATTRMODE        EQU 0

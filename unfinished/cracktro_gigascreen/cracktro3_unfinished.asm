@@ -4,8 +4,8 @@
 ; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
 
 
-; don't remember, but looks like a a small never released peace of source and
-; the concept for the ctacktro by alx^bw. never released.
+; don't remember, but looks like a small never released part of source and
+; the concept for the ctacktro by alx^bw. Never released.
 
 
         ORG #6000
