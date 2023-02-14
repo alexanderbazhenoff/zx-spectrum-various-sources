@@ -13,3 +13,6 @@ Btw Spanish code was always fun and slow. It was a month or two of re-writing ga
 pure reverse engineering hardcore times. One day I made a playable beta version with more fast game engine, save/load 
 game to memory options, etc. Autumn 2005 I left Speccy demoscene and the adaptation of Livingstone 2B wasn't finish. As
 a result it wasn't glued together and 'sunshine cracktro' stayed unreleased.
+
+* [**README.md**](README.md) - this file.
+* [**sun_crk.asm**](sun_crk.asm) - 
