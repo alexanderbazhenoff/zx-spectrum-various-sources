@@ -1066,7 +1066,7 @@ TRAINER_TEXT
         ;типа мысль (чтоб потом не забыть):
         ;а может в начале строк вместо #06
         ;#20 ставить?
-            ;или ну его на хрен??? ;)
+            ;или ну его на икс??? ;)
 
 
 ENDCOD  DISPLAY "lenght of code: ",ENDCOD-START_ADR
@@ -1087,4 +1087,3 @@ SCR_FONT
 ENDOBJ  DISPLAY "total lenght: ",ENDOBJ-START_ADR
 
         ORG START_ADR
-
