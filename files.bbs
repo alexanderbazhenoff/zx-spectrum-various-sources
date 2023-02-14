@@ -11,7 +11,8 @@
 │         │         ├── KR4_GFX1.C.bin                     - Mini cracktro graphics (sign-logo)
 │         │         ├── KR4_GFX2.C.bin                     - Mini cracktro graphics (2) (sign-logo)
 │         │         ├── kr4_tbl2.C.bin                     - A trajectory table for logo-sign movement for mini cracktro
-│         │         └── kr4_tbl.C.bin                      - A trajectory table (2) for logo-sign movement for mini cracktro
+│         │         ├── kr4_tbl.C.bin                      - A trajectory table (2) for logo-sign movement for mini cracktro
+│         │         └── README.md                          - Folder contents description
 │         ├── fastfood_init_and_patches.asm                - Game init (after load-depack) and poke routines
 │         ├── helpkeys_nether_w.asm                        - Help keys (probably cheat keys: skip level, etc) patch
 │         ├── inisin.asm                                   - Sine table generator
@@ -32,6 +33,7 @@
 │         │         ├── 020!   lameKi1.W.bin               - Lamergy #KIDS binary (probably packed or converted text, don't remember)
 │         │         ├── 021!   lameKi2.W.bin               - Lamergy #KIDS binary (2) (probably packed or converted text, don't remember)
 │         │         ├── lamergy_kids_intro.asm             - intro for Lamergy #KIDS (humor scene-magazine)
+│         │         ├── README.md                          - Folder contents description
 │         │         ├── sprite_converter_for_lamergy0.asm  - Graphics sprite (or tiles) converter for Lamergy #Kids
 │         │         └── text_to_3E_scroll.asm              - CR/LF to CR text converter for Lamergy #KIDS
 │         ├── loader_and_trainer_sks.asm                   - Trainer (pokes) menu and tr-dos loader
@@ -116,6 +118,7 @@
 │         ├── dcpack
 │         │         ├── dcpack_v1.asm                      - Dcpack sources, a tool to compress diff (probably rle, don't remember)
 │         │         └── diff_compare_savage.asm            - Compare differences and save routines for DCpack
+│         │         ├── README.md                          - Folder README file
 │         ├── diskload.asm                                 - #3d13 tr-dos load sectors routines
 │         ├── fastload00.asm                               - A variation of tr-dos fast load sectors (use VG chip and TR-DOS ROM directly)
 │         ├── fastload.asm                                 - Tr-dos fast load sectors (use VG chip and TR-DOS ROM directly)
@@ -124,6 +127,7 @@
 │         │         ├── info_viewer_converter.asm          - Text converter for nfo viewer
 │         │         ├── info_viewer_for_crp3.asm           - Nfo viewer main sources
 │         │         ├── nfo_view.scl                       - ZX-Spectrum scl image with info viewer executable binaries
+│         │         ├── README.md                          - Folder README file
 │         │         ├── viewer.f.bin                       - Nfo viewer font
 │         │         └── view_mus.C.bin                     - Nfo viwer music by c-jeff (seajeff nowdays)
 │         ├── mirror_bytes_in_block.asm                    - mirror bytes in code block (don't remember details)
@@ -144,4 +148,3 @@
         ├── sun_logo.C.bin                                 - Sunshine Cracktro logo https://zxart.ee/rus/avtory/a/alx/bw-sun_cracktro/
         ├── sun_mus.C.bin                                  - Sunshine Cracktro music by c-jeff (seajeff nowdays)
         └── sun_txt.C.bin                                  - Sunshine Cracktro text (converted to special format)
-
