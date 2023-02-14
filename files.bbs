@@ -139,8 +139,10 @@
     │         ├── cracktro3_unfinished.asm                 - A version of a sources of unfinished giga-screen cracktro (unfinished, details n/a)
     │         ├── nmc.asm                                  - A version of a sources of unfinished giga-screen cracktro (unfinished, details n/a)
     │         ├── nmc_font.f.bin                           - A font for giga-screen cracktro
-    │         └── razdolb_.f.bin                           - A font for cracktro
+    │         ├── razdolb_.f.bin                           - A font for cracktro
+    │         └── README.md                                - Folder README file
     └── sunshine_cracktro
+        ├── README.md                                      - Folder README file
         ├── sun_crk.asm                                    - Sunshine cracktro main sources (never released)
         ├── sun_crkt.asm                                   - Sunshine cracktro additional sources file
         ├── sun_fnt.f.bin                                  - Sunshine cracktro font
