@@ -1,7 +1,7 @@
 ; This Source Code Form is subject to the terms of the MIT
-; hLicense. If a copy of the MPL was not distributed with
+; hLicense. If a copy of the source was not distributed with
 ; this file, You can obtain one at:
-; https://github.com/alexanderbazhenoff/zx-spectrum-various/blob/main/LICENSE
+; https://github.com/alexanderbazhenoff/zx-spectrum-various-sources
 
 
 ; ----------------------------------------------------
